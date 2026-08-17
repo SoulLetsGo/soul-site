@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>on the route · soul</title>
+<meta name="description" content="a stop on the soul route: filming window, the places around it, and how to book content there.">
+<!-- em obra: sai no dia do lancamento, junto com o bloqueio do robots.txt -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="soul">
+<meta property="og:title" content="on the route · soul">
+<meta property="og:description" content="a stop on the soul route: filming window, the places around it, and how to book content there.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
+<style>
+  html, body { margin:0; padding:0; background:#161003; }
+  * { box-sizing: border-box; }
+  a { color:#FFF6E5; text-decoration:none; }
+  a:hover { color:#FFF6E5; opacity:.72; }
+  ::selection { background:#FFF6E5; color:#161003; }
+  @keyframes pulse { 0%{transform:scale(1);opacity:.9} 70%{transform:scale(2.4);opacity:0} 100%{opacity:0} }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#161003; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#FFF6E5; overflow-x:clip">
+
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:800; display:flex; justify-content:space-between; align-items:center; gap:18px; padding:16px clamp(20px,4vw,64px); background:rgba(22,16,3,.72); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,246,229,.12)">
+    <a href="index.html" style="display:flex; align-items:center"><img src="assets/logo-soul.svg" alt="soul" style="display:block; width:88px; height:auto" /></a>
+    <div style="display:flex; gap:22px; font-size:13.5px; letter-spacing:.04em">
+      <a href="index.html#where">the route</a>
+      <a href="index.html#packages">packages</a>
+      <a href="index.html#book">book a call</a>
+    </div>
+  </nav>
+
+  <header style="position:relative; min-height:78vh; display:flex; flex-direction:column; justify-content:flex-end; padding:120px clamp(20px,4vw,64px) clamp(36px,5vh,60px); overflow:hidden">
+    <div ref="{{ heroRef }}" style="position:absolute; inset:0; background:#1C1405; clip-path:inset(0 0 100% 0); will-change:transform">
+      <span ref="{{ heroImgRef }}" style="position:absolute; inset:0; background-color:#1C1405; background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
+      <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.35),rgba(22,16,3,.3) 40%,rgba(22,16,3,.96))"></span>
+      <span style="position:absolute; z-index:2; top:70px; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em">photo pending</span>
+    </div>
+    <div style="position:relative">
+      <div data-scrub="fade" style="display:flex; align-items:center; gap:10px; font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.55); margin-bottom:16px; opacity:0">
+        <span style="width:7px; height:7px; border-radius:50%; background:#FFF6E5; position:relative; flex:none; display:inline-block; box-shadow:0 0 10px rgba(255,246,229,.9)"></span>
+        <span>{{ status }}</span>
+        <span style="width:16px; height:1px; background:rgba(255,246,229,.3); display:block"></span>
+        <span>{{ region }}</span>
+      </div>
+      <h1 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(34px,7vw,92px); line-height:1.08; letter-spacing:-.025em; margin:0; max-width:14ch; opacity:0">{{ name }}</h1>
+      <p data-scrub="fade" style="max-width:48ch; margin:22px 0 0; color:rgba(255,246,229,.75); font-size:clamp(14px,.4vw + 13px,17px); opacity:0">{{ window }}</p>
+    </div>
+  </header>
+
+  <section style="padding:clamp(54px,8vh,96px) clamp(20px,4vw,64px) clamp(20px,3vh,36px); border-top:1px solid rgba(255,246,229,.12)">
+    <div data-scrub="fade" style="font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.45); display:flex; align-items:center; gap:12px; margin-bottom:34px; opacity:0"><span>amazing places your product can be</span><span style="flex:1; height:1px; background:rgba(255,246,229,.15)"></span></div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(16px,2.4vw,30px)">
+      <sc-for list="{{ pois }}" as="p" hint-placeholder-count="4">
+        <div>
+          <div data-scrub="clip" style="position:relative; overflow:hidden; background:#1C1405; aspect-ratio:4/3; clip-path:inset(0 50% 0 50%)">
+            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:{{ p.bg }}; background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
+            <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ p.pendingShow }}">photo pending</span>
+          </div>
+          <div style="margin-top:14px; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:15px; line-height:1.4">{{ p.name }}</div>
+          <div style="margin-top:6px; font:400 11px/1.5 ui-monospace, Menlo, monospace; letter-spacing:.1em; color:rgba(255,246,229,.4)">{{ p.coords }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(54px,8vh,110px) clamp(20px,4vw,64px) clamp(70px,10vh,130px)">
+    <div data-scrub="fade" style="border:1px solid rgba(255,246,229,.22); background:rgba(255,246,229,.14); backdrop-filter:blur(6px); padding:clamp(28px,4vw,56px); text-align:center; opacity:0">
+      <h2 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,3.6vw,48px); line-height:1.18; letter-spacing:-.018em; margin:0 auto; max-width:18ch; text-wrap:balance">{{ ctaTitle }}</h2>
+      <p style="color:rgba(255,246,229,.75); max-width:46ch; margin:20px auto 30px">Tell us what you have in mind and we'll make it even better.</p>
+      <a href="index.html#book" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#FFF6E5; color:#161003; border:1px solid #FFF6E5; transition:background .4s, color .4s" style-hover="background:transparent; color:#FFF6E5">i want content there</a>
+    </div>
+    <div data-scrub="fade" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px 32px; margin-top:34px; font-size:13px; color:rgba(255,246,229,.5); opacity:0">
+      <a href="{{ prevHref }}" style="color:rgba(255,246,229,.7)">← {{ prevName }}</a>
+      <a href="index.html#where" style="color:rgba(255,246,229,.7)">all stops on the route</a>
+      <a href="{{ nextHref }}" style="color:rgba(255,246,229,.7)">{{ nextName }} →</a>
+    </div>
+  </section>
+
+  <footer style="background:#161003; color:rgba(255,246,229,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
+    <div style="border-top:1px solid rgba(255,246,229,.15); padding-top:25px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
+      <div>Soul, a traveling film studio</div>
+      <a href="mailto:contato@soulletsgo.com" style="color:rgba(255,246,229,.7)">contato@soulletsgo.com</a>
+      <div>© 2026</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;stopId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;stop&quot;}}">
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const FULL = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+const fmt = iso => { const d = new Date(iso + 'T00:00:00'); return `${MONTHS[d.getMonth()]} ${d.getDate()}`; };
+const dms = c => `${Math.abs(c[1]).toFixed(2)}°${c[1] < 0 ? 'S' : 'N'} ${Math.abs(c[0]).toFixed(2)}°${c[0] < 0 ? 'W' : 'E'}`;
+
+class Component extends DCLogic {
+  state = { stop: null, index: 0, all: [], imgs: {} };
+
+  constructor(p) {
+    super(p);
+    ['root', 'hero', 'heroImg'].forEach(k => { this[k + 'Ref'] = React.createRef(); });
+  }
+
+  componentDidMount() {
+    import('./route-data.js').then(m => {
+      const all = m.ROUTE.stops;
+      const id = (this.props.stopId) || new URLSearchParams(location.search).get('s') || all[1].id;
+      const index = Math.max(0, all.findIndex(s => s.id === id));
+      const stop = all[index];
+      this.setState({ stop, index, all }, () => {
+        this._title = `${stop.name.split(',')[0].toLocaleLowerCase()} · soul`;
+        this.loadImgs(stop.pois);
+        this.boot();
+      });
+    }).catch(() => {});
+  }
+
+  boot() {
+    this.onScroll = () => {
+      if (this._q) return;
+      this._q = true;
+      requestAnimationFrame(() => { this._q = false; this.run(); });
+    };
+    ['scroll', 'resize'].forEach(ev => window.addEventListener(ev, this.onScroll, { passive: true }));
+    this.poll = setInterval(() => this.run(), 400);
+    this.run();
+    const h = this.heroRef.current;
+    if (h) setTimeout(() => { h.style.transition = 'clip-path 1.2s cubic-bezier(.16,1,.3,1)'; h.style.clipPath = 'inset(0 0 0 0)'; }, 80);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.poll);
+    ['scroll', 'resize'].forEach(ev => window.removeEventListener(ev, this.onScroll));
+  }
+
+  run() {
+    if (this._title && document.title !== this._title) document.title = this._title;
+    const vh = window.innerHeight || 800;
+    const hero = this.heroRef.current;
+    if (hero) {
+      const r = hero.getBoundingClientRect();
+      hero.style.transform = `scale(${1 + clamp(-r.top / vh, 0, 1) * 0.12})`;
+    }
+    const atEnd = (window.scrollY || window.pageYOffset || 0) >= (document.documentElement.scrollHeight - window.innerHeight - 4);
+    const nodes = (this.rootRef.current || document).querySelectorAll('[data-scrub]');
+    this._peaks = this._peaks || [];
+    for (let ni = 0; ni < nodes.length; ni++) {
+      const el = nodes[ni];
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 1.6) continue;
+      let t = ease(clamp((vh - r.top) / (vh * 0.55), 0, 1));
+      if (atEnd) t = 1;
+      if (t < (this._peaks[ni] || 0)) t = this._peaks[ni]; else this._peaks[ni] = t;
+      if (el.dataset.scrub === 'clip') {
+        el.style.clipPath = `inset(0 ${(1 - t) * 50}% 0 ${(1 - t) * 50}%)`;
+        const zoom = el.querySelector('[data-zoom]');
+        if (zoom) zoom.style.transform = `scale(${1.1 - t * 0.1})`;
+      } else {
+        el.style.opacity = String(t);
+        el.style.transform = `translateY(${(1 - t) * 22}px)`;
+      }
+    }
+  }
+
+  loadImgs(pois) {
+    this._req = this._req || {};
+    this._used = this._used || {};
+    const BAD = /location_map|relief_map|physical_map|_map[._]|\.svg|escudo|bandera|flag|coat_of_arms/i;
+    const base = src => (src || '').replace(/^.*\/\d+px-/, '').replace(/^langes-/, '');
+    const get = (lang, title) => fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(String(title).replace(/ /g, '_'))}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(j => {
+        if (!j || j.type === 'disambiguation') return null;
+        const src = j.thumbnail && j.thumbnail.source;
+        return src && !BAD.test(src) ? src.replace(/\/\d+px-/, '/640px-') : null;
+      })
+      .catch(() => null);
+    (pois || []).forEach(p => {
+      if (this._req[p.id] || !p.wiki) return;
+      this._req[p.id] = 1;
+      get('es', p.wiki)
+        .then(u => u || get('en', p.enwiki || p.wiki))
+        .then(url => {
+          if (!url) return;
+          const k = base(url);
+          if (this._used[k] && this._used[k] !== p.id) return;
+          this._used[k] = p.id;
+          this.setState(st => ({ imgs: { ...st.imgs, [p.id]: url } }), () => {
+            const hi = this.heroImgRef.current;
+            const s = this.state.stop;
+            if (hi && s && s.pois && s.pois[0] && this.state.imgs[s.pois[0].id]) {
+              hi.style.backgroundImage = `url(${this.state.imgs[s.pois[0].id]})`;
+            }
+            this.run();
+          });
+        });
+    });
+  }
+
+  renderVals() {
+    const s = this.state.stop;
+    const all = this.state.all;
+    const i = this.state.index;
+    const prev = all[i - 1], next = all[i + 1];
+    const statusText = { done: 'already filmed', live: 'currently in', open: 'open for booking', full: 'fully booked' };
+    const low = v => (v || '').toLocaleLowerCase();
+    const year = s && s.window ? new Date(s.window[0] + 'T00:00:00').getFullYear() : '';
+    return {
+      rootRef: this.rootRef, heroRef: this.heroRef, heroImgRef: this.heroImgRef,
+      name: s ? low(s.name.split(',')[0]) : '',
+      region: s ? low((s.name.split(',')[1] || '').trim()) : '',
+      status: s ? (statusText[s.status] || 'on the route') : '',
+      window: s ? (s.window ? `filming window ${FULL[new Date(s.window[0] + 'T00:00:00').getMonth()]} ${year}` : 'This stop is already behind us.') : '',
+      ctaTitle: s ? `shoot your product in ${low(s.name.split(',')[0])}` : '',
+      // nenhuma foto da soul nestes slots ainda: a imagem vem da wikipedia e a etiqueta fica visivel
+      pois: s ? (s.pois || []).map(p => ({
+        name: low(p.name),
+        coords: dms(p.coords),
+        bg: p.photo ? `url(${p.photo})` : (this.state.imgs[p.id] ? `url(${this.state.imgs[p.id]})` : 'none'),
+        pendingShow: p.photo ? 'none' : 'block'
+      })) : [],
+      prevHref: prev ? 'stop.html?s=' + prev.id : 'index.html#where',
+      prevName: prev ? low(prev.name.split(',')[0]) : 'the route',
+      nextHref: next ? 'stop.html?s=' + next.id : 'index.html#where',
+      nextName: next ? low(next.name.split(',')[0]) : 'the route'
+    };
+  }
+}
+</script>
+</body>
+</html>

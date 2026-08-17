@@ -1,0 +1,11 @@
+# SITE EM OBRA. bloqueio total de indexacao.
+# no dia do lancamento, trocar este arquivo pelo bloco comentado abaixo
+# e remover as meta tags robots de index.html, case.html e stop.html.
+
+User-agent: *
+Disallow: /
+
+# --- versao de lancamento, ainda nao ativa ---
+# User-agent: *
+# Allow: /
+# Sitemap: https://soulletsgo.com/sitemap.xml

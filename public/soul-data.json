@@ -1,0 +1,820 @@
+{
+  "updated_at": "2026-08-09",
+  "current": {
+    "place_en": "puerto natales, magallanes, cl",
+    "place_pt": "puerto natales, magallanes, cl",
+    "place_es": "puerto natales, magallanes, cl",
+    "coords": {
+      "lat": -51.729,
+      "lng": -72.506
+    },
+    "coords_label": "51°44′S 72°30′W",
+    "as_of": "2026-08-09"
+  },
+  "regions": [
+    {
+      "id": "southern-patagonia",
+      "name_en": "Southern Patagonia",
+      "name_es": "Patagonia Austral",
+      "name_pt": "Patagônia Sul",
+      "status": "closing",
+      "window_label_en": "current window",
+      "window_label_es": "ventana actual",
+      "window_label_pt": "janela atual",
+      "closes_on": "2026-08-15",
+      "season_note_en": null,
+      "slots": null,
+      "anchor": {
+        "lat": -51,
+        "lng": -72.5
+      },
+      "case_url": null,
+      "bbox": [
+        -76.5,
+        -56,
+        -66,
+        -47
+      ],
+      "shape": [
+        [
+          -75.5,
+          -52.5
+        ],
+        [
+          -73.5,
+          -55
+        ],
+        [
+          -70.5,
+          -55.6
+        ],
+        [
+          -68,
+          -54.9
+        ],
+        [
+          -66.5,
+          -52.3
+        ],
+        [
+          -67.6,
+          -49.4
+        ],
+        [
+          -70.2,
+          -48.4
+        ],
+        [
+          -73.4,
+          -49
+        ],
+        [
+          -75.2,
+          -50.6
+        ]
+      ],
+      "tint": "#E0A45C"
+    },
+    {
+      "id": "andean-patagonia",
+      "name_en": "Andean Patagonia",
+      "name_es": "Patagonia Andina",
+      "name_pt": "Patagônia Andina",
+      "status": "open",
+      "window_label_en": "aug 16 to nov 15, 2026",
+      "window_label_es": "16 ago a 15 nov, 2026",
+      "window_label_pt": "16 ago a 15 nov, 2026",
+      "closes_on": "2026-11-15",
+      "season_note_en": null,
+      "slots": null,
+      "anchor": {
+        "lat": -45.5,
+        "lng": -72
+      },
+      "case_url": null,
+      "bbox": [
+        -75.5,
+        -47,
+        -68,
+        -38
+      ],
+      "shape": [
+        [
+          -75,
+          -46.8
+        ],
+        [
+          -73,
+          -47.6
+        ],
+        [
+          -70.8,
+          -46.4
+        ],
+        [
+          -68.4,
+          -45
+        ],
+        [
+          -66.9,
+          -42.4
+        ],
+        [
+          -67.6,
+          -39.4
+        ],
+        [
+          -70.2,
+          -37.8
+        ],
+        [
+          -72.6,
+          -38.6
+        ],
+        [
+          -74.1,
+          -41.2
+        ],
+        [
+          -75.3,
+          -44
+        ]
+      ],
+      "tint": "#D99A6C"
+    },
+    {
+      "id": "maule",
+      "name_en": "Maule Region",
+      "name_es": "Región del Maule",
+      "name_pt": "Região do Maule",
+      "status": "next",
+      "window_label_en": "opening next",
+      "window_label_es": "próxima ventana",
+      "window_label_pt": "próxima janela",
+      "closes_on": null,
+      "slots": null,
+      "anchor": {
+        "lat": -35.43,
+        "lng": -71.67
+      },
+      "bbox": [
+        -72.6,
+        -36.6,
+        -70.4,
+        -34.6
+      ],
+      "shape": [
+        [
+          -72.55,
+          -35
+        ],
+        [
+          -71.6,
+          -34.7
+        ],
+        [
+          -70.6,
+          -35.2
+        ],
+        [
+          -70.5,
+          -36.1
+        ],
+        [
+          -71.4,
+          -36.5
+        ],
+        [
+          -72.4,
+          -36.1
+        ]
+      ],
+      "tint": "#D4A268"
+    },
+    {
+      "id": "central-andes",
+      "name_en": "Central Andes",
+      "name_es": "Andes Centrales",
+      "name_pt": "Andes Centrais",
+      "status": "next",
+      "window_label_en": "opening next",
+      "window_label_es": "próxima ventana",
+      "window_label_pt": "próxima janela",
+      "closes_on": null,
+      "slots": null,
+      "anchor": {
+        "lat": -33,
+        "lng": -69.5
+      },
+      "bbox": [
+        -73,
+        -38,
+        -65.5,
+        -28
+      ],
+      "shape": [
+        [
+          -73.6,
+          -37.4
+        ],
+        [
+          -71,
+          -37.9
+        ],
+        [
+          -68.4,
+          -36
+        ],
+        [
+          -66.4,
+          -33
+        ],
+        [
+          -66,
+          -29.4
+        ],
+        [
+          -68.6,
+          -27.8
+        ],
+        [
+          -71.6,
+          -29.6
+        ],
+        [
+          -72.6,
+          -33.6
+        ]
+      ],
+      "tint": "#CFA070"
+    },
+    {
+      "id": "la-rioja",
+      "name_en": "La Rioja",
+      "name_es": "La Rioja",
+      "name_pt": "La Rioja",
+      "status": "route",
+      "anchor": {
+        "lat": -29.4,
+        "lng": -67.6
+      },
+      "bbox": [
+        -69.6,
+        -31.6,
+        -65.8,
+        -27.8
+      ],
+      "shape": [
+        [
+          -69.4,
+          -29.6
+        ],
+        [
+          -68,
+          -31.4
+        ],
+        [
+          -66.4,
+          -31
+        ],
+        [
+          -65.9,
+          -29.2
+        ],
+        [
+          -66.8,
+          -28
+        ],
+        [
+          -68.6,
+          -28.2
+        ]
+      ],
+      "tint": "#D2A26A"
+    },
+    {
+      "id": "catamarca",
+      "name_en": "Catamarca",
+      "name_es": "Catamarca",
+      "name_pt": "Catamarca",
+      "status": "route",
+      "anchor": {
+        "lat": -27.5,
+        "lng": -66.9
+      },
+      "bbox": [
+        -69.2,
+        -29.4,
+        -64.8,
+        -25.4
+      ],
+      "shape": [
+        [
+          -68.9,
+          -27.6
+        ],
+        [
+          -67.4,
+          -29.2
+        ],
+        [
+          -65.6,
+          -28.8
+        ],
+        [
+          -64.9,
+          -26.6
+        ],
+        [
+          -66.2,
+          -25.5
+        ],
+        [
+          -68.2,
+          -25.9
+        ]
+      ],
+      "tint": "#CE9E6E"
+    },
+    {
+      "id": "puna",
+      "name_en": "La Puna",
+      "name_es": "La Puna",
+      "name_pt": "La Puna",
+      "status": "route",
+      "anchor": {
+        "lat": -24.6,
+        "lng": -66.6
+      },
+      "bbox": [
+        -68.4,
+        -27.8,
+        -64.4,
+        -22.2
+      ],
+      "shape": [
+        [
+          -68.2,
+          -26.6
+        ],
+        [
+          -66.4,
+          -27.6
+        ],
+        [
+          -64.8,
+          -26
+        ],
+        [
+          -64.6,
+          -23.4
+        ],
+        [
+          -65.6,
+          -22.3
+        ],
+        [
+          -67.4,
+          -22.6
+        ],
+        [
+          -68.3,
+          -24.4
+        ]
+      ],
+      "tint": "#D6A066"
+    },
+    {
+      "id": "atacama-altiplano",
+      "name_en": "Atacama & Altiplano",
+      "name_es": "Atacama y Altiplano",
+      "name_pt": "Atacama e Altiplano",
+      "status": "route",
+      "anchor": {
+        "lat": -23.5,
+        "lng": -68.2
+      },
+      "bbox": [
+        -71.5,
+        -26.5,
+        -66.5,
+        -17
+      ],
+      "shape": [
+        [
+          -71.2,
+          -25.6
+        ],
+        [
+          -68.8,
+          -26.2
+        ],
+        [
+          -67,
+          -23.4
+        ],
+        [
+          -66.6,
+          -20
+        ],
+        [
+          -67.2,
+          -17.4
+        ],
+        [
+          -69.4,
+          -17
+        ],
+        [
+          -70.8,
+          -19.4
+        ],
+        [
+          -71,
+          -22.6
+        ]
+      ],
+      "tint": "#E0AE72"
+    },
+    {
+      "id": "peruvian-andes",
+      "name_en": "Peruvian Andes",
+      "name_es": "Andes Peruanos",
+      "name_pt": "Andes Peruanos",
+      "status": "route",
+      "anchor": {
+        "lat": -13.5,
+        "lng": -72
+      },
+      "bbox": [
+        -79,
+        -18.5,
+        -68,
+        -5.5
+      ],
+      "shape": [
+        [
+          -78.4,
+          -16
+        ],
+        [
+          -75,
+          -17.4
+        ],
+        [
+          -71,
+          -16.4
+        ],
+        [
+          -69,
+          -13.4
+        ],
+        [
+          -70.6,
+          -9.4
+        ],
+        [
+          -74,
+          -6
+        ],
+        [
+          -77.6,
+          -6.4
+        ],
+        [
+          -79.4,
+          -9
+        ],
+        [
+          -79,
+          -13
+        ]
+      ],
+      "tint": "#C99A62"
+    },
+    {
+      "id": "ecuador-colombia",
+      "name_en": "Ecuador & Colombia",
+      "name_es": "Ecuador y Colombia",
+      "name_pt": "Equador e Colômbia",
+      "status": "route",
+      "anchor": {
+        "lat": -0.5,
+        "lng": -78.5
+      },
+      "bbox": [
+        -82,
+        -5.5,
+        -70,
+        12.5
+      ],
+      "shape": [
+        [
+          -81,
+          -4.4
+        ],
+        [
+          -77.4,
+          -3
+        ],
+        [
+          -74.4,
+          0.6
+        ],
+        [
+          -71,
+          4
+        ],
+        [
+          -72,
+          8.6
+        ],
+        [
+          -74.6,
+          11.2
+        ],
+        [
+          -77.6,
+          8.4
+        ],
+        [
+          -79.4,
+          4
+        ],
+        [
+          -80.9,
+          -1.4
+        ]
+      ],
+      "tint": "#BCA070"
+    },
+    {
+      "id": "central-america",
+      "name_en": "Central America",
+      "name_es": "Centroamérica",
+      "name_pt": "América Central",
+      "status": "route",
+      "anchor": {
+        "lat": 10,
+        "lng": -84.1
+      },
+      "bbox": [
+        -93,
+        7,
+        -77,
+        18.5
+      ],
+      "shape": [
+        [
+          -92.4,
+          14.6
+        ],
+        [
+          -88.8,
+          13.8
+        ],
+        [
+          -85.8,
+          11.4
+        ],
+        [
+          -83,
+          8.4
+        ],
+        [
+          -79,
+          7.4
+        ],
+        [
+          -77.2,
+          8.8
+        ],
+        [
+          -80.6,
+          10
+        ],
+        [
+          -83.6,
+          11.6
+        ],
+        [
+          -86.6,
+          14
+        ],
+        [
+          -88.6,
+          16.6
+        ],
+        [
+          -91.6,
+          16
+        ]
+      ],
+      "tint": "#C7A863"
+    },
+    {
+      "id": "mexico",
+      "name_en": "Mexico",
+      "name_es": "México",
+      "name_pt": "México",
+      "status": "route",
+      "anchor": {
+        "lat": 23.5,
+        "lng": -102.5
+      },
+      "bbox": [
+        -118,
+        14,
+        -86,
+        33
+      ],
+      "shape": [
+        [
+          -117.2,
+          32.6
+        ],
+        [
+          -110.6,
+          31.3
+        ],
+        [
+          -106.5,
+          31.8
+        ],
+        [
+          -103,
+          29
+        ],
+        [
+          -99.4,
+          26
+        ],
+        [
+          -97.2,
+          22.4
+        ],
+        [
+          -94.4,
+          18.2
+        ],
+        [
+          -92,
+          15
+        ],
+        [
+          -88.4,
+          17.8
+        ],
+        [
+          -86.8,
+          21.4
+        ],
+        [
+          -90.6,
+          21
+        ],
+        [
+          -94.6,
+          18.8
+        ],
+        [
+          -97.6,
+          24
+        ],
+        [
+          -105,
+          29
+        ],
+        [
+          -109,
+          26.4
+        ],
+        [
+          -112,
+          24
+        ],
+        [
+          -114.6,
+          29.6
+        ]
+      ],
+      "tint": "#D8A867"
+    },
+    {
+      "id": "north-america-alaska",
+      "name_en": "North America & Alaska",
+      "name_es": "Norteamérica y Alaska",
+      "name_pt": "América do Norte e Alasca",
+      "status": "route",
+      "anchor": {
+        "lat": 39.5,
+        "lng": -98.5
+      },
+      "bbox": [
+        -168,
+        25,
+        -60,
+        72
+      ],
+      "shape": [
+        [
+          -168,
+          60
+        ],
+        [
+          -165,
+          54.6
+        ],
+        [
+          -152,
+          57.4
+        ],
+        [
+          -140,
+          59.4
+        ],
+        [
+          -130,
+          52
+        ],
+        [
+          -124.4,
+          42
+        ],
+        [
+          -120.4,
+          34.4
+        ],
+        [
+          -117.2,
+          32.6
+        ],
+        [
+          -106.5,
+          31.8
+        ],
+        [
+          -97.2,
+          26
+        ],
+        [
+          -93,
+          29.6
+        ],
+        [
+          -84,
+          30
+        ],
+        [
+          -81,
+          25.2
+        ],
+        [
+          -76,
+          35
+        ],
+        [
+          -70,
+          43
+        ],
+        [
+          -66,
+          45
+        ],
+        [
+          -60,
+          47.4
+        ],
+        [
+          -64,
+          55
+        ],
+        [
+          -78,
+          62
+        ],
+        [
+          -95,
+          68
+        ],
+        [
+          -115,
+          70
+        ],
+        [
+          -135,
+          69
+        ],
+        [
+          -150,
+          70
+        ],
+        [
+          -165,
+          68
+        ]
+      ],
+      "tint": "#B9A47C"
+    }
+  ]
+}

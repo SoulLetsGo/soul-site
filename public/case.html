@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>soul · case</title>
+<meta name="description" content="cases from the soul route: what the brand asked for, where we shot it, and what we delivered.">
+<!-- em obra: sai no dia do lancamento, junto com o bloqueio do robots.txt -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="soul">
+<meta property="og:title" content="soul · case">
+<meta property="og:description" content="cases from the soul route: what the brand asked for, where we shot it, and what we delivered.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+  html, body { margin:0; padding:0; background:#161003; }
+  * { box-sizing: border-box; }
+  a { color:#FFF6E5; text-decoration:none; }
+  a:hover { color:#FFF6E5; opacity:.72; }
+  ::selection { background:#FFF6E5; color:#161003; }
+  @keyframes pulse { 0%{transform:scale(1);opacity:.9} 70%{transform:scale(2.4);opacity:0} 100%{opacity:0} }
+  @media (pointer: coarse) { #cursor-tag { display:none !important; } }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#161003; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#FFF6E5; cursor:none; overflow-x:clip">
+
+  <div id="cursor-tag" ref="{{ cursorRef }}" style="position:fixed; z-index:950; left:0; top:0; font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; color:#161003; background:#FFF6E5; padding:4px 7px; pointer-events:none; white-space:nowrap">scroll</div>
+
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:800; display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px clamp(20px,4vw,64px); background:rgba(22,16,3,.72); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,246,229,.12)">
+    <a href="index.html" style="display:flex; align-items:center"><img src="assets/logo-soul.svg" alt="soul" style="display:block; width:96px; height:auto" /></a>
+    <div style="display:flex; gap:22px; font-size:13.5px; letter-spacing:.04em">
+      <a href="index.html#work">all work</a>
+      <a href="#where">where we shot it</a>
+      <a href="index.html#book">book a call</a>
+    </div>
+  </nav>
+
+  <header style="position:relative; min-height:82vh; display:flex; flex-direction:column; justify-content:flex-end; padding:120px clamp(20px,4vw,64px) clamp(40px,6vh,70px); overflow:hidden">
+    <div ref="{{ heroMediaRef }}" style="position:absolute; inset:0; background:#1C1405; clip-path:inset(0 0 100% 0); will-change:transform">
+      <span style="position:absolute; inset:0; background-color:#1C1405; background-image:url({{ heroImg }}); background-size:cover; background-position:50% 55%; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
+      <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.4),rgba(22,16,3,.35) 40%,rgba(22,16,3,.96))"></span>
+      <span style="position:absolute; z-index:2; top:76px; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ heroPendingShow }}">photo pending</span>
+    </div>
+    <div style="position:relative">
+      <div data-scrub="fade" style="font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.5); margin-bottom:18px; opacity:0">case {{ num }} · {{ kicker }}</div>
+      <h1 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(34px,6.4vw,86px); line-height:1.1; letter-spacing:-.02em; margin:0; max-width:16ch; opacity:0">{{ title }}</h1>
+      <p data-scrub="fade" style="max-width:52ch; margin:24px 0 0; color:rgba(255,246,229,.75); font-size:clamp(14px,.4vw + 13px,17px); opacity:0">{{ lede }}</p>
+    </div>
+  </header>
+
+  <section style="padding:clamp(60px,9vh,110px) clamp(20px,4vw,64px); border-top:1px solid rgba(255,246,229,.12)">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:clamp(24px,4vw,56px)">
+      <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+        <div data-scrub="fade" style="opacity:0">
+          <div style="font-size:11.5px; letter-spacing:.14em; color:rgba(255,246,229,.45); margin-bottom:10px">{{ f.k }}</div>
+          <div style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:17px; line-height:1.4; color:#FFF6E5">{{ f.v }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(20px,4vw,64px) clamp(60px,9vh,110px)">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(28px,4vw,64px); align-items:start">
+      <div data-scrub="fade" style="opacity:0">
+        <h2 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(22px,2.8vw,38px); line-height:1.24; letter-spacing:-.015em; margin:0 0 20px; max-width:20ch">{{ h2 }}</h2>
+        <sc-for list="{{ body }}" as="b" hint-placeholder-count="3">
+          <p style="color:rgba(255,246,229,.72); font-size:15.5px; line-height:1.65; margin:0 0 16px; max-width:52ch; text-wrap:pretty">{{ b }}</p>
+        </sc-for>
+      </div>
+      <div data-scrub="fade" style="opacity:0">
+        <div style="font-size:11.5px; letter-spacing:.14em; color:rgba(255,246,229,.45); margin-bottom:16px">delivered</div>
+        <ul style="list-style:none; margin:0; padding:0; display:grid; gap:12px; font-size:15px; color:rgba(255,246,229,.78)">
+          <sc-for list="{{ delivered }}" as="d" hint-placeholder-count="4">
+            <li style="border-top:1px solid rgba(255,246,229,.14); padding-top:12px">{{ d }}</li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(20px,4vw,64px) clamp(70px,10vh,130px)">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(16px,2.4vw,28px)">
+      <sc-for list="{{ media }}" as="m" hint-placeholder-count="5">
+        <div data-scrub="clip" style="position:relative; overflow:hidden; background:#1C1405; aspect-ratio:{{ m.ratio }}; grid-column:{{ m.col }}; clip-path:inset(0 50% 0 50%)">
+          <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:url({{ m.img }}); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
+          <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,0),rgba(22,16,3,.5))"></span>
+          <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ m.pendingShow }}">photo pending</span>
+          <span style="position:absolute; left:16px; bottom:14px; font:400 10px/1.5 ui-monospace, Menlo, monospace; letter-spacing:.14em; color:rgba(255,246,229,.4)">{{ m.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="where" style="border-top:1px solid rgba(255,246,229,.12); padding:clamp(70px,9vh,120px) clamp(20px,4vw,64px) clamp(80px,10vh,130px)">
+    <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,3.4vw,46px); line-height:1.2; letter-spacing:-.015em; margin:0 0 clamp(32px,5vh,54px); max-width:20ch; opacity:0">{{ mapTitle }}</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(24px,4vw,52px); align-items:stretch">
+      <div ref="{{ mapWrapRef }}" style="position:relative; min-height:min(52vh,440px); border:1px solid rgba(255,246,229,.15); overflow:hidden; clip-path:inset(0 0 100% 0)">
+        <div ref="{{ mapRef }}" style="position:absolute; inset:0; background:#100B02; filter:sepia(.62) saturate(.85) hue-rotate(-14deg) brightness(.92) contrast(1.08)"></div>
+        <div style="position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 140px rgba(22,16,3,.9)"></div>
+        <div ref="{{ mapFallbackRef }}" style="position:absolute; inset:0; display:grid; place-items:center; font-size:12px; letter-spacing:.2em; color:rgba(255,246,229,.3)">loading the location</div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:center">
+        <div style="display:flex; align-items:center; gap:9px; margin-bottom:14px">
+          <span style="width:7px; height:7px; border-radius:50%; background:#FFF6E5; position:relative; flex:none; display:inline-block"><span style="position:absolute; inset:-5px; border-radius:50%; border:1px solid #FFF6E5; animation:pulse 2.6s ease-out infinite; display:block"></span></span>
+          <span style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:15px">{{ place }}</span>
+        </div>
+        <div style="font-variant-numeric:tabular-nums; font-size:13.5px; color:rgba(255,246,229,.6); margin-bottom:20px">{{ coordsLabel }}</div>
+        <p style="color:rgba(255,246,229,.72); font-size:14.5px; max-width:46ch; margin:0 0 26px">{{ mapNote }}</p>
+        <div style="display:flex; flex-wrap:wrap; gap:11px">
+          <a href="index.html#where" style="display:inline-flex; align-items:center; padding:13px 24px; border-radius:999px; font-size:13px; letter-spacing:.04em; background:#FFF6E5; color:#161003; border:1px solid #FFF6E5; transition:background .4s, color .4s" style-hover="background:transparent; color:#FFF6E5">see the full route</a>
+          <a href="index.html#book" style="display:inline-flex; align-items:center; padding:13px 24px; border-radius:999px; font-size:13px; letter-spacing:.04em; border:1px solid rgba(255,246,229,.4); color:#FFF6E5; transition:background .4s, color .4s" style-hover="background:#FFF6E5; color:#161003">book a window</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid rgba(255,246,229,.12); padding:clamp(50px,7vh,90px) clamp(20px,4vw,64px)">
+    <div style="font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.45); margin-bottom:26px">other cases</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(16px,2.4vw,28px)">
+      <sc-for list="{{ others }}" as="o" hint-placeholder-count="2">
+        <a href="{{ o.href }}" data-row="1" style="display:block; border:1px solid rgba(255,246,229,.15); padding:26px; transition:background .45s" style-hover="background:#1C1405">
+          <div style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:20px; margin-bottom:8px">{{ o.title }}</div>
+          <div style="font-size:12.5px; letter-spacing:.12em; color:rgba(255,246,229,.45)">{{ o.kicker }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="background:#161003; color:rgba(255,246,229,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
+    <div style="border-top:1px solid rgba(255,246,229,.15); padding-top:25px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
+      <div>Soul, a traveling film studio</div>
+      <a href="mailto:contato@soulletsgo.com" style="color:rgba(255,246,229,.7)">contato@soulletsgo.com</a>
+      <div>© 2026</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;caseId&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;buffalo&quot;,&quot;knafs&quot;,&quot;salta&quot;],&quot;default&quot;:&quot;buffalo&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;case&quot;}}">
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const range = (v, a, b) => clamp((v - a) / (b - a), 0, 1);
+const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+const CASES = {
+  buffalo: {
+    num: '01', title: 'buffalo', kicker: 'apparel · torres del paine, chile', format: 'cinematic package',
+    turnaround: 'briefing to delivery in 30 days',
+    lede: 'Photographs and two vertical films. Partnership with Soul let\'s go.',
+    h2: 'the briefing',
+    body: [
+      'How a brazilian couple ended up in the south of Chile in the middle of its harsh winter?',
+      'Script and art direction: Thainá Yumi. Direction: Marcelo Ordoñez. Camera: Bastián Abarza.'
+    ],
+    delivered: ['edited photographs', 'two vertical films', 'soul let\'s go partnership', 'briefing to delivery in 30 days'],
+    media: [
+      { label: 'key still · 16:9', ratio: '16/9', span: 2 },
+      { label: 'vertical film 01 · 9:16', ratio: '9/16', span: 1 },
+      { label: 'vertical film 02 · 9:16', ratio: '9/16', span: 1 },
+      { label: 'product still · 4:5', ratio: '4/5', span: 1 },
+      { label: 'landscape still · 3:2', ratio: '3/2', span: 1 }
+    ],
+    place: 'torres del paine, chile', coords: [-72.982, -50.942],
+    coordsLabel: '50°57′S 72°59′W',
+    mapTitle: 'shot in the winter inside torres del paine, south of chile',
+    mapNote: 'The deal was closed as we crossed Carretera Austral, we received the products in Puerto Natales, and shot in the park in 2 different days.'
+  },
+  knafs: {
+    num: '02', title: 'knafs', kicker: 'product · bariloche, argentina',
+    lede: 'A folding knife photographed on the route, in the argentine andes.',
+    h2: 'the briefing',
+    body: [
+      'Knafs sent the knife. We photographed it where the route already had us, in the mountains around Bariloche, on wet rock and held open against the peaks.',
+      'The location is the set. The light is whatever the day gives.'
+    ],
+    delivered: ['product stills on location', 'shot on the route, in the andes'],
+    media: [
+      { label: 'key still · 16:9', ratio: '16/9', span: 2 },
+      { label: 'vertical film 01 · 9:16', ratio: '9/16', span: 1 },
+      { label: 'vertical film 02 · 9:16', ratio: '9/16', span: 1 },
+      { label: 'product still · 4:5', ratio: '4/5', span: 1 },
+      { label: 'landscape still · 3:2', ratio: '3/2', span: 1 }
+    ],
+    place: 'bariloche, argentina', coords: [-71.31, -41.133],
+    coordsLabel: '41°08′S 71°19′W',
+    mapTitle: 'shot on the route, in the mountains around bariloche',
+    mapNote: 'Between the patagonian legs of the route and the north. The product came to us, and the shoot happened where we already were.'
+  },
+  salta: {
+    num: '03', title: 'in the heart of salta', kicker: 'mini doc · interview · argentina', format: 'hero film',
+    lede: 'A real subject, interviewed in fluent Spanish, inside a century old venue.',
+    h2: 'the anchor case for hero film',
+    body: [
+      'The anchor case for hero film: a mini documentary built on deep storytelling, with dedicated art direction and sound.',
+      'We trained in cinema. A reel gets the same direction, art direction, and sound as a brand film. The standard does not move with the format.'
+    ],
+    delivered: ['one film up to ninety seconds, plus cuts', 'interview recorded on location in spanish', 'dedicated art direction', 'stills from the shoot'],
+    media: [
+      { label: 'interview frame · 16:9', ratio: '16/9', span: 2 },
+      { label: 'venue interior · 4:5', ratio: '4/5', span: 1 },
+      { label: 'portrait · 4:5', ratio: '4/5', span: 1 },
+      { label: 'film cut · 9:16', ratio: '9/16', span: 1 },
+      { label: 'detail · 3:2', ratio: '3/2', span: 1 }
+    ],
+    place: 'salta, argentina', coords: [-65.41, -24.782],
+    coordsLabel: '24°47′S 65°25′W',
+    mapTitle: 'shot in the heart of salta, argentina',
+    mapNote: 'North of the patagonian legs of the route. Tell us what you are launching and when, and we will say which window we can hold.'
+  }
+};
+
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    ['root', 'cursor', 'heroMedia', 'mapWrap', 'map', 'mapFallback'].forEach(k => { this[k + 'Ref'] = React.createRef(); });
+    this.mouse = { x: -100, y: -100 };
+    this.pos = { x: -100, y: -100 };
+  }
+
+  slug() {
+    const q = new URLSearchParams(location.search).get('c');
+    const fromProp = this.props.caseId;
+    const id = (q || fromProp || 'buffalo').toLowerCase();
+    return CASES[id] ? id : 'buffalo';
+  }
+
+  componentDidMount() { try { this.boot(); } catch (e) {} }
+
+  boot() {
+    this.nodes = Array.from((this.rootRef.current || document).querySelectorAll('[data-scrub]'));
+    this.bindCursor();
+    this.startLoop();
+    this.loadMap();
+    setTimeout(() => { const h = this.heroMediaRef.current; if (h) { h.style.transition = 'clip-path 1.2s cubic-bezier(.16,1,.3,1)'; h.style.clipPath = 'inset(0 0 0 0)'; } }, 80);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.poll);
+    cancelAnimationFrame(this.raf);
+    ['scroll', 'wheel', 'touchmove', 'resize'].forEach(ev => {
+      window.removeEventListener(ev, this.onScroll);
+      document.removeEventListener(ev, this.onScroll, true);
+    });
+    window.removeEventListener('mousemove', this.onMove, true);
+    document.removeEventListener('mousemove', this.onMove, true);
+    if (this._map) { try { this._map.remove(); } catch (e) {} }
+  }
+
+  bindCursor() {
+    this.onMove = e => {
+      const tag = this.cursorRef.current;
+      if (!this.seen) { this.seen = true; this.pos.x = e.clientX; this.pos.y = e.clientY; }
+      this.mouse.x = e.clientX; this.mouse.y = e.clientY;
+      const row = e.target && e.target.closest && e.target.closest('[data-row]');
+      const label = row ? 'open case' : 'scroll';
+      if (tag) { tag.style.opacity = '1'; if (tag.textContent !== label) tag.textContent = label; }
+    };
+    window.addEventListener('mousemove', this.onMove, { passive: true, capture: true });
+    document.addEventListener('mousemove', this.onMove, { passive: true, capture: true });
+  }
+
+  startLoop() {
+    this.onScroll = () => this.applyScroll();
+    ['scroll', 'wheel', 'touchmove', 'resize'].forEach(ev => {
+      window.addEventListener(ev, this.onScroll, { passive: true });
+      document.addEventListener(ev, this.onScroll, { passive: true, capture: true });
+    });
+    this.poll = setInterval(this.onScroll, 120);
+    const loop = () => {
+      this.pos.x += (this.mouse.x - this.pos.x) * 0.16;
+      this.pos.y += (this.mouse.y - this.pos.y) * 0.16;
+      const tag = this.cursorRef.current;
+      if (tag) tag.style.transform = `translate(${this.pos.x + 14}px, ${this.pos.y + 16}px)`;
+      this.applyScroll();
+      this.raf = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  applyScroll() { try { this._run(); } catch (e) {} }
+
+  _run() {
+    const vh = window.innerHeight || 800;
+    const hero = this.heroMediaRef.current;
+    if (hero) {
+      const r = hero.getBoundingClientRect();
+      const p = clamp(-r.top / vh, 0, 1);
+      hero.style.transform = `scale(${1 + p * 0.12})`;
+    }
+    for (const el of this.nodes) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 1.6) continue;
+      const t = ease(clamp((vh - r.top) / (vh * 0.55), 0, 1));
+      if (el.dataset.scrub === 'clip') {
+        el.style.clipPath = `inset(0 ${(1 - t) * 50}% 0 ${(1 - t) * 50}%)`;
+        const centered = clamp((vh * 0.5 - (r.top + r.height / 2)) / vh, -1, 1);
+        const zoom = el.querySelector('[data-zoom]');
+        if (zoom) zoom.style.transform = `translateY(${centered * 6}%) scale(${1.1 - t * 0.1})`;
+      } else {
+        el.style.opacity = String(t);
+        el.style.transform = `translateY(${(1 - t) * 22}px)`;
+      }
+    }
+    const mw = this.mapWrapRef.current;
+    if (mw) {
+      const r = mw.getBoundingClientRect();
+      const t = ease(clamp((vh - r.top) / (vh * 0.6), 0, 1));
+      mw.style.clipPath = `inset(0 0 ${(1 - t) * 100}% 0)`;
+      if (t > 0.4 && this._map && !this._flew) {
+        this._flew = true;
+        const c = CASES[this.slug()];
+        this._map.flyTo({ center: c.coords, zoom: 8.6, pitch: 52, bearing: -14, duration: 3400, essential: true });
+      }
+    }
+  }
+
+  loadMap() {
+    const c = CASES[this.slug()];
+    const boot = () => {
+      if (!window.maplibregl || this._map || !this.mapRef.current) return;
+      const map = new maplibregl.Map({
+        container: this.mapRef.current,
+        style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+        center: c.coords, zoom: 4.2, pitch: 0, bearing: 0,
+        attributionControl: { compact: true }
+      });
+      this._map = map;
+      map.scrollZoom.disable();
+      const paint = () => {
+        if (this._painted || !map.isStyleLoaded()) return;
+        this._painted = true;
+        clearTimeout(this._mapTimer);
+        const fb = this.mapFallbackRef.current;
+        if (fb) fb.style.display = 'none';
+        const el = document.createElement('div');
+        el.style.cssText = 'width:16px;height:16px;position:relative';
+        el.innerHTML = '<div style="position:absolute;inset:0;border-radius:50%;background:#FFF6E5;border:1px solid #161003"></div>' +
+          '<div style="position:absolute;inset:-5px;border-radius:50%;border:1px solid #FFF6E5;animation:pulse 2.6s ease-out infinite"></div>';
+        new maplibregl.Marker({ element: el }).setLngLat(c.coords).addTo(map);
+      };
+      ['load', 'styledata', 'idle'].forEach(ev => map.on(ev, paint));
+      map.on('error', () => { const fb = this.mapFallbackRef.current; if (fb && !this._painted) fb.textContent = 'map unavailable right now'; });
+      this._mapTimer = setTimeout(() => {
+        if (this._painted) return;
+        const fb = this.mapFallbackRef.current;
+        if (fb) fb.textContent = 'map unavailable right now';
+      }, 8000);
+      paint();
+    };
+    if (window.maplibregl) return boot();
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+    s.async = true;
+    s.onload = boot;
+    s.onerror = () => { const fb = this.mapFallbackRef.current; if (fb) fb.textContent = 'map unavailable offline'; };
+    document.head.appendChild(s);
+  }
+
+  renderVals() {
+    const id = this.slug();
+    const c = CASES[id];
+    const refs = {};
+    ['root', 'cursor', 'heroMedia', 'mapWrap', 'map', 'mapFallback'].forEach(k => { refs[k + 'Ref'] = this[k + 'Ref']; });
+    const others = Object.keys(CASES).filter(k => k !== id)
+      .map(k => ({ href: `case.html?c=${k}`, title: CASES[k].title, kicker: CASES[k].otherLine !== undefined ? CASES[k].otherLine : CASES[k].kicker }));
+    // so entra ficha com valor conhecido. nada de preencher formato ou prazo por padrao.
+    const facts = [
+      { k: 'client', v: c.title },
+      { k: 'location', v: c.place },
+      { k: 'format', v: c.format || '' },
+      { k: 'turnaround', v: c.turnaround || '' }
+    ].filter(f => f.v);
+    // sem foto real de case ainda: tudo segue no placeholder do prototipo e marcado na pagina
+    const media = c.media.map((m, i) => ({
+      ...m,
+      col: m.span > 1 ? '1 / -1' : 'auto',
+      img: m.photo || `https://picsum.photos/seed/soul-${id}-${i}/1400/1000`,
+      pendingShow: m.photo ? 'none' : 'block'
+    }));
+    const heroImg = c.heroPhoto || `https://picsum.photos/seed/soul-${id}-hero/1920/1080`;
+    return { ...refs, ...c, media, heroImg, heroPendingShow: c.heroPhoto ? 'none' : 'block', others, facts };
+  }
+}
+</script>
+</body>
+</html>

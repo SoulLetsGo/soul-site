@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+
+# originais em alta, 170 MB. ficam so na maquina.
+/FOTOS /
+/FOTOS/
+
+# tudo que saiu desta publicacao, guardado e nao apagado
+/_arquivo-local/
