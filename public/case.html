@@ -329,7 +329,12 @@ class Component extends DCLogic {
         container: this.mapRef.current,
         style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
         center: c.coords, zoom: 4.2, pitch: 0, bearing: 0,
-        attributionControl: { compact: true }
+        // exigencia de licenca da CARTO e do OpenStreetMap. o style.json da carto nao
+        // traz o campo attribution, entao o credito precisa ser declarado aqui. nao remover.
+        attributionControl: {
+          compact: true,
+          customAttribution: '&copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
+        }
       });
       this._map = map;
       map.scrollZoom.disable();

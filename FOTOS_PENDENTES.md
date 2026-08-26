@@ -1,137 +1,103 @@
 # fotos pendentes
 
-Lista de captação da próxima leva. Gerado em 16 de agosto de 2026, ao fim da sessão de cowork.
+Lista de captação. Atualizado em 26 de agosto de 2026, depois de importar o `Soul Light.dc.html` do projeto de design.
 
-Este arquivo é o checklist da rodada seguinte. Todo slot marcado como pendente está no ar hoje com placeholder do protótipo e mostra a etiqueta `photo pending` na própria página. **Nenhum desses slots pode continuar assim no dia em que o link for divulgado.**
+Todo slot ainda em placeholder mostra a etiqueta `photo pending` na própria página. **Nenhum desses slots pode continuar assim no dia em que o link for divulgado.**
 
 ---
 
 ## Resumo
 
-| página | slots totais | preenchidos | pendentes |
+| página | slots | com foto da soul | pendentes |
 | --- | --- | --- | --- |
-| principal | 9 | 7 | 2 |
+| principal, cartões e capas | 9 | 7 | 2 |
+| principal, painel da rota | 45 | 0 | 45 (hoje com referência do Commons) |
 | cases | 15 | 0 | 15 |
-| paradas da rota | 71 | 0 | 71 |
-| **total** | **95** | **7** | **88** |
+| paradas da rota, `stop.html` | 71 | 0 | 71 (hoje puxando da Wikipedia) |
 
-Mínimo para o site parecer pronto, conforme o briefing: 9 da principal mais 15 dos cases, ou seja 24. Faltam 17 desses 24.
+Mínimo para o site parecer pronto, conforme o briefing: 9 da principal mais 15 dos cases, ou seja 24. **Faltam 17 desses 24.**
 
 ---
 
-## 1. Página principal `index.html`
+## 1. Página principal, cartões e capas
 
 | slot | seção | proporção | arquivo | estado |
 | --- | --- | --- | --- | --- |
-| fundo da abertura | abertura, tela cheia | 16:9 | `fotos/fundodaabertura.jpg` | pronto |
-| capa trabalho 01 buffalo | trabalhos selecionados | 16:7 | `fotos/capa-buffalo.jpg` | pronto |
-| capa trabalho 02 knafs | trabalhos selecionados | 16:7 | `fotos/capa-knafs.jpg` | pronto |
-| capa trabalho 03 salta | trabalhos selecionados | 16:7 | — | **pendente** |
+| fundo da abertura | abertura, tela cheia | 16:9 | `assets/fundo-abertura.webp` | pronto |
+| capa trabalho 01 buffalo | trabalhos | 16:7 | `assets/capa-buffalo.webp` | pronto |
+| capa trabalho 02 knafs | trabalhos | 16:7 | `assets/capa-knafs.webp` | pronto |
+| capa trabalho 03 salta | trabalhos | 16:7 | — | **pendente** |
 | capa cartão soul let's go | cartão 04, link para o Instagram | 16:7 | — | **pendente** |
-| imagem do bloco sobre | quem somos | 4:5 | `fotos/sobre.jpg` | pronto |
-| capa pacote 1 banco de conteúdo | pacotes | 16:6 | `fotos/capa-pacote-1.jpg` | pronto |
-| capa pacote 2 cinematográfico | pacotes | 16:6 | `fotos/capa-pacote-2.jpg` | pronto |
-| capa pacote 3 filme hero | pacotes | 16:6 | `fotos/capa-pacote-3.jpg` | pronto |
+| imagem do bloco sobre | quem somos | 4:5 | `assets/sobre.webp` | pronto |
+| capa pacote 1 banco de conteúdo | pacotes | 16:6 | `assets/capa-pacote-1.webp` | pronto |
+| capa pacote 2 cinematográfico | pacotes | 16:6 | `assets/capa-pacote-2.webp` | pronto |
+| capa pacote 3 filme hero | pacotes | 16:6 | `assets/capa-pacote-3.webp` | pronto |
 
-**Atenção de enquadramento.** Quatro dos originais entregues são verticais (4000x6000 ou 3794x4742) e estão sendo usados em slots horizontais de 16:7 e 16:6. O CSS corta pelo centro, então só uma faixa central da foto aparece. Vale conferir cada card no navegador e, se o corte matar o assunto, entregar uma versão horizontal na próxima leva:
+Onde mexer: constantes `CASE_COVERS` e `PKG_COVERS`, no topo do script de `public/index.html`.
 
-- `capa-knafs.jpg` (vertical, usada em 16:7)
-- `capa-pacote-1.jpg` (vertical, usada em 16:6)
-- `capa-pacote-2.jpg` (vertical, usada em 16:6)
-- `capa-pacote-3.jpg` (vertical, usada em 16:6)
+**Enquadramento.** Quatro originais são verticais e estão em slots horizontais. O CSS corta pelo centro, então só a faixa central aparece. Vale conferir no navegador e, se o corte matar o assunto, entregar versão horizontal: `capa-knafs`, `capa-pacote-1`, `capa-pacote-2`, `capa-pacote-3`.
 
 ---
 
-## 2. Página de case `case.html`
+## 2. Página principal, painel da rota
 
-Cinco slots por case, três cases, quinze slots. **Nenhum preenchido.** Todos com placeholder e etiqueta na página.
+45 fotos em 15 regiões. **Nenhuma é foto da Soul.** São referências de locação do Wikimedia Commons, sob licença livre, com autor e licença creditados na seção de créditos no rodapé do site.
 
-### buffalo · `case.html?c=buffalo`
+Elas cumprem duas funções, e só a primeira é definitiva:
 
-| slot | proporção | estado |
-| --- | --- | --- |
-| imagem principal do topo | 16:9 | **pendente** |
-| key still | 16:9 | **pendente** |
-| filme vertical 01 | 9:16 | **pendente** |
-| filme vertical 02 | 9:16 | **pendente** |
-| produto | 4:5 | **pendente** |
-| paisagem | 3:2 | **pendente** |
+1. apresentar a rota antes da captação, que é para o que o banco foi montado;
+2. ocupar o slot até existir foto própria.
 
-### knafs · `case.html?c=knafs`
+| região | nome | estado da janela | fotos | lugares |
+| --- | --- | --- | --- | --- |
+| `ushuaia` | Ushuaia | filmed | 5 | Canal Beagle · Faro Les Éclaireurs · Glaciar Martial · Parque Tierra del Fuego · Laguna Esmeralda |
+| `magallanes` | Magallanes y la Antártica Chilena | filmed | 5 | Cabo de Hornos · Antártica Chilena · Estrecho de Magallanes · Isla Magdalena · Puerto Natales |
+| `patagonia-chilena` | Patagonia Chilena | filmed | 5 | Torres del Paine · Cuernos del Paine · Glaciar Grey · Capillas de Mármol · Ventisquero Queulat |
+| `andean-patagonia` | Patagonia Argentina | closing | 5 | Cerro Fitz Roy · Laguna de los Tres · Perito Moreno · Cueva de las Manos · Siete Lagos |
+| `maule` | Maule Region | open | 5 | Constitución · Radal Siete Tazas · Altos de Lircay · Laguna del Maule · Descabezado Grande |
+| `central-andes` | Central Andes | open | 5 | Aconcagua · Puente del Inca · Cajón del Maipo · Embalse El Yeso · Laguna del Inca |
+| `catamarca-puna` | Catamarca y La Puna Argentina | route | 3 | Antofagasta de la Sierra · Campo de Piedra Pómez · Cono de Arita |
+| `atacama-altiplano` | Atacama & Altiplano | route | 3 | Valle de la Luna · El Tatio · Salinas Grandes |
+| `laguna-colorada` | Laguna Colorada | route | 1 | Laguna Colorada |
+| `salar-de-uyuni` | Salar de Uyuni | route | 2 | Salar de Uyuni · Isla Incahuasi |
+| `lago-titicaca` | Lake Titicaca | route | 1 | Isla del Sol |
+| `cusco` | Cusco | route | 2 | Sacsayhuamán · Salineras de Maras |
+| `machu-picchu` | Machu Picchu | route | 1 | Machu Picchu |
+| `peruvian-andes` | Peruvian Andes | route | 1 | Laguna 69 |
+| `ecuador-colombia` | Ecuador & Colombia | route | 1 | Cotopaxi |
 
-| slot | proporção | estado |
-| --- | --- | --- |
-| imagem principal do topo | 16:9 | **pendente** |
-| key still | 16:9 | **pendente** |
-| filme vertical 01 | 9:16 | **pendente** |
-| filme vertical 02 | 9:16 | **pendente** |
-| produto | 4:5 | **pendente** |
-| paisagem | 3:2 | **pendente** |
-
-Existe material do knafs já na mão (`fotos/capa-knafs.jpg`), mas ele foi usado na capa do cartão da home. Não foi reaproveitado aqui de propósito: o briefing proíbe improvisar com foto de outro slot.
-
-### salta · `case.html?c=salta`
-
-| slot | proporção | estado |
-| --- | --- | --- |
-| imagem principal do topo | 16:9 | **pendente** |
-| interview frame | 16:9 | **pendente** |
-| venue interior | 4:5 | **pendente** |
-| retrato | 4:5 | **pendente** |
-| corte do filme | 9:16 | **pendente** |
-| detalhe | 3:2 | **pendente** |
+Onde mexer: campo `photos` de cada região em `public/soul-data.json`. Trocar `img` pelo arquivo próprio e apagar `author`, `license` e `source`, que aí deixam de ser necessários e a entrada some da lista de créditos sozinha.
 
 ---
 
-## 3. Página de parada da rota `stop.html`
+## 3. Página de case `case.html`
 
-Uma imagem de topo por parada mais até quatro pontos filmáveis. **Nenhuma foto da Soul ainda.** Hoje esses slots puxam imagem da Wikipedia em tempo de carregamento, que é o placeholder do protótipo, e cada card mostra a etiqueta na página.
+Cinco slots por case mais a imagem de topo, três cases. **Nenhum preenchido.** Todos com placeholder e etiqueta na página.
 
-Proporção dos pontos filmáveis: **4:3**. Imagem de topo da parada: a primeira foto da parada, usada em corte largo.
+Por case (buffalo, knafs, salta): imagem principal do topo 16:9, key still 16:9, filme vertical 01 em 9:16, filme vertical 02 em 9:16, produto 4:5, paisagem 3:2.
 
-| parada | nome | pontos | slots 4:3 pendentes |
-| --- | --- | --- | --- |
-| `ushuaia` | Ushuaia | 3 | Tierra del Fuego National Park · Beagle Channel · Glaciar Martial |
-| `puerto-natales` | Puerto Natales, CL | 3 | Torres del Paine National Park · Bernardo O'Higgins National Park · Cueva del Milodón |
-| `el-calafate` | El Calafate, AR | 3 | Perito Moreno Glacier · Lago Argentino · Laguna Nimez Reserve |
-| `el-chalten` | El Chaltén, AR | 4 | Monte Fitz Roy · Laguna de los Tres · Cerro Torre · Lago San Martín |
-| `los-antiguos` | Los Antiguos, AR | 4 | Lago Buenos Aires · Cueva de las Manos · Monte Zeballos · Chile Chico |
-| `bariloche` | Bariloche, AR | 4 | Cerro Catedral · Circuito Chico · Cerro Tronador · Puerto Blest |
-| `san-martin` | San Martín de los Andes | 3 | Lanín National Park · Lago Lácar · Ruta de los Siete Lagos |
-| `melipeuco` | Melipeuco, CL | 3 | Conguillío National Park · Volcán Llaima · Salto Truful-truful |
-| `caviahue` | Caviahue, AR | 3 | Volcán Copahue · Termas de Copahue · Salto del Agrio |
-| `talca` | Talca, CL | 3 | Radal Siete Tazas · Altos de Lircay · Maule Wine Valley |
-| `santiago` | Santiago, CL | 3 | Cerro San Cristóbal · Valparaíso · Cajón del Maipo |
-| `mendoza` | Mendoza, AR | 3 | Aconcagua Provincial Park · Valle de Uco · Puente del Inca |
-| `villa-union` | Villa Unión, AR | 4 | Talampaya National Park · Ischigualasto, Valle de la Luna · Laguna Brava · Cuesta de Miranda |
-| `tinogasta` | Tinogasta, AR | 4 | Duna Mágica, Fiambalá · Termas de Fiambalá · Ruta de los Seismiles · Ruta del Adobe |
-| `cafayate` | Cafayate, AR | 3 | Quebrada de las Conchas · Valles Calchaquíes · Ruta 40 to Cachi |
-| `tolar-grande` | Tolar Grande, AR | 4 | Ojos del Mar · Desierto del Diablo · Salar de Arizaro · Cono de Arita |
-| `purmamarca` | Purmamarca, AR | 4 | Cerro de los Siete Colores · Salinas Grandes · Cuesta de Lipán · Quebrada de Humahuaca |
-| `atacama` | San Pedro de Atacama, CL | 4 | Valle de la Luna · Géiseres del Tatio · Laguna Cejar · Piedras Rojas |
-| `uyuni` | Uyuni, BO | 4 | Salar de Uyuni · Isla Incahuasi · Cementerio de Trenes · Laguna Colorada |
-| `la-paz` | La Paz, BO | 4 | Valle de la Luna, La Paz · Chacaltaya · Camino de los Yungas · Lago Titicaca |
+Existe material do knafs na mão (`assets/capa-knafs.webp`), mas ele está na capa do cartão da home. Não foi reaproveitado no case de propósito: o briefing proíbe improvisar com foto de outro slot.
 
-Total: **70 pontos filmáveis** mais **1 topo por parada**, que reaproveita a primeira foto da parada.
-
-Como muitas dessas paradas ainda não aconteceram, elas entram aos poucos. Nada aqui bloqueia a divulgação da home e dos cases, mas nenhuma página de parada deve ser divulgada enquanto estiver puxando foto da Wikipedia.
+Onde mexer: campo `heroPhoto` do case e campo `photo` de cada item de `media`, em `public/case.html`.
 
 ---
 
-## Como entregar a próxima leva
+## 4. Página de parada `stop.html`
 
-1. Colocar os originais em alta na pasta `FOTOS ` na raiz do projeto, com o nome do slot. Exemplos: `capa-salta.jpg`, `capa-soulletsgo.jpg`, `case-knafs-01.jpg`, `stop-bariloche-catedral.jpg`.
-2. Converter para no máximo 2000px no lado maior e salvar em `public/fotos/`.
-3. Apontar o slot para o arquivo novo:
-   - home: constantes `CASE_COVERS` e `PKG_COVERS` no topo do script de `public/index.html`.
-   - case: campos `heroPhoto` do case e `photo` de cada item de `media` em `public/case.html`.
-   - parada: campo `photo` de cada `poi` em `public/route-data.js`.
-4. Assim que o campo é preenchido, a etiqueta `photo pending` some sozinha naquele slot.
-5. Riscar a linha aqui.
+Uma imagem de topo por parada mais até quatro pontos filmáveis, 20 paradas, 70 pontos. **Nenhuma foto da Soul.** Hoje esses slots buscam imagem da Wikipedia em tempo de carregamento.
 
-## Regras técnicas que valem para toda foto
+Proporção dos pontos filmáveis: 4:3.
+
+Onde mexer: campo `photo` de cada `poi` em `public/route-data.js`.
+
+Essa página ainda está no tema escuro antigo. Ver `README.md`.
+
+---
+
+## Regras técnicas
 
 - Largura máxima em torno de **2000px** no lado maior.
-- Nenhum arquivo acima de **25 MiB**, que é o teto por arquivo do Cloudflare Pages.
-- **Vídeo não sobe para o Pages.** Vai para Vimeo ou YouTube não listado e entra por iframe.
-- Conversão desta rodada foi feita em **JPEG de qualidade 80**, e não em WebP, porque a máquina não tem nenhum codificador WebP instalado. Ver `README.md`, seção de pendências.
+- Nenhum arquivo acima de **25 MiB**, teto por arquivo do Cloudflare Pages.
+- **Vídeo não sobe para o Pages.** Vai para Vimeo ou YouTube não listado, por iframe.
+- As sete fotos da Soul estão em **WebP**, como o briefing pede, vindas do projeto de design. Estão em resolução cheia, até 4096px, acima da regra de 2000px. Ver a pendência no `README.md`.
+- As 45 referências da rota estão em **JPEG de 640px**, geradas aqui a partir de `REFERENCIAS-IMAGENS/`. São exibidas no máximo a 206x104, então 640px já é folga.

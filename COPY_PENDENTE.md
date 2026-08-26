@@ -1,6 +1,6 @@
 # copy pendente
 
-Decisões de texto que dependem da Thainá. Nada aqui foi escrito ou alterado sem ela. Gerado em 16 de agosto de 2026.
+Decisões de texto que dependem da Thainá. Nada aqui foi escrito ou alterado sem ela. Atualizado em 26 de agosto de 2026, depois de importar o `Soul Light.dc.html`.
 
 ---
 
@@ -67,12 +67,45 @@ Se a Thainá quiser nomear o lugar da foto de abertura, é só dizer qual é.
 
 ---
 
-## 4. Cidade atual e coordenadas
+## 4. Cidade atual e coordenadas · resolvido pelo próprio design
 
-Saíram do HTML e viraram campo em `public/soul-data.json`, bloco `current`, junto com a data `as_of`. A abertura agora mostra a data ao lado da cidade, para a informação não envelhecer virando afirmação falsa.
+O `Soul Light.dc.html` **removeu a barra da abertura** que mostrava cidade e coordenadas fixas.
+Com ela some o texto que envelhecia sozinho, que era o problema apontado na seção 8 do briefing.
 
-Valor no ar: `puerto natales, magallanes, cl`, `51°44′S 72°30′W`, `as_of 2026-08-09`.
+Por isso o bloco `current` que eu tinha criado no `soul-data.json` saiu junto: não sobrou nada
+na página que o renderizasse, e campo não usado com data velha é pior que campo nenhum.
 
-**Isso provavelmente já está vencido.** A janela de Puerto Natales em `route-data.js` ia até 15 de agosto de 2026, e a região `southern-patagonia` em `soul-data.json` fechava em 15 de agosto de 2026. Hoje é 16 de agosto. O site já reclassificou a região sozinho, mas a cidade atual é campo manual. Atualizar `current.place_*`, `current.coords`, `current.coords_label` e `current.as_of` quando puder.
+O que sobrou de campo que envelhece está todo em `soul-data.json`, e agora é o próprio site que
+calcula: `closes_on` da região `andean-patagonia` está em 2026-11-15, e a contagem regressiva
+vem daí. `updated_at` está em 2026-08-21, a data do projeto de design.
 
-Campos `slots` e `season_note_*` continuam nulos em todas as regiões, como o briefing mandou. Não foram preenchidos.
+Campos `slots` e `season_note_*` continuam nulos, como o briefing mandou. Não foram preenchidos.
+
+---
+
+## 5. Imagens de referência da rota · decisão pendente
+
+O painel da rota agora mostra 45 fotos que **não são da Soul**. São referências de locação do
+Wikimedia Commons, sob licença livre, creditadas na seção de créditos no rodapé.
+
+Isso é ótimo para apresentar a rota antes da captação, e é exatamente para o que o banco foi
+montado. Mas é uma escolha, não um default: o site passa a exibir foto de terceiro com o nome
+do autor no rodapé.
+
+**Duas saídas, as duas legítimas:**
+
+1. manter, tratando o painel como mapa ilustrado da rota, e deixar os créditos onde estão;
+2. trocar por foto própria conforme a rota for sendo rodada, e aí os créditos somem sozinhos.
+
+O que **não** dá é manter sem crédito. Quase tudo ali é CC BY-SA, que exige atribuição.
+
+---
+
+## 6. Preço do pacote cinematográfico mudou
+
+O `Soul Light.dc.html` traz `US$ 3.000 / mês`, contra `US$ 3.500 / mês` do protótipo anterior.
+Foi mantido o valor novo, nas três línguas, por ser o do arquivo mais recente. Se foi engano,
+é uma linha por língua em `public/index.html`.
+
+Junto veio uma nota nova no mesmo pacote, que antes era vazia:
+`A solução para a sobrecarga do seu time de conteúdo`.

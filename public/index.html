@@ -19,19 +19,21 @@
 <meta property="og:url" content="https://soulletsgo.com/">
 <meta property="og:title" content="soul · traveling film studio, patagonia to alaska">
 <meta property="og:description" content="brand content shot on location across the americas. monthly photography and film for outdoor, eyewear and travel brands.">
-<meta property="og:image" content="https://soulletsgo.com/fotos/fundodaabertura.jpg">
+<meta property="og:image" content="https://soulletsgo.com/assets/fundo-abertura.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;500&display=swap">
-<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.css">
 <style>
-  html, body { margin:0; padding:0; background:#161003; }
+  html, body { margin:0; padding:0; background:#F2E8D8; }
   * { box-sizing: border-box; }
-  a { color:#FFF6E5; text-decoration:none; }
-  a:hover { color:#FFF6E5; opacity:.72; }
-  ::selection { background:#FFF6E5; color:#161003; }
+  a { color:#2B1D08; text-decoration:none; }
+  a:hover { color:#2B1D08; opacity:.72; }
+  ::selection { background:#2B1D08; color:#F2E8D8; }
+  @keyframes fillup { 0%{height:0%} 8%{height:0%} 62%{height:100%} 100%{height:100%} }
   @keyframes pulse { 0%{transform:scale(1);opacity:.9} 70%{transform:scale(2.4);opacity:0} 100%{opacity:0} }
+  @keyframes beat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18)} }
   @keyframes radar { 0%{transform:scale(.35);opacity:.55} 70%{opacity:0} 100%{transform:scale(1);opacity:0} }
   @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
   @media (pointer: coarse) { #cursor-tag { display:none !important; } }
@@ -42,7 +44,7 @@
   @media (max-width: 760px) {
     [data-herotext] h1 { font-size: clamp(28px,8.4vw,44px) !important; }
     [data-herotext] p { font-size: 14px !important; margin-top: 16px !important; }
-    [data-herotext] { padding: 24px 18px !important; }
+    [data-herotext] { padding: 72px 18px 24px !important; }
     [data-sec] h2 { font-size: clamp(22px,6.4vw,32px) !important; }
     [data-routeinfo] ul { gap: 0 !important; }
     [data-caserow] { grid-template-columns: 1fr !important; gap: 10px !important; }
@@ -54,29 +56,31 @@
     [data-caption] { display: none !important; }
     [data-routeinfo] { padding: 18px 18px 24px !important; }
     [data-kit] { grid-template-columns: 1fr 1fr !important; }
+    #about h2 { text-align: center !important; max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; }
+    [data-pkgname] { font-size: 18px !important; }
   }
 </style>
 </helmet>
-<div ref="{{ rootRef }}" style="background:#161003; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#FFF6E5; cursor:none; overflow-x:clip">
+<div ref="{{ rootRef }}" style="background:#F2E8D8; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#2B1D08; cursor:none; overflow-x:clip">
 
-  <div ref="{{ loaderRef }}" style="position:fixed; inset:0; z-index:820; background:#161003; overflow:hidden">
-    <div ref="{{ loaderBandRef }}" style="position:absolute; top:50%; bottom:50%; left:50%; right:50%; background:#1C1405; overflow:hidden">
-      <div style="position:absolute; inset:0; background-image:url(fotos/fundodaabertura.jpg); background-size:cover; background-position:50% 58%; filter:saturate(.6) contrast(1.05) sepia(.2)"></div>
-      <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.55),rgba(22,16,3,.45) 45%,rgba(22,16,3,.96))"></div>
+  <div ref="{{ loaderRef }}" style="position:fixed; inset:0; z-index:820; background:#F2E8D8; overflow:hidden">
+    <div ref="{{ loaderBandRef }}" style="position:absolute; top:50%; bottom:50%; left:50%; right:50%; background:#E3D5BC; overflow:hidden">
+      <div data-bandlayer="1" data-bandphoto="1" style="position:absolute; left:0; top:0; width:100%; height:100%; background-image:url(assets/fundo-abertura.webp); background-size:cover; background-position:50% 58%; filter:saturate(.6) contrast(1.05) sepia(.2); transform-origin:50% 50%"></div>
+      <div data-bandlayer="1" style="position:absolute; left:0; top:0; width:100%; height:100%; background:linear-gradient(180deg,rgba(22,16,3,.55),rgba(22,16,3,.45) 45%,rgba(22,16,3,.96))"></div>
     </div>
-    <div ref="{{ counterRef }}" style="position:absolute; z-index:2; left:0; right:0; bottom:38px; text-align:center; font:400 12px/1 ui-monospace, Menlo, monospace; letter-spacing:.2em; color:rgba(255,246,229,.5)">{{ count }}</div>
-    <div ref="{{ promptRef }}" style="position:absolute; z-index:2; left:0; right:0; bottom:36px; text-align:center; font-size:11px; letter-spacing:.22em; color:rgba(255,246,229,.5); opacity:0; transition:opacity .6s linear">scroll</div>
+    <div ref="{{ counterRef }}" style="position:absolute; z-index:2; left:0; right:0; bottom:38px; text-align:center; font:400 12px/1 ui-monospace, Menlo, monospace; letter-spacing:.2em; color:rgba(43,29,8,.5)">{{ count }}</div>
+    <div ref="{{ promptRef }}" style="position:absolute; z-index:2; left:0; right:0; bottom:36px; text-align:center; font-size:11px; letter-spacing:.22em; color:rgba(43,29,8,.5); opacity:0; transition:opacity .6s linear">scroll</div>
   </div>
 
-  <div ref="{{ headerBgRef }}" style="position:fixed; z-index:855; top:0; left:0; right:0; height:64px; background:rgba(22,16,3,.86); backdrop-filter:blur(10px); opacity:0; pointer-events:none"></div>
+  <div ref="{{ headerBgRef }}" style="position:fixed; z-index:855; top:0; left:0; right:0; height:64px; background:rgba(242,232,216,.86); backdrop-filter:blur(10px); opacity:0; pointer-events:none"></div>
 
   <div ref="{{ brandRef }}" style="position:fixed; z-index:860; left:0; right:0; top:0; text-align:center; pointer-events:none; will-change:transform">
     <div style="overflow:hidden; display:inline-block; padding:0 .08em">
-      <a href="#top" ref="{{ wordmarkRef }}" style="display:block; pointer-events:auto; transform:translateY(110%); transition:transform 1.5s cubic-bezier(.16,1,.3,1); will-change:transform"><img src="assets/logo-soul.svg" alt="soul" style="display:block; width:min(46vw,520px); height:auto" /></a>
+      <a href="#top" ref="{{ wordmarkRef }}" style="display:block; pointer-events:auto; transform:translateY(110%); transition:transform 1.5s cubic-bezier(.16,1,.3,1); will-change:transform"><img src="assets/logo-soul-terracota.svg" alt="soul" style="display:block; width:min(46vw,520px); height:auto" /></a>
     </div>
   </div>
 
-  <div id="cursor-tag" ref="{{ cursorRef }}" style="position:fixed; z-index:950; left:0; top:0; font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; color:#161003; background:#FFF6E5; padding:4px 7px; pointer-events:none; white-space:nowrap">scroll</div>
+  <div id="cursor-tag" ref="{{ cursorRef }}" style="position:fixed; z-index:950; left:0; top:0; font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; color:#F2E8D8; background:#2B1D08; padding:4px 7px; pointer-events:none; white-space:nowrap">scroll</div>
 
   <nav ref="{{ navRef }}" style="position:fixed; top:0; left:0; right:0; z-index:870; display:flex; justify-content:space-between; align-items:center; gap:18px; padding:0 clamp(20px,4vw,64px); height:64px; background:transparent; opacity:0">
     <span style="flex:1"></span>
@@ -87,118 +91,141 @@
       <a href="#where">{{ t.navWhere }}</a>
     </div>
     <div style="position:relative; display:flex; align-items:center">
-      <button aria-label="change language" onClick="{{ toggleLang }}" style="display:flex; align-items:center; gap:6px; padding:6px 10px; background:none; border:1px solid rgba(255,246,229,.3); border-radius:999px; color:#FFF6E5; font:400 11.5px/1 ui-monospace, Menlo, monospace; letter-spacing:.12em; cursor:pointer; transition:border-color .35s" style-hover="border-color:#FFF6E5">
+      <button aria-label="change language" onClick="{{ toggleLang }}" style="display:flex; align-items:center; gap:6px; padding:6px 10px; background:none; border:1px solid rgba(43,29,8,.3); border-radius:999px; color:#2B1D08; font:400 11.5px/1 ui-monospace, Menlo, monospace; letter-spacing:.12em; cursor:pointer; transition:border-color .35s" style-hover="border-color:#2B1D08">
         <span>{{ lang }}</span>
         <span style="font-size:8px; display:inline-block; transition:transform .3s ease; transform:{{ langChev }}">▼</span>
       </button>
-      <div style="position:absolute; top:calc(100% + 7px); right:0; display:{{ langOpen }}; flex-direction:column; background:#161003; border:1px solid rgba(255,246,229,.24); overflow:hidden">
+      <div style="position:absolute; top:calc(100% + 7px); right:0; display:{{ langOpen }}; flex-direction:column; background:#F2E8D8; border:1px solid rgba(43,29,8,.24); overflow:hidden">
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
-          <button onClick="{{ l.pick }}" style="padding:9px 16px; background:none; border:0; color:{{ l.color }}; font:400 11.5px/1 ui-monospace, Menlo, monospace; letter-spacing:.12em; cursor:pointer; text-align:left; transition:background .3s" style-hover="background:rgba(255,246,229,.12)">{{ l.code }}</button>
+          <button onClick="{{ l.pick }}" style="padding:9px 16px; background:none; border:0; color:{{ l.color }}; font:400 11.5px/1 ui-monospace, Menlo, monospace; letter-spacing:.12em; cursor:pointer; text-align:left; transition:background .3s" style-hover="background:rgba(43,29,8,.12)">{{ l.code }}</button>
         </sc-for>
       </div>
     </div>
     <button data-burger="1" aria-label="menu" onClick="{{ openMenu }}" style="display:none; flex-direction:column; justify-content:center; gap:6px; width:44px; height:44px; margin-right:-11px; padding:0; background:none; border:0; cursor:pointer">
-      <span style="display:block; width:24px; height:1.5px; background:#FFF6E5"></span>
-      <span style="display:block; width:24px; height:1.5px; background:#FFF6E5"></span>
-      <span style="display:block; width:16px; height:1.5px; background:#FFF6E5"></span>
+      <span style="display:block; width:24px; height:1.5px; background:#2B1D08"></span>
+      <span style="display:block; width:24px; height:1.5px; background:#2B1D08"></span>
+      <span style="display:block; width:16px; height:1.5px; background:#2B1D08"></span>
     </button>
   </nav>
 
-  <div ref="{{ menuRef }}" style="position:fixed; inset:0; z-index:900; background:#161003; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; opacity:0; pointer-events:none; transition:opacity .38s ease">
-    <button aria-label="close" onClick="{{ closeMenu }}" style="position:absolute; top:12px; right:14px; width:44px; height:44px; background:none; border:0; color:#FFF6E5; font-size:24px; line-height:1; cursor:pointer">×</button>
+  <div ref="{{ menuRef }}" style="position:fixed; inset:0; z-index:900; background:#F2E8D8; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; opacity:0; pointer-events:none; transition:opacity .38s ease">
+    <button aria-label="close" onClick="{{ closeMenu }}" style="position:absolute; top:12px; right:14px; width:44px; height:44px; background:none; border:0; color:#2B1D08; font-size:24px; line-height:1; cursor:pointer">×</button>
     <a href="#work" onClick="{{ closeMenu }}" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:24px">{{ t.navWork }}</a>
     <a href="#packages" onClick="{{ closeMenu }}" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:24px">{{ t.navPackages }}</a>
     <a href="#where" onClick="{{ closeMenu }}" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:24px">{{ t.navWhere }}</a>
     <a href="#book" onClick="{{ closeMenu }}" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:24px">{{ t.navBook }}</a>
-    <a href="mailto:contato@soulletsgo.com" style="margin-top:14px; font-size:13px; letter-spacing:.06em; color:rgba(255,246,229,.6)">contato@soulletsgo.com</a>
+    <a href="mailto:contato@soulletsgo.com" style="margin-top:14px; font-size:13px; letter-spacing:.06em; color:rgba(43,29,8,.6)">contato@soulletsgo.com</a>
   </div>
 
   <section id="top" style="position:sticky; top:0; height:100vh; overflow:hidden; z-index:1">
-    <div style="position:absolute; top:64px; bottom:96px; left:0; right:0; background:#1C1405; overflow:hidden">
-      <img ref="{{ heroMediaRef }}" src="fotos/fundodaabertura.jpg" alt="two people walking a snow covered trail between mountains" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 58%; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform" />
-      <span data-caption="1" ref="{{ heroCaptionRef }}" style="position:absolute; top:24px; left:24px; font:400 11px/1.6 ui-monospace, Menlo, monospace; letter-spacing:.16em; color:rgba(255,246,229,.4); opacity:0">{{ t.caption }}</span>
+    <div style="position:absolute; top:64px; bottom:96px; left:0; right:0; background:#E3D5BC; overflow:hidden">
+      <img ref="{{ heroMediaRef }}" src="assets/fundo-abertura.webp" alt="the soul bronco on a coastal track, cl" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 58%; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform" />
       <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.55),rgba(22,16,3,.45) 45%,rgba(22,16,3,.96))"></span>
     </div>
-    <div data-herotext="1" ref="{{ heroTextRef }}" style="position:absolute; top:64px; bottom:96px; left:0; right:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:clamp(34px,5.5vh,64px) clamp(20px,4vw,64px); opacity:0">
-      <h1 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; line-height:1.14; letter-spacing:-.015em; font-size:clamp(34px,6.4vw,92px); margin:0">{{ t.heroTitle }}</h1>
+    <div data-herotext="1" ref="{{ heroTextRef }}" style="position:absolute; top:64px; bottom:96px; left:0; right:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; text-align:center; padding:clamp(48px,10vh,120px) clamp(20px,4vw,64px) clamp(34px,5.5vh,64px); opacity:0">
+      <h1 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; line-height:1.14; letter-spacing:-.015em; font-size:clamp(34px,6.4vw,92px); margin:0; color:#FFF6E5">{{ heroT.a }}<em style="font-style:italic; font-weight:700">{{ heroT.em }}</em>{{ heroT.b }}</h1>
       <p style="max-width:55ch; margin:26px auto 0; color:#FFF6E5; font-size:clamp(14px,.4vw + 13px,17px)">{{ t.heroSub }}</p>
       <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:11px; margin-top:clamp(22px,3vh,34px)">
         <a href="#book" style="display:inline-flex; align-items:center; padding:14px 26px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#FFF6E5; color:#161003; border:1px solid #FFF6E5; transition:background .4s, color .4s" style-hover="background:transparent; color:#FFF6E5">{{ t.ctaWork }}</a>
         <a href="#where" style="display:inline-flex; align-items:center; padding:14px 26px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; border:1px solid rgba(255,246,229,.4); color:#FFF6E5; transition:background .4s, color .4s" style-hover="background:#FFF6E5; color:#161003">{{ t.ctaWhere }}</a>
       </div>
     </div>
-    <div data-herobar="1" ref="{{ heroBarRef }}" style="position:absolute; left:clamp(20px,4vw,64px); right:clamp(20px,4vw,64px); bottom:calc(96px + 20px); border-top:1px solid rgba(255,246,229,.15); padding-top:15px; display:flex; flex-wrap:wrap; gap:22px 42px; align-items:baseline; font-size:13.5px; color:rgba(255,246,229,.72); opacity:0">
-      <span style="display:flex; align-items:center; gap:9px; color:#FFF6E5">
-        <span style="width:7px; height:7px; border-radius:50%; background:#FFF6E5; position:relative; flex:none; display:inline-block"><span style="position:absolute; inset:-5px; border-radius:50%; border:1px solid #FFF6E5; animation:pulse 2.6s ease-out infinite; display:block"></span></span>
-        <span style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:13.5px">{{ nowPlace }}</span>
-      </span>
-      <span style="font-variant-numeric:tabular-nums">{{ nowCoords }}</span>
-      <span style="color:rgba(255,246,229,.5); display:{{ nowAsOfShow }}">{{ nowAsOf }}</span>
-    </div>
   </section>
 
   <div ref="{{ introSpacerRef }}" style="height:230vh; position:relative; z-index:0"></div>
 
-  <div style="position:relative; z-index:2; background:#161003; border-top:1px solid rgba(255,246,229,.12); border-bottom:1px solid rgba(255,246,229,.12); overflow:hidden; padding:16px 0">
-    <div style="display:flex; width:max-content; animation:marquee 34s linear infinite; white-space:nowrap; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(13px,1.35vw,18px); color:rgba(255,246,229,.55)">
+  <div style="position:relative; z-index:2; background:rgba(43,29,8,.5); overflow:hidden; padding:8px 0">
+    <div style="display:flex; width:max-content; animation:marquee 34s linear infinite; white-space:nowrap; font-family:Poppins, -apple-system, sans-serif; font-weight:400; font-size:clamp(13px,1.35vw,18px); color:rgba(242,232,216,.85)">
       <span style="display:flex; min-width:100vw; white-space:nowrap"><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span></span>
       <span style="display:flex; min-width:100vw; white-space:nowrap"><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span></span>
     </div>
   </div>
 
-  <section id="work" data-sec="1" ref="{{ workSecRef }}" style="position:relative; z-index:2; background:#161003; padding:clamp(56px,7.5vh,104px) clamp(20px,4vw,64px)">
-    <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,3.8vw,52px); line-height:1.2; letter-spacing:-.015em; margin:0 auto clamp(34px,4.5vh,58px); max-width:20ch; text-align:center; text-wrap:balance; opacity:0">{{ t.workTitle }}</h2>
+  <section id="work" data-sec="1" ref="{{ workSecRef }}" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(28px,3.5vh,52px) clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
+    <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(32px,3.8vw,52px); line-height:1.2; letter-spacing:-.015em; margin:0 auto clamp(34px,4.5vh,58px); max-width:20ch; text-align:center; text-wrap:balance; opacity:0">{{ workT.a }}<em style="font-style:italic; font-weight:700">{{ workT.em }}</em>{{ workT.b }}</h2>
     <div style="display:grid; gap:clamp(30px,4.5vh,58px)">
       <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
         <a href="{{ c.href }}" data-row="1" data-caserow="1" style="display:grid; grid-template-columns:64px 1fr 190px; gap:clamp(14px,2.4vw,34px); align-items:center">
-          <span data-casenum="1" style="font:400 13px/1 ui-monospace, Menlo, monospace; color:rgba(255,246,229,.45); font-variant-numeric:tabular-nums">{{ c.n }}</span>
-          <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#1C1405; aspect-ratio:16/7; clip-path:inset(0 50% 0 50%)">
-            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:url({{ c.img }}); background-size:cover; background-position:center; filter:saturate(.66) contrast(1.05) sepia(.18); will-change:transform; display:block"></span>
-            <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.15),rgba(22,16,3,.55))"></span>
-            <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ c.pendingShow }}">{{ t.photoPending }}</span>
-            <span data-title="1" style="position:absolute; inset:0; display:grid; place-items:center; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(26px,4.4vw,64px); letter-spacing:-.015em; color:#FFF6E5; text-align:center; padding:0 6%">{{ c.title }}</span>
+          <span data-casenum="1" style="font:400 13px/1 ui-monospace, Menlo, monospace; color:rgba(43,29,8,.45); font-variant-numeric:tabular-nums">{{ c.n }}</span>
+          <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:16/7; clip-path:inset(0 50% 0 50%)">
+            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url({{ c.img }}); background-size:cover; background-position:center; filter:saturate(.66) contrast(1.05) sepia(.18); will-change:transform; display:block"></span>
+            <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.15),rgba(22,16,3,.5))"></span>
+            <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ c.pendingShow }}">{{ t.photoPending }}</span>
+            <span data-title="1" style="position:absolute; inset:0; display:grid; place-items:center; font-family:Poppins, -apple-system, sans-serif; font-weight:600; font-size:clamp(26px,4.4vw,64px); letter-spacing:.03em; color:#FFF6E5; text-align:center; padding:0 6%">{{ c.title }}</span>
           </span>
-          <span data-casemeta="1" style="justify-self:end; text-align:right; font-size:12px; letter-spacing:.12em; color:rgba(255,246,229,.5); line-height:1.7">{{ c.place }}<br />{{ t.openCase }}</span>
+          <span data-casemeta="1" style="justify-self:end; text-align:right; font-size:12px; letter-spacing:.12em; color:rgba(43,29,8,.5); line-height:1.7">{{ c.place }}<br />{{ t.openCase }}</span>
         </a>
       </sc-for>
     </div>
   </section>
 
-  <section id="soulletsgo" data-sec="1" style="position:relative; z-index:2; background:#161003; padding:0 clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
+  <section id="soulletsgo" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:0 clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
     <a href="https://instagram.com/soulletsgo" target="_blank" rel="noopener noreferrer" data-row="1" data-caserow="1" style="display:grid; grid-template-columns:64px 1fr 190px; gap:clamp(14px,2.4vw,34px); align-items:center">
-      <span data-casenum="1" style="font:400 13px/1 ui-monospace, Menlo, monospace; color:rgba(255,246,229,.45); font-variant-numeric:tabular-nums">04</span>
-      <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#1C1405; aspect-ratio:16/7; clip-path:inset(0 50% 0 50%)">
-        <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:url(https://picsum.photos/seed/soul-letsgo-hero/1600/700); background-size:cover; background-position:center; filter:saturate(.66) contrast(1.05) sepia(.18); will-change:transform; display:block"></span>
-        <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.15),rgba(22,16,3,.55))"></span>
-        <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em">{{ t.photoPending }}</span>
-        <span data-title="1" style="position:absolute; inset:0; display:grid; place-items:center; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(26px,4.4vw,64px); letter-spacing:-.015em; color:#FFF6E5; text-align:center; padding:0 6%">soul let's go</span>
+      <span data-casenum="1" style="font:400 13px/1 ui-monospace, Menlo, monospace; color:rgba(43,29,8,.45); font-variant-numeric:tabular-nums">04</span>
+      <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:16/7; clip-path:inset(0 50% 0 50%)">
+        <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url(https://picsum.photos/seed/soul-letsgo-hero/1600/700); background-size:cover; background-position:center; filter:saturate(.66) contrast(1.05) sepia(.18); will-change:transform; display:block"></span>
+        <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.15),rgba(22,16,3,.5))"></span>
+        <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em">{{ t.photoPending }}</span>
+        <span data-title="1" style="position:absolute; inset:0; display:grid; place-items:center; font-family:Poppins, -apple-system, sans-serif; font-weight:600; font-size:clamp(26px,4.4vw,64px); letter-spacing:.03em; color:#FFF6E5; text-align:center; padding:0 6%">soul let's go</span>
       </span>
-      <span data-casemeta="1" style="justify-self:end; text-align:right; font-size:12px; letter-spacing:.12em; color:rgba(255,246,229,.5); line-height:1.7">{{ t.slgMeta }}<br />{{ t.learnMore }}</span>
+      <span data-casemeta="1" style="justify-self:end; text-align:right; font-size:12px; letter-spacing:.12em; color:rgba(43,29,8,.5); line-height:1.7">{{ t.slgMeta }}<br />{{ t.learnMore }}</span>
     </a>
   </section>
 
-  <section id="about" data-sec="1" style="position:relative; z-index:2; background:#161003; padding:0 clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
+  <section id="about" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:0 clamp(20px,4vw,64px) clamp(22px,3vh,40px)">
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(24px,4vw,64px); align-items:center">
-      <div data-scrub="clip" style="position:relative; overflow:hidden; background:#1C1405; aspect-ratio:4/5; clip-path:inset(0 50% 0 50%)">
-        <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:url(fotos/sobre.jpg); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
-        <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,0),rgba(22,16,3,.45))"></span>
+      <div data-scrub="clip" style="position:relative; overflow:hidden; background:#E3D5BC; aspect-ratio:4/5; clip-path:inset(0 50% 0 50%)">
+        <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url(assets/sobre.webp); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
+        <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(242,232,216,0),rgba(242,232,216,.45))"></span>
       </div>
       <div>
-        <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,3.4vw,46px); line-height:1.2; letter-spacing:-.018em; margin:0 0 22px; max-width:16ch; opacity:0">{{ aboutTitle }}</h2>
+        <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(30px,3.4vw,46px); line-height:1.2; letter-spacing:-.018em; margin:0 0 22px; max-width:16ch; opacity:0">{{ aboutT.a }}<em style="font-style:italic">{{ aboutT.em }}</em>{{ aboutT.b }}</h2>
         <sc-for list="{{ aboutBody }}" as="para" hint-placeholder-count="4">
-          <p data-scrub="fade" style="color:rgba(255,246,229,.75); font-size:15.5px; line-height:1.65; margin:0 0 16px; max-width:52ch; text-wrap:pretty; opacity:0">{{ para.t }}</p>
+          <p data-scrub="fade" style="color:rgba(43,29,8,.75); font-size:15.5px; line-height:1.65; margin:0 0 16px; max-width:52ch; text-wrap:pretty; opacity:0">{{ para.t }}</p>
         </sc-for>
       </div>
     </div>
   </section>
 
-  <section id="where" ref="{{ whereSecRef }}" style="position:relative; z-index:2; height:380vh; background:#161003">
+  <section id="packages" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(20px,2.5vh,36px) clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
+    <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(32px,4vw,54px); line-height:1.2; letter-spacing:-.015em; margin:0 auto; max-width:19ch; text-align:center; text-wrap:balance; opacity:0">{{ t.pkgTitle }}</h2>
+    <p data-scrub="fade" style="max-width:54ch; margin:20px auto 0; text-align:center; color:rgba(43,29,8,.72); opacity:0">{{ t.pkgSub }}</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); margin-top:clamp(36px,4.5vh,58px); gap:clamp(12px,1.4vw,20px)">
+      <sc-for list="{{ packages }}" as="k" hint-placeholder-count="3">
+        <div data-pkg="1" data-scrub="fade" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,1.8vw,26px) clamp(20px,2vw,30px) clamp(26px,2.4vw,36px); background:{{ k.bg }}; backdrop-filter:blur(6px); border:1px solid rgba(43,29,8,.22); transition:background .55s; opacity:0" style-hover="background:rgba(43,29,8,.13)">
+          <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:16/6; margin:0 0 22px; clip-path:inset(0 50% 0 50%)">
+            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url({{ k.img }}); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
+            <span style="position:absolute; top:0; left:0; padding:6px 12px; background:#A9482B; color:#FFF6E5; font-size:10.5px; letter-spacing:.18em; display:{{ k.badgeShow }}">{{ k.badge }}</span>
+          </span>
+          <h3 data-pkgname="1" style="font-family:'Libre Baskerville', Georgia, serif; font-style:italic; font-weight:400; font-size:20px; letter-spacing:.02em; color:rgba(43,29,8,.75); margin:0 0 10px">{{ k.name }}</h3>
+          <div style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,2.1vw,32px); line-height:1.15; letter-spacing:-.015em; color:#2B1D08; min-height:2.3em; margin:0 0 26px; font-variant-numeric:tabular-nums; display:flex; flex-wrap:wrap; align-items:baseline; gap:6px">
+            <span style="font-family:Poppins, sans-serif; font-weight:400; font-size:12.5px; letter-spacing:.04em; color:rgba(43,29,8,.6); display:{{ k.preShow }}">{{ k.pricePre }}</span>
+            <span>{{ k.priceAmt }}</span>
+            <span style="font-family:Poppins, sans-serif; font-weight:400; font-size:12.5px; letter-spacing:.04em; color:rgba(43,29,8,.6)">{{ k.priceSuf }}</span>
+          </div>
+          <ul style="list-style:none; display:grid; gap:12px; font-size:15px; color:rgba(43,29,8,.85); margin:0; padding:0; flex:1; align-content:start">
+            <sc-for list="{{ k.items }}" as="it" hint-placeholder-count="4">
+              <li style="border-top:1px solid rgba(43,29,8,.2); padding-top:12px">{{ it }}</li>
+            </sc-for>
+          </ul>
+          <div style="margin-top:24px; padding-top:16px; border-top:1px solid rgba(43,29,8,.2); font-size:13.5px; color:rgba(43,29,8,.65); display:{{ k.noteShow }}">{{ k.note }}</div>
+        </div>      </sc-for>
+    </div>
+  </section>
+
+  <section id="where" ref="{{ whereSecRef }}" style="position:relative; z-index:2; height:380vh; background:#F2E8D8; color:#2B1D08">
     <div style="position:sticky; top:0; height:100vh; overflow:hidden">
       <div ref="{{ mapWrapRef }}" style="position:absolute; inset:0; clip-path:inset(42% 36% 42% 36%); border:0 solid rgba(255,246,229,.15)">
-        <div ref="{{ mapRef }}" style="position:absolute; inset:0; background:#100B02; filter:sepia(.62) saturate(.85) hue-rotate(-14deg) brightness(.92) contrast(1.08)"></div>
-        <div style="position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 180px rgba(22,16,3,.9)"></div>
-        <div ref="{{ mapFallbackRef }}" style="position:absolute; inset:0; display:grid; place-items:center; font-size:12px; letter-spacing:.2em; color:rgba(255,246,229,.3)">{{ t.mapLoading }}</div>
+        <div ref="{{ mapRef }}" style="position:absolute; inset:0; background:#E3D5BC"></div>
+        <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at center, rgba(74,48,16,.14) 38%, rgba(22,16,3,.66) 100%)"></div>
+        <div ref="{{ mapFallbackRef }}" style="position:absolute; inset:0; display:grid; justify-items:center; align-content:center; gap:18px; background:#F2E8D8">
+          <span style="position:relative; display:block; width:min(34vw,260px); height:52px; background:rgba(169,72,43,.16); -webkit-mask:url(assets/logo-soul-terracota.svg) center/contain no-repeat; mask:url(assets/logo-soul-terracota.svg) center/contain no-repeat">
+            <span style="position:absolute; left:0; right:0; bottom:0; height:0; background:#A9482B; animation:fillup 2.6s cubic-bezier(.45,0,.5,1) infinite; display:block"></span>
+          </span>
+          <span style="font-size:11px; letter-spacing:.22em; color:rgba(43,29,8,.45)">{{ t.mapLoading }}</span>
+        </div>
         <div data-region-card="1" ref="{{ poiCardRef }}" style="position:absolute; z-index:9; left:0; top:0; width:206px; background:#161003; border:1px solid rgba(255,246,229,.28); opacity:0; pointer-events:none; transition:opacity .18s linear; font-family:Poppins, -apple-system, sans-serif">
+          <div ref="{{ poiPhotosRef }}" style="display:none"></div>
           <div ref="{{ poiNameRef }}" style="padding:11px 13px 9px; font-family:Poppins, sans-serif; font-weight:500; font-size:13px; line-height:1.3; color:#FFF6E5"></div>
           <div ref="{{ poiMetaRef }}" style="padding:0 13px 12px; display:grid; gap:5px; font-family:Poppins, sans-serif; font-weight:400; font-size:11.5px; line-height:1.45; color:rgba(255,246,229,.7)"></div>
           <a ref="{{ poiCtaRef }}" href="#book" style="display:none; padding:9px 13px; border-top:1px solid rgba(255,246,229,.2); font-family:Poppins, sans-serif; font-size:11.5px; letter-spacing:.03em; color:#FFF6E5">{{ t.bookThis }}</a>
@@ -210,19 +237,31 @@
           <h2 style="margin:0 auto; max-width:22ch; text-wrap:balance; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(26px,4.4vw,58px); line-height:1.16; letter-spacing:-.01em; text-shadow:0 2px 30px rgba(22,16,3,.8)">{{ t.whereTitle }}</h2>
         </div>
       </div>
-      <div data-routeinfo="1" ref="{{ mapPanelRef }}" style="position:absolute; z-index:6; display:flex; flex-direction:column; padding:22px clamp(20px,4vw,64px) 28px; background:#161003; opacity:0; pointer-events:none">
-        <div data-routehead="1" style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:10px 24px; padding-bottom:14px; border-bottom:1px solid rgba(255,246,229,.15)">
+      <div data-routeinfo="1" ref="{{ mapPanelRef }}" style="position:absolute; z-index:6; display:flex; flex-direction:column; padding:22px clamp(20px,4vw,64px) 28px; background:#F2E8D8; color:#2B1D08; opacity:0; pointer-events:none">
+        <div data-routehead="1" style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:10px 24px; padding-bottom:14px; border-bottom:1px solid rgba(43,29,8,.15)">
           <h3 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(18px,2vw,26px); letter-spacing:-.01em; margin:0">{{ t.panelTitle }}</h3>
         </div>
         <ul style="list-style:none; margin:0; padding:12px 0 0; flex:0 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:0 clamp(20px,3vw,44px); align-content:start; grid-auto-rows:min-content; font-family:Poppins, -apple-system, sans-serif">
           <sc-for list="{{ regions }}" as="r" hint-placeholder-count="9">
-            <li onMouseEnter="{{ r.enter }}" onMouseLeave="{{ r.leave }}" style="border-bottom:1px solid rgba(255,246,229,.14); padding:11px 0; display:flex; justify-content:space-between; gap:14px; align-items:baseline; opacity:{{ r.dim }}">
+            <li onMouseEnter="{{ r.enter }}" onMouseLeave="{{ r.leave }}" onClick="{{ r.focus }}" style="position:relative; padding:{{ r.pad }}; padding-left:26px; display:grid; grid-template-columns:1fr; gap:9px; opacity:{{ r.dim }}; cursor:pointer">
+              <span style="position:absolute; left:5px; top:0; bottom:0; width:2px; background:{{ r.railBg }}; display:block"></span>
+              <span style="position:absolute; left:0; top:15px; width:12px; height:12px; border-radius:50%; background:#A9482B; box-shadow:0 0 0 3px #F2E8D8; display:{{ r.dotShow }}"></span>
+              <span style="position:absolute; left:2px; top:{{ r.smallDotTop }}; width:8px; height:8px; border-radius:50%; background:#DCCBAE; box-shadow:0 0 0 3px #F2E8D8; display:{{ r.smallDotShow }}"></span>
+              <span style="display:flex; justify-content:space-between; gap:14px; align-items:baseline">
               <span>
-                <span style="font-family:Poppins, sans-serif; font-weight:500; font-size:13px; color:#FFF6E5">{{ r.name }}</span>
-                <span style="color:rgba(255,246,229,.55); font-size:11.5px; display:block; margin-top:3px">{{ r.window }}</span>
-                <span style="color:rgba(255,246,229,.55); font-size:11.5px; display:{{ r.slotsShow }}; margin-top:2px">{{ r.slots }}</span>
+                <span style="font-family:Poppins, sans-serif; font-weight:500; font-size:13px; color:{{ r.nameColor }}">{{ r.name }}</span>
+                <span style="color:rgba(43,29,8,.55); font-size:11.5px; display:{{ r.windowShow }}; margin-top:3px">{{ r.window }}</span>
+                <span style="color:rgba(43,29,8,.55); font-size:11.5px; display:{{ r.slotsShow }}; margin-top:2px">{{ r.slots }}</span>
               </span>
-              <span style="font-size:11px; letter-spacing:.04em; color:rgba(255,246,229,.75); white-space:nowrap; display:{{ r.countShow }}">{{ r.countdown }}</span>
+              <span style="font-size:11px; letter-spacing:.04em; color:rgba(43,29,8,.75); white-space:nowrap; display:{{ r.countShow }}">{{ r.countdown }}</span>
+              </span>
+              <span ref="{{ r.stripRef }}" style="display:{{ r.photosShow }}; gap:4px; overflow-x:auto; cursor:ew-resize; touch-action:pan-x; overscroll-behavior-x:contain; scrollbar-width:none">
+                <sc-for list="{{ r.photos }}" as="p">
+                  <a href="{{ p.url }}" target="_blank" rel="noopener noreferrer" onClick="{{ p.stop }}" title="{{ p.title }}" style="position:relative; flex:0 0 auto; width:86px; height:44px; overflow:hidden; background:#E3D5BC; background-image:{{ p.css }}; background-size:cover; background-position:center; filter:{{ r.gray }}; display:block">
+                    <span style="position:absolute; inset:auto 0 0 0; padding:10px 5px 3px; background:linear-gradient(180deg,rgba(22,16,3,0),rgba(22,16,3,.8)); color:#FFF6E5; font-size:8.5px; letter-spacing:.04em; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ p.name }}</span>
+                  </a>
+                </sc-for>
+              </span>
             </li>
           </sc-for>
         </ul>
@@ -230,44 +269,33 @@
     </div>
   </section>
 
-  <section id="packages" data-sec="1" style="position:relative; z-index:2; background:#161003; padding:clamp(28px,3.75vh,52px) clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
-    <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,4vw,54px); line-height:1.2; letter-spacing:-.015em; margin:0 auto; max-width:19ch; text-align:center; text-wrap:balance; opacity:0">{{ t.pkgTitle }}</h2>
-    <p data-scrub="fade" style="max-width:54ch; margin:20px auto 0; text-align:center; color:rgba(255,246,229,.72); opacity:0">{{ t.pkgSub }}</p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); margin-top:clamp(36px,4.5vh,58px); gap:clamp(12px,1.4vw,20px)">
-      <sc-for list="{{ packages }}" as="k" hint-placeholder-count="3">
-        <div data-pkg="1" data-scrub="fade" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,1.8vw,26px) clamp(20px,2vw,30px) clamp(26px,2.4vw,36px); background:{{ k.bg }}; backdrop-filter:blur(6px); border:1px solid rgba(255,246,229,.22); transition:background .55s; opacity:0" style-hover="background:rgba(255,246,229,.26)">
-          <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#1C1405; aspect-ratio:16/6; margin:0 0 22px; clip-path:inset(0 50% 0 50%)">
-            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:url({{ k.img }}); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
-            <span style="position:absolute; top:0; left:0; padding:6px 12px; background:#161003; color:#FFF6E5; font-size:10.5px; letter-spacing:.18em; display:{{ k.badgeShow }}">{{ k.badge }}</span>
-            <span style="position:absolute; z-index:2; bottom:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ k.pendingShow }}">{{ t.photoPending }}</span>
-          </span>
-          <h3 style="font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.6); margin:0 0 10px; font-weight:400">{{ k.name }}</h3>
-          <div style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(22px,2.1vw,32px); line-height:1.15; letter-spacing:-.015em; color:#FFF6E5; min-height:2.3em; margin:0 0 26px; font-variant-numeric:tabular-nums">{{ k.price }}</div>
-          <ul style="list-style:none; display:grid; gap:12px; font-size:15px; color:rgba(255,246,229,.85); margin:0; padding:0; flex:1; align-content:start">
-            <sc-for list="{{ k.items }}" as="it" hint-placeholder-count="4">
-              <li style="border-top:1px solid rgba(255,246,229,.2); padding-top:12px">{{ it }}</li>
-            </sc-for>
-          </ul>
-          <div style="margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,246,229,.2); font-size:13.5px; color:rgba(255,246,229,.65); display:{{ k.noteShow }}">{{ k.note }}</div>
-        </div>      </sc-for>
-    </div>
-  </section>
-
-  <section id="book" data-sec="1" style="position:relative; z-index:2; background:#161003; padding:clamp(26px,3.5vh,46px) clamp(20px,4vw,64px) clamp(80px,10vh,130px); text-align:center">
-    <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(28px,5.2vw,72px); line-height:1.14; letter-spacing:-.018em; margin:0 auto; max-width:16ch; text-wrap:balance; opacity:0">{{ t.bookTitle }}</h2>
-    <p data-scrub="fade" style="color:rgba(255,246,229,.75); max-width:48ch; margin:26px auto 36px; opacity:0">{{ t.bookSub }}</p>
+  <section id="book" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(26px,3.5vh,46px) clamp(20px,4vw,64px) clamp(80px,10vh,130px); text-align:center">
+    <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(34px,5.2vw,72px); line-height:1.14; letter-spacing:-.018em; margin:0 auto; max-width:16ch; text-wrap:balance; opacity:0">{{ bookT.a }}<em style="font-style:italic; font-weight:700">{{ bookT.em }}</em>{{ bookT.b }}</h2>
+    <p data-scrub="fade" style="color:rgba(43,29,8,.75); max-width:48ch; margin:26px auto 36px; opacity:0">{{ t.bookSub }}</p>
     <div data-scrub="fade" style="max-width:920px; margin:0 auto; opacity:0">
-      <div style="position:relative; width:100%; height:clamp(560px,78vh,900px); border:1px solid rgba(255,246,229,.2); background:#1C1405; overflow:hidden">
+      <div style="position:relative; width:100%; height:clamp(560px,78vh,900px); border:1px solid rgba(43,29,8,.2); background:#E3D5BC; overflow:hidden">
         <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ187ykTo-q7t92TqibKpUH_Zt2Q6hLMiFXpiGoQqgp3CaM2C7ogJ9Xd5wlQlYIUt-K5bMzq5xN7?gv=true" title="soul · booking" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; border:0; display:block"></iframe>
       </div>
-      <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ187ykTo-q7t92TqibKpUH_Zt2Q6hLMiFXpiGoQqgp3CaM2C7ogJ9Xd5wlQlYIUt-K5bMzq5xN7?gv=true" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; margin-top:22px; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; border:1px solid rgba(255,246,229,.4); color:#FFF6E5; transition:background .4s, color .4s" style-hover="background:#FFF6E5; color:#161003">{{ t.ctaBook }}</a>
+      <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ187ykTo-q7t92TqibKpUH_Zt2Q6hLMiFXpiGoQqgp3CaM2C7ogJ9Xd5wlQlYIUt-K5bMzq5xN7?gv=true" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; margin-top:22px; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; border:1px solid rgba(43,29,8,.4); color:#2B1D08; transition:background .4s, color .4s" style-hover="background:#2B1D08; color:#F2E8D8">{{ t.ctaBook }}</a>
     </div>
   </section>
 
-  <footer style="position:relative; z-index:2; background:#161003; color:rgba(255,246,229,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
-    <div style="border-top:1px solid rgba(255,246,229,.15); padding-top:25px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
+  <section id="creditos" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(30px,4vh,54px) clamp(20px,4vw,64px) clamp(20px,3vh,34px)">
+    <div style="border-top:1px solid rgba(43,29,8,.15); padding-top:22px">
+      <div style="font-size:11.5px; letter-spacing:.16em; color:rgba(43,29,8,.45); margin-bottom:12px">{{ t.creditsLabel }}</div>
+      <p style="font-size:12.5px; line-height:1.6; color:rgba(43,29,8,.55); max-width:70ch; margin:0 0 14px">{{ t.creditsNote }}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:4px 14px; font-size:11.5px; line-height:1.6; color:rgba(43,29,8,.5)">
+        <sc-for list="{{ credits }}" as="cr">
+          <a href="{{ cr.source }}" target="_blank" rel="noopener noreferrer" style="color:rgba(43,29,8,.55); border-bottom:1px solid rgba(43,29,8,.18)">{{ cr.line }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <footer style="position:relative; z-index:2; background:#F2E8D8; color:rgba(43,29,8,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
+    <div style="padding-top:14px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
       <div>{{ t.footer }}</div>
-      <a href="mailto:contato@soulletsgo.com" style="color:rgba(255,246,229,.7)">contato@soulletsgo.com</a>
+      <a href="mailto:contato@soulletsgo.com" style="color:rgba(43,29,8,.7)">contato@soulletsgo.com</a>
       <div>© 2026</div>
     </div>
   </footer>
@@ -281,14 +309,16 @@ const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const COPY = {
   EN: {
     navWork: 'work', navPackages: 'packages', navBook: 'book a call', navWhere: 'where we are',
-    heroTitle: "we're already there.",
+    heroTitle: "we're *already* there.",
     heroSub: 'Brand campaigns and social content shot in places other studios have to fly a full crew to reach.',
     ctaWork: 'work with us', ctaWhere: 'see where we are', ctaBook: 'book a call',
-    photoPending: 'photo pending',
-    updatedOn: (d) => `updated ${d}`,
     caption: 'still from the route',
+    photoPending: 'photo pending',
+    creditsLabel: 'route reference images',
+    creditsNote: 'The photographs in the route panel are location references from Wikimedia Commons, not work by Soul. Author and licence for each one below, linked to the source.',
+    photoBy: (a) => `photo by ${a}`,
     marquee: 'now in the american continent  ·  content shot like film  ·  ',
-    workTitle: 'selected work, and what it took to get there',
+    workTitle: 'selected work, and *what it took to get there*',
     openCase: 'open case →', learnMore: 'learn more →',
     slgMeta: 'the instagram documentary project',
     mapLoading: 'loading the route', whereLabel: 'where we are', whereTitle: 'from patagonia to alaska',
@@ -296,7 +326,7 @@ const COPY = {
     seeCase: 'see the case →',
     pkgTitle: 'monthly content packages for brands',
     pkgSub: 'Prices are public. So you know before we talk.',
-    bookTitle: "we're on the move, let's talk!",
+    bookTitle: "we are moving north, *let's talk!*",
     bookSub: 'We will tell you which window on the route we can hold for you, and what it costs.',
     footer: 'Soul, a traveling film studio',
     scroll: 'scroll', view: 'view',
@@ -308,27 +338,29 @@ const COPY = {
       { title: 'in the heart of salta', place: 'salta, ar' }
     ],
     packages: [
-      { name: 'content bank', price: '$1,500 / month', badge: '',
+      { name: 'content bank', pre: '', amt: '$1,500', suf: '/ month', badge: '',
         items: ['30 edited photographs every month', '2 new locations on the route every month', 'up to three products, one unified look'],
         note: 'Something no fixed studio can hand you.' },
-      { name: 'cinematic', price: 'from $3,500 / month', badge: 'best option',
+      { name: 'cinematic', pre: 'from', amt: '$3,000', suf: '/ month', badge: 'best option',
         items: ['everything in content bank', '+ 5 raw clips for your own team to cut,', 'or 2 finished 15s vertical videos'],
-        note: '' },
-      { name: 'hero film', price: 'from $4,000 / project', badge: '',
+        note: 'The solution for your content team overload' },
+      { name: 'hero film', pre: 'from', amt: '$4,000', suf: '/ project', badge: '',
         items: ['a mini documentary or a campaign built on deep storytelling', 'one long film + 3 short cuts', 'dedicated art direction', 'negotiable locations'],
         note: 'The piece that carries a launch.' }
     ]
   },
   PT: {
     navWork: 'trabalhos', navPackages: 'pacotes', navBook: 'agendar call', navWhere: 'onde estamos',
-    heroTitle: 'já estamos lá.',
+    heroTitle: '*já* estamos lá.',
     heroSub: 'Campanhas de marca e conteúdo social gravados em lugares onde outros estúdios precisariam levar uma equipe inteira de avião.',
     ctaWork: 'trabalhe conosco', ctaWhere: 'veja onde estamos', ctaBook: 'agendar call',
-    photoPending: 'foto pendente',
-    updatedOn: (d) => `atualizado em ${d}`,
     caption: 'still da rota',
+    photoPending: 'foto pendente',
+    creditsLabel: 'imagens de referência da rota',
+    creditsNote: 'As fotografias do painel da rota são referências de locação vindas do Wikimedia Commons, não são fotos da Soul. Autor e licença de cada uma abaixo, com link para a origem.',
+    photoBy: (a) => `foto de ${a}`,
     marquee: 'agora no continente americano  ·  conteúdo gravado como cinema  ·  ',
-    workTitle: 'trabalhos selecionados, e o que foi preciso para chegar lá',
+    workTitle: 'trabalhos selecionados, e *o que foi preciso para chegar lá*',
     openCase: 'abrir case →', learnMore: 'saiba mais →',
     slgMeta: 'o projeto documental do instagram',
     mapLoading: 'carregando a rota', whereLabel: 'onde estamos', whereTitle: 'da patagônia ao alasca',
@@ -336,7 +368,7 @@ const COPY = {
     seeCase: 'ver o case →',
     pkgTitle: 'pacotes mensais de conteúdo para marcas',
     pkgSub: 'Os preços são públicos. Para você saber antes da conversa.',
-    bookTitle: 'estamos em movimento, vamos conversar!',
+    bookTitle: 'estamos indo para o norte, *vamos conversar!*',
     bookSub: 'Vamos dizer qual janela da rota podemos reservar para você, e quanto custa.',
     footer: 'Soul, um estúdio de cinema itinerante',
     scroll: 'role', view: 'ver',
@@ -348,27 +380,29 @@ const COPY = {
       { title: 'no coração de salta', place: 'salta, ar' }
     ],
     packages: [
-      { name: 'banco de conteúdo', price: 'US$ 1.500 / mês', badge: '',
+      { name: 'banco de conteúdo', pre: '', amt: 'US$ 1.500', suf: '/ mês', badge: '',
         items: ['30 fotografias editadas por mês', '2 novos lugares da rota por mês', 'até três produtos, um visual único'],
         note: 'Algo que nenhum estúdio fixo entrega.' },
-      { name: 'cinematográfico', price: 'a partir de US$ 3.500 / mês', badge: 'melhor opção',
+      { name: 'cinematográfico', pre: 'a partir de', amt: 'US$ 3.000', suf: '/ mês', badge: 'melhor opção',
         items: ['tudo do banco de conteúdo', '+ 5 clipes brutos para seu time editar,', 'ou 2 vídeos verticais de 15s finalizados'],
-        note: '' },
-      { name: 'filme hero', price: 'a partir de US$ 4.000 / projeto', badge: '',
+        note: 'A solução para a sobrecarga do seu time de conteúdo' },
+      { name: 'filme hero', pre: 'a partir de', amt: 'US$ 4.000', suf: '/ projeto', badge: '',
         items: ['um minidocumentário ou uma campanha construída sobre narrativa profunda', 'um filme longo + 3 cortes curtos', 'direção de arte dedicada', 'locações negociáveis'],
         note: 'A peça que sustenta um lançamento.' }
     ]
   },
   ES: {
     navWork: 'trabajos', navPackages: 'paquetes', navBook: 'agendar llamada', navWhere: 'dónde estamos',
-    heroTitle: 'ya estamos ahí.',
+    heroTitle: '*ya* estamos ahí.',
     heroSub: 'Campañas de marca y contenido social filmados en lugares a los que otros estudios tendrían que volar con un equipo entero.',
     ctaWork: 'trabajá con nosotros', ctaWhere: 'mirá dónde estamos', ctaBook: 'agendar llamada',
-    photoPending: 'foto pendiente',
-    updatedOn: (d) => `actualizado ${d}`,
     caption: 'still de la ruta',
+    photoPending: 'foto pendiente',
+    creditsLabel: 'imágenes de referencia de la ruta',
+    creditsNote: 'Las fotografías del panel de la ruta son referencias de locación de Wikimedia Commons, no son fotos de Soul. Autor y licencia de cada una abajo, con enlace al origen.',
+    photoBy: (a) => `foto de ${a}`,
     marquee: 'ahora en el continente americano  ·  contenido filmado como cine  ·  ',
-    workTitle: 'trabajos seleccionados, y lo que costó llegar hasta ahí',
+    workTitle: 'trabajos seleccionados, y *lo que costó llegar hasta ahí*',
     openCase: 'abrir caso →', learnMore: 'ver más →',
     slgMeta: 'el proyecto documental de instagram',
     mapLoading: 'cargando la ruta', whereLabel: 'dónde estamos', whereTitle: 'de la patagonia a alaska',
@@ -376,7 +410,7 @@ const COPY = {
     seeCase: 'ver el caso →',
     pkgTitle: 'paquetes mensuales de contenido para marcas',
     pkgSub: 'Los precios son públicos. Para que sepas antes de hablar.',
-    bookTitle: 'estamos en movimiento, ¡hablemos!',
+    bookTitle: 'vamos hacia el norte, *¡hablemos!*',
     bookSub: 'Te decimos qué ventana de la ruta podemos reservarte, y cuánto cuesta.',
     footer: 'Soul, un estudio de cine itinerante',
     scroll: 'scroll', view: 'ver',
@@ -388,13 +422,13 @@ const COPY = {
       { title: 'en el corazón de salta', place: 'salta, ar' }
     ],
     packages: [
-      { name: 'banco de contenido', price: 'US$ 1.500 / mes', badge: '',
+      { name: 'banco de contenido', pre: '', amt: 'US$ 1.500', suf: '/ mes', badge: '',
         items: ['30 fotografías editadas por mes', '2 lugares nuevos de la ruta por mes', 'hasta tres productos, una sola estética'],
         note: 'Algo que ningún estudio fijo puede darte.' },
-      { name: 'cinematográfico', price: 'desde US$ 3.500 / mes', badge: 'mejor opción',
+      { name: 'cinematográfico', pre: 'desde', amt: 'US$ 3.000', suf: '/ mes', badge: 'mejor opción',
         items: ['todo lo del banco de contenido', '+ 5 clips en bruto para que los edite tu equipo,', 'o 2 videos verticales de 15s terminados'],
-        note: '' },
-      { name: 'film hero', price: 'desde US$ 4.000 / proyecto', badge: '',
+        note: 'La solución para la sobrecarga de tu equipo de contenido' },
+      { name: 'film hero', pre: 'desde', amt: 'US$ 4.000', suf: '/ proyecto', badge: '',
         items: ['un minidocumental o una campaña construida sobre narrativa profunda', 'un film largo + 3 cortes cortos', 'dirección de arte dedicada', 'locaciones negociables'],
         note: 'La pieza que sostiene un lanzamiento.' }
     ]
@@ -403,7 +437,7 @@ const COPY = {
 
 const ABOUT = {
   EN: {
-    title: 'who we are',
+    title: 'who *we* are',
     body: [
       'We are Thainá and Marcelo. Before any of this we had regular remote jobs: Thainá fifteen years inside design and international marketing teams, managing creative people and projects; Marcelo running a production company in Australia, then years in sales and client relationships. We were good at it, and we still spent a long time quietly wanting a life with more world in it.',
       'At some point wanting stopped being enough. We put our sausage dog Canela into a Ford Bronco and started driving south, all the way to the end of the continent, with no clear idea of what would happen in between.',
@@ -412,7 +446,7 @@ const ABOUT = {
     ]
   },
   PT: {
-    title: 'quem somos',
+    title: 'quem *somos*',
     body: [
       'Somos a Thainá e o Marcelo. Antes de tudo isso tínhamos empregos remotos comuns: a Thainá quinze anos dentro de times de design e marketing internacional, gerindo pessoas e projetos criativos; o Marcelo com produtora própria na Austrália e depois anos em vendas e relacionamento. Éramos bons nisso, e ainda assim passamos muito tempo querendo caladamente uma vida com mais mundo dentro.',
       'Em algum momento querer parou de bastar. Colocamos a Canela, nossa salsicha, dentro de um Ford Bronco e começamos a dirigir para o sul, até o fim do continente, sem nenhuma ideia clara do que viria no meio.',
@@ -421,7 +455,7 @@ const ABOUT = {
     ]
   },
   ES: {
-    title: 'quiénes somos',
+    title: 'quiénes *somos*',
     body: [
       'Somos Thainá y Marcelo. Antes de todo esto teníamos trabajos remotos comunes: Thainá quince años dentro de equipos de diseño y marketing internacional, gestionando personas y proyectos creativos; Marcelo con productora propia en Australia y después años en ventas y relacionamiento. Éramos buenos en eso, y aun así pasamos mucho tiempo deseando en silencio una vida con más mundo adentro.',
       'En algún momento desear dejó de alcanzar. Metimos a Canela, nuestra salchicha, dentro de una Ford Bronco y empezamos a manejar hacia el sur, hasta el fin del continente, sin ninguna idea clara de lo que pasaría en el medio.',
@@ -432,14 +466,14 @@ const ABOUT = {
 };
 // capas: pending true = ainda no placeholder do prototipo, listado em FOTOS_PENDENTES.md
 const CASE_COVERS = [
-  { img: 'fotos/capa-buffalo.jpg', pending: false },
-  { img: 'fotos/capa-knafs.jpg', pending: false },
+  { img: 'assets/capa-buffalo.webp', pending: false },
+  { img: 'assets/capa-knafs.webp', pending: false },
   { img: 'https://picsum.photos/seed/soul-salta/1600/700', pending: true }
 ];
 const PKG_COVERS = [
-  { img: 'fotos/capa-pacote-1.jpg', pending: false },
-  { img: 'fotos/capa-pacote-2.jpg', pending: false },
-  { img: 'fotos/capa-pacote-3.jpg', pending: false }
+  { img: 'assets/capa-pacote-1.webp', pending: false },
+  { img: 'assets/capa-pacote-2.webp', pending: false },
+  { img: 'assets/capa-pacote-3.webp', pending: false }
 ];
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -447,14 +481,14 @@ const fmt = iso => { const d = new Date(iso + 'T00:00:00'); return `${MONTHS[d.g
 
 const REFS = ['root', 'loader', 'loaderStack', 'loaderBand', 'counter', 'prompt', 'cursor', 'nav', 'menu',
   'heroMedia', 'heroCaption', 'heroText', 'heroBar', 'introSpacer', 'workSec', 'whereSec', 'mapWrap', 'map',
-  'mapTitle', 'mapPanel', 'mapFallback', 'poiCard', 'poiName', 'poiMeta', 'poiCta', 'wordmark', 'brand', 'headerBg'];
+  'mapTitle', 'mapPanel', 'mapFallback', 'poiCard', 'poiName', 'poiMeta', 'poiCta', 'poiPhotos', 'wordmark', 'brand', 'headerBg'];
 
 class Component extends DCLogic {
   state = { count: 0, lang: (() => {
     try { const s = localStorage.getItem('soul-lang'); if (s && COPY[s]) return s; } catch (e) {}
     try { const n = (navigator.language || 'en').slice(0, 2).toLowerCase(); if (n === 'pt') return 'PT'; if (n === 'es') return 'ES'; } catch (e) {}
     return 'EN';
-  })(), langOpen: false, regions: [], current: null, updatedAt: null };
+  })(), langOpen: false, regions: [] };
 
   constructor(p) {
     super(p);
@@ -561,10 +595,23 @@ class Component extends DCLogic {
       this.pos.y += (this.mouse.y - this.pos.y) * 0.16;
       const tag = this.cursorRef.current;
       if (tag) tag.style.transform = `translate(${this.pos.x + 14}px, ${this.pos.y + 16}px)`;
-      this.applyScroll();
+      const sy = window.scrollY || window.pageYOffset || 0;
+      const dirty = sy !== this._lastY || window.innerHeight !== this._lastVH || window.innerWidth !== this._lastVW;
+      if (dirty) { this._lastY = sy; this._lastVH = window.innerHeight; this._lastVW = window.innerWidth; this._settle = 6; }
+      if (dirty || this._settle > 0) { if (!dirty) this._settle--; this.applyScroll(); }
       this.raf = requestAnimationFrame(loop);
     };
     loop();
+  }
+
+  _q(sel) {
+    this._qc = this._qc || {};
+    const now = Date.now();
+    const hit = this._qc[sel];
+    if (hit && now - hit.t < 900) return hit.v;
+    const v = (this.rootRef.current || document).querySelectorAll(sel);
+    this._qc[sel] = { v, t: now };
+    return v;
   }
 
   applyScroll() {
@@ -578,8 +625,7 @@ class Component extends DCLogic {
     let mode = 'scroll';
     if (where) {
       const r = where.getBoundingClientRect();
-      if (r.bottom <= vh * 0.5) mode = 'off';
-      else if (r.top < vh * 0.6) mode = 'scroll';
+      if (r.top < vh * 0.92) mode = 'off';
       else if (work) {
         const w = work.getBoundingClientRect();
         if (w.top < vh * 0.75 && w.bottom > 0) mode = 'view';
@@ -632,6 +678,13 @@ class Component extends DCLogic {
       const half = (vw * 0.5) * open;
       band.style.left = `${vw / 2 - half}px`;
       band.style.right = `${vw / 2 - half}px`;
+      const br = band.getBoundingClientRect();
+      band.querySelectorAll('[data-bandlayer="1"]').forEach(l => {
+        l.style.left = (hr.left !== undefined ? hr.left : 0) - br.left + 'px';
+        l.style.top = 64 - br.top + 'px';
+        l.style.width = vw + 'px';
+        l.style.height = (vh - 160) + 'px';
+      });
     }
     const cnt = this.counterRef.current;
     if (cnt && this.loaded) cnt.style.opacity = '0';
@@ -661,18 +714,25 @@ class Component extends DCLogic {
     if (hbg) hbg.style.opacity = navOp;
     const cap = this.heroCaptionRef.current;
     if (cap) cap.style.opacity = String(range(p, 0.74, 0.98) * (1 - outro));
-    if (hero) hero.style.transform = `scale(${1 + range(p, 0.6, 1) * 0.06 + outro * 0.1})`;
+    const heroT = `scale(${1 + range(p, 0.6, 1) * 0.06 + outro * 0.1})`;
+    if (hero) hero.style.transform = heroT;
+    const bandPhoto = document.querySelector('[data-bandphoto="1"]');
+    if (bandPhoto) bandPhoto.style.transform = heroT;
 
-    const atEnd = (window.scrollY || window.pageYOffset || 0) >= (document.documentElement.scrollHeight - window.innerHeight - 4);
-    const nodes = (this.rootRef.current || document).querySelectorAll('[data-scrub]');
+    const sy = window.scrollY || window.pageYOffset || 0;
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const atEnd = sy >= maxScroll - 4;
+    const nodes = this._q('[data-scrub]');
     this._peaks = this._peaks || [];
     for (let ni = 0; ni < nodes.length; ni++) {
       const el = nodes[ni];
       const r = el.getBoundingClientRect();
       if (r.bottom < -vh || r.top > vh * 1.6) continue;
-      let t2 = ease(clamp((vh - r.top) / (vh * 0.78), 0, 1));
+      const reach = vh - (r.top + sy - maxScroll);
+      const denom = Math.max(140, Math.min(vh * 0.78, reach));
+      let t2 = ease(clamp((vh - r.top) / denom, 0, 1));
       if (atEnd) t2 = 1;
-      if (t2 < (this._peaks[ni] || 0)) t2 = this._peaks[ni]; else this._peaks[ni] = t2;
+      if (t2 < (el._peak || 0)) t2 = el._peak; else el._peak = t2;
       const kind = el.dataset.scrub;
       if (kind === 'clip') {
         el.style.clipPath = `inset(0 ${(1 - t2) * 50}% 0 ${(1 - t2) * 50}%)`;
@@ -687,25 +747,25 @@ class Component extends DCLogic {
       }
     }
 
-    const counttoNodes = (this.rootRef.current || document).querySelectorAll('[data-countto]');
+    const counttoNodes = this._q('[data-countto]');
     this._counttoPeaks = this._counttoPeaks || [];
     for (let ci = 0; ci < counttoNodes.length; ci++) {
       const el = counttoNodes[ci];
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh * 1.3) continue;
       let t2 = ease(clamp((vh * 0.95 - r.top) / (vh * 0.55), 0, 1));
-      if (t2 < (this._counttoPeaks[ci] || 0)) t2 = this._counttoPeaks[ci]; else this._counttoPeaks[ci] = t2;
+      if (t2 < (el._peak || 0)) t2 = el._peak; else el._peak = t2;
       const target = parseFloat(el.dataset.countto) || 0;
       el.textContent = this.fmtNum(target * t2, el.dataset.unit);
     }
-    const barNodes = (this.rootRef.current || document).querySelectorAll('[data-bar]');
+    const barNodes = this._q('[data-bar]');
     this._barPeaks = this._barPeaks || [];
     for (let ci = 0; ci < barNodes.length; ci++) {
       const el = barNodes[ci];
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh * 1.3) continue;
       let t2 = ease(clamp((vh * 0.9 - r.top) / (vh * 0.5), 0, 1));
-      if (t2 < (this._barPeaks[ci] || 0)) t2 = this._barPeaks[ci]; else this._barPeaks[ci] = t2;
+      if (t2 < (el._peak || 0)) t2 = el._peak; else el._peak = t2;
       el.style.width = (parseFloat(el.dataset.bar) || 0) * t2 * 100 + '%';
     }
 
@@ -714,26 +774,24 @@ class Component extends DCLogic {
       const r = sec.getBoundingClientRect();
       const prog = clamp((-r.top + vh * 0.7) / Math.max(1, r.height - vh * 0.3), 0, 1);
       const c = ease(clamp(prog / 0.45, 0, 1));
-      mw.style.clipPath = `inset(${42 * (1 - c)}% ${36 * (1 - c)}% ${42 * (1 - c)}% ${36 * (1 - c)}%)`;
+      const iv = 42 * (1 - c), ih = 36 * (1 - c);
+      const clip = `inset(${iv.toFixed(2)}% ${ih.toFixed(2)}% ${iv.toFixed(2)}% ${ih.toFixed(2)}%)`;
+      if (clip !== this._clip) { this._clip = clip; mw.style.clipPath = clip; }
+      this._clipInset = { v: iv / 100, h: ih / 100 };
+      if (this._shownRegion) { const cur = (this.state.regions || []).find(x => x.id === this._shownRegion); if (cur) this.placeRegionCard(cur); }
       const frame = ease(clamp((prog - 0.48) / 0.32, 0, 1));
       const narrow = window.innerWidth < 900;
       const pad = narrow ? 14 : 28;
       mw.style.top = `${frame * (narrow ? 66 : 84)}px`;
       mw.style.right = `${frame * pad}px`;
       mw.style.left = `${frame * (narrow ? pad : pad + 372 + 18)}px`;
-      const mpEl = this.mapPanelRef.current;
-      const panelH = mpEl ? mpEl.getBoundingClientRect().height : 0;
+      let panelH = 0;
+      if (narrow) {
+        const mpEl = this.mapPanelRef.current;
+        panelH = mpEl ? mpEl.offsetHeight : 0;
+      }
       mw.style.bottom = `${frame * (narrow ? panelH + 10 : pad)}px`;
       mw.style.borderWidth = frame > 0.5 ? '1px' : '0px';
-      const mel = this.mapRef.current;
-      if (this._map && mel && mel.clientWidth > 0) {
-        const k = mel.clientWidth + 'x' + mel.clientHeight;
-        if (k !== this._mapSize) {
-          this._mapSize = k;
-          this._map.resize();
-          this._map.jumpTo({ center: this._map.getCenter() });
-        }
-      }
       const mt = this.mapTitleRef.current;
       if (mt) { mt.style.opacity = String(clamp(1 - prog / 0.34, 0, 1)); mt.style.transform = `translateY(${-c * 90}px)`; }
       const mp = this.mapPanelRef.current;
@@ -763,6 +821,37 @@ class Component extends DCLogic {
     return String(Math.round(v));
   }
 
+  stripBinder(id) {
+    this._strips = this._strips || {};
+    if (!this._strips[id]) this._strips[id] = el => {
+      if (!el || el._bound) return;
+      el._bound = true;
+      el.addEventListener('wheel', e => {
+        const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        const max = el.scrollWidth - el.clientWidth;
+        if (max <= 0) return;
+        const next = Math.min(max, Math.max(0, el.scrollLeft + d));
+        if (next !== el.scrollLeft) { el.scrollLeft = next; e.preventDefault(); e.stopPropagation(); }
+      }, { passive: false });
+      let down = false, sx = 0, sl = 0, moved = 0, cap = false, pid = null;
+      el.addEventListener('pointerdown', e => { down = true; moved = 0; cap = false; pid = e.pointerId; sx = e.clientX; sl = el.scrollLeft; });
+      el.addEventListener('pointermove', e => {
+        if (!down) return;
+        const dx = e.clientX - sx;
+        moved = Math.max(moved, Math.abs(dx));
+        if (moved < 6) return;
+        if (!cap) { cap = true; try { el.setPointerCapture(pid); } catch (err) {} }
+        el.scrollLeft = sl - dx;
+        e.preventDefault();
+      });
+      const up = () => { down = false; if (cap) { try { el.releasePointerCapture(pid); } catch (err) {} } };
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+      el.addEventListener('click', e => { if (moved >= 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+    };
+    return this._strips[id];
+  }
+
   showRegion(r) {
     const card = this.poiCardRef.current, wrap = this.mapWrapRef.current, map = this._map;
     if (!card || !wrap || !map) return;
@@ -784,15 +873,49 @@ class Component extends DCLogic {
         meta.appendChild(link);
       }
     }
+    const ph = this.poiPhotosRef.current;
+    if (ph) {
+      const ps = r.photos || [];
+      if (!ps.length) { ph.innerHTML = ''; ph.style.display = 'none'; }
+      else {
+        ph.style.display = 'block';
+        const hero = ps[0];
+        const rest = ps.slice(1, 4);
+        const gm = p => p.url || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name));
+        ph.innerHTML =
+          '<a href="' + gm(hero) + '" target="_blank" rel="noopener noreferrer" style="position:relative;display:block;height:104px;overflow:hidden;background:#241A08 url(' + hero.img + ') center/cover no-repeat;filter:saturate(.66) contrast(1.05) sepia(.18)">' +
+            '<span style="position:absolute;left:0;bottom:0;right:0;padding:14px 10px 6px;background:linear-gradient(180deg,rgba(22,16,3,0),rgba(22,16,3,.85));font-family:Poppins,sans-serif;font-size:10px;letter-spacing:.06em;color:#FFF6E5">' + hero.name +
+              (hero.author ? '<span style="display:block;font-size:8.5px;letter-spacing:.02em;color:rgba(255,246,229,.6)">' + hero.author + (hero.license ? ' · ' + hero.license : '') + '</span>' : '') +
+            '</span>' +
+          '</a>' +
+          (rest.length ? '<span style="display:flex;gap:2px;margin-top:2px">' + rest.map(p =>
+            '<a href="' + gm(p) + '" target="_blank" rel="noopener noreferrer" title="' + p.name + '" style="flex:1;height:38px;background:#241A08 url(' + p.img + ') center/cover no-repeat;filter:saturate(.6) contrast(1.05) sepia(.2);display:block"></a>'
+          ).join('') + '</span>' : '');
+      }
+    }
     const cta = this.poiCtaRef.current;
     if (cta) cta.style.display = (r.status === 'closing' || r.status === 'open') ? 'block' : 'none';
-    const pt = map.project([r.anchor.lng, r.anchor.lat]);
-    const h = card.offsetHeight || 110;
-    const x = clamp(pt.x - 103, 10, Math.max(10, wrap.clientWidth - 216));
-    const y = clamp(pt.y - h - 20, 10, Math.max(10, wrap.clientHeight - h - 10));
-    card.style.transform = `translate(${x}px, ${y}px)`;
+    this._shownAnchor = r.anchor;
+    this.placeRegionCard(r);
     card.style.opacity = '1';
     card.style.pointerEvents = 'auto';
+  }
+
+  placeRegionCard(r) {
+    const card = this.poiCardRef.current, wrap = this.mapWrapRef.current, map = this._map;
+    const anchor = (r && r.anchor) || this._shownAnchor;
+    if (!card || !wrap || !map || !anchor) return;
+    const pt = map.project([anchor.lng, anchor.lat]);
+    const h = card.offsetHeight || 110;
+    const W = wrap.clientWidth, H = wrap.clientHeight;
+    const ci = this._clipInset || { v: 0, h: 0 };
+    const top = H * ci.v + 8, bottom = H * (1 - ci.v) - 8;
+    const left = W * ci.h + 8, right = W * (1 - ci.h) - 8;
+    const x = clamp(pt.x - 103, left, Math.max(left, right - 206));
+    let y = pt.y - h - 20;
+    if (y < top) y = Math.min(pt.y + 18, bottom - h);
+    y = clamp(y, top, Math.max(top, bottom - h));
+    card.style.transform = `translate(${x}px, ${y}px)`;
   }
 
   hideRegion = () => {
@@ -806,7 +929,7 @@ class Component extends DCLogic {
       .then(r => r.ok ? r.json() : null)
       .then(j => {
         if (!j || !Array.isArray(j.regions)) return;
-        this.setState({ regions: j.regions, current: j.current || null, updatedAt: j.updated_at || null }, () => { this._painted = false; this.paintRegions(); });
+        this.setState({ regions: j.regions }, () => { this._painted = false; this.paintRegions(); });
       })
       .catch(() => {});
   }
@@ -832,16 +955,27 @@ class Component extends DCLogic {
       return (v === undefined || v === null) ? (r[key + '_en'] || '') : v;
     };
     const d = r.days;
+    const low = v => String(v == null ? '' : v).toLocaleLowerCase();
+    const by = this.t().photoBy;
     return {
       id: r.id,
       status: r.status,
       anchor: r.anchor,
-      name: pick('name'),
+      name: low(pick('name')),
       window: pick('window_label'),
       season: pick('season_note'),
       slots: (typeof r.slots === 'number' && r.slots > 0) ? this.t().slotsOpen(r.slots) : '',
       countdown: (r.status === 'closing' && typeof d === 'number' && d >= 0) ? this.t().closesIn(d) : '',
-      caseUrl: r.case_url || ''
+      caseUrl: r.case_url || '',
+      photos: (Array.isArray(r.photos) ? r.photos : []).map(p => ({
+        name: low(p.name),
+        img: p.img,
+        author: p.author || '',
+        license: p.license || '',
+        source: p.source || '',
+        credit: p.author ? `${p.name} · ${by(p.author)}${p.license ? ' (' + p.license + ')' : ''}` : p.name,
+        url: p.url || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name))
+      }))
     };
   }
 
@@ -857,21 +991,6 @@ class Component extends DCLogic {
     const fb = this.mapFallbackRef.current;
     if (fb) fb.style.display = 'none';
 
-    const coords = view.list.map(r => [r.anchor.lng, r.anchor.lat]);
-    let split = view.list.findIndex(r => r.id === view.glowId);
-    if (split < 0) split = 0;
-    const setLine = (id, cs, dashed) => {
-      const data = { type: 'Feature', geometry: { type: 'LineString', coordinates: cs.length > 1 ? cs : [] } };
-      if (map.getSource(id)) { map.getSource(id).setData(data); return; }
-      map.addSource(id, { type: 'geojson', data });
-      const paint = { 'line-color': '#FFF6E5', 'line-width': 1.4, 'line-opacity': dashed ? .3 : .6 };
-      if (dashed) paint['line-dasharray'] = [1.4, 2.6];
-      map.addLayer({ id: id + '-line', type: 'line', source: id, layout: { 'line-cap': dashed ? 'butt' : 'round', 'line-join': 'round' }, paint });
-    };
-    try {
-      setLine('route-past', coords.slice(0, split + 1), false);
-      setLine('route-future', coords.slice(split), true);
-    } catch (e) {}
 
     (this._markers || []).forEach(m => { try { m[0].remove(); } catch (e) {} });
     this._markers = [];
@@ -881,27 +1000,34 @@ class Component extends DCLogic {
       el.style.cssText = 'display:flex;align-items:center;gap:7px;padding:6px 4px;margin:-6px -4px;cursor:pointer';
       const glow = r.id === view.glowId;
       let dot = '';
-      const shadow = glow ? ';box-shadow:0 0 10px rgba(255,246,229,.95),0 0 22px rgba(255,246,229,.5)' : '';
+      const accent = glow ? '#A9482B' : '#FFF6E5';
+      const ring = glow ? '169,72,43' : '255,246,229';
+      const shadow = glow ? ';box-shadow:0 0 12px rgba(214,96,54,1),0 0 30px rgba(169,72,43,.8),0 0 56px rgba(169,72,43,.45);animation:beat 1.8s ease-in-out infinite' : '';
       const radar = (reach, strength, rings) => {
         const waves = [];
         for (let i = 0; i < rings; i++) {
-          waves.push(`<span style="position:absolute;left:50%;top:50%;width:${reach}px;height:${reach}px;margin:${-reach / 2}px 0 0 ${-reach / 2}px;border-radius:50%;border:1px solid rgba(255,246,229,${strength});animation:radar 4.2s ease-out ${(i * 4.2 / rings).toFixed(2)}s infinite;display:block"></span>`);
+          waves.push(`<span style="position:absolute;left:50%;top:50%;width:${reach}px;height:${reach}px;margin:${-reach / 2}px 0 0 ${-reach / 2}px;border-radius:50%;border:1px solid rgba(${ring},${strength});animation:radar 4.2s ease-out ${(i * 4.2 / rings).toFixed(2)}s infinite;display:block"></span>`);
         }
         return `<span style="position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none;display:block">${waves.join('')}</span>`;
       };
       const wrap = (inner, reach, strength, rings) => `<span style="position:relative;display:block;flex:none">${radar(reach, strength, rings)}${inner}</span>`;
-      if (r.status === 'closing') dot = wrap(`<span style="position:relative;width:13px;height:13px;border-radius:50%;background:#FFF6E5;display:block${shadow}"></span>`, 128, .85, 3);
-      else if (r.status === 'open') dot = wrap(`<span style="position:relative;width:10px;height:10px;border-radius:50%;background:#FFF6E5;display:block${shadow}"></span>`, 104, .5, 2);
+      if (r.status === 'closing') dot = wrap(`<span style="position:relative;width:14px;height:14px;border-radius:50%;background:#D66036;display:block${shadow}"></span>`, 120, .85, 1);
+      else if (r.status === 'open') dot = `<span style="width:10px;height:10px;border-radius:50%;background:${accent};display:block;flex:none${shadow}"></span>`;
       else if (r.status === 'filmed') dot = `<span style="width:10px;height:10px;border-radius:50%;background:rgba(255,246,229,.7);display:block;flex:none"></span>`;
-      else if (r.status === 'next') dot = wrap(`<span style="position:relative;width:10px;height:10px;border-radius:50%;border:1px solid #FFF6E5;display:block"></span>`, 88, .28, 2);
+      else if (r.status === 'next') dot = wrap(`<span style="position:relative;width:10px;height:10px;border-radius:50%;border:1px solid #FFF6E5;display:block"></span>`, 88, .28, 1);
       const isRoute = r.status === 'route';
-      if (isRoute) dot = narrow ? `<span style="width:5px;height:5px;border-radius:50%;background:rgba(255,246,229,.4);display:block;flex:none"></span>` : '';
+      if (isRoute) dot = `<span style="width:6px;height:6px;border-radius:50%;background:rgba(255,246,229,.6);display:block;flex:none"></span>`;
       const op = isRoute ? '.4' : '.85';
       const card = this.regionCard(r);
       const hidden = narrow && isRoute;
-      el.innerHTML = dot + `<span data-region-label="1" style="font-family:Poppins,-apple-system,sans-serif;font-weight:400;font-size:11px;letter-spacing:.02em;color:#FFF6E5;opacity:${op};white-space:nowrap;text-shadow:0 1px 6px rgba(22,16,3,.9);display:${hidden ? 'none' : 'inline'}">${card.name}</span>`;
+      const dy = typeof r.label_dy === 'number' ? r.label_dy : 0;
+      el.innerHTML = dot + `<span data-region-label="1" style="font-family:Poppins,-apple-system,sans-serif;font-weight:400;font-size:11px;letter-spacing:.02em;color:#FFF6E5;opacity:${op};white-space:nowrap;position:relative;top:${dy}px;text-shadow:0 1px 6px rgba(22,16,3,.9);display:${hidden ? 'none' : 'inline'}">${card.name}</span>`;
       el.setAttribute('data-region-marker', '1');
       if (isRoute) {
+        if (card.photos && card.photos.length) {
+          el.addEventListener('mouseenter', () => this.showRegion(card));
+          el.addEventListener('mouseleave', this.hideRegion);
+        }
         el.addEventListener('click', e => {
           e.stopPropagation();
           this.hideRegion();
@@ -914,12 +1040,11 @@ class Component extends DCLogic {
         el.addEventListener('mouseleave', this.hideRegion);
         el.addEventListener('click', e => { e.stopPropagation(); this.showRegion(card); });
       }
-      const mk = new maplibregl.Marker({ element: el, anchor: 'left' }).setLngLat([r.anchor.lng, r.anchor.lat]).addTo(map);
+      const leftSide = r.label_side === 'left';
+      if (leftSide) el.style.flexDirection = 'row-reverse';
+      const mk = new maplibregl.Marker({ element: el, anchor: leftSide ? 'right' : 'left' }).setLngLat([r.anchor.lng, r.anchor.lat]).addTo(map);
       this._markers.push([mk, [r.anchor.lng, r.anchor.lat]]);
     });
-    const reseat = () => this._markers.forEach(m => m[0].setLngLat(m[1]));
-    ['move', 'zoom', 'resize', 'moveend', 'zoomend'].forEach(ev => map.on(ev, reseat));
-    reseat();
     if (!this._outsideBound) {
       this._outsideBound = true;
       this._onOutside = e => {
@@ -959,11 +1084,17 @@ class Component extends DCLogic {
       if (!window.maplibregl || this._map || !this.mapRef.current) return;
       const map = new maplibregl.Map({
         container: this.mapRef.current,
-        style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+        style: 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json',
+        antialias: false, fadeDuration: 0, refreshExpiredTiles: false,
 
         center: [-84, 3], zoom: 1.6, pitch: 0, bearing: 0,
         renderWorldCopies: false, minZoom: 1.2, maxZoom: 13,
-        attributionControl: { compact: true }
+        // exigencia de licenca da CARTO e do OpenStreetMap. o style.json da carto nao
+        // traz o campo attribution, entao o credito precisa ser declarado aqui. nao remover.
+        attributionControl: {
+          compact: true,
+          customAttribution: '&copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
+        }
       });
       this._map = map;
       window.__soulmap = map;
@@ -1005,7 +1136,7 @@ class Component extends DCLogic {
     };
     if (window.maplibregl) return boot();
     const s = document.createElement('script');
-    s.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js';
     s.async = true;
     s.onload = boot;
     s.onerror = () => { const fb = this.mapFallbackRef.current; if (fb) fb.textContent = 'map unavailable offline'; };
@@ -1024,12 +1155,41 @@ class Component extends DCLogic {
     });
   };
 
+  split3(str) {
+    const p = String(str == null ? '' : str).split('*');
+    return p.length >= 3 ? { a: p[0], em: p[1], b: p.slice(2).join('') } : { a: str, em: '', b: '' };
+  }
+  focusRegion(r, c) {
+    const map = this._map;
+    if (map) {
+      const narrow = window.innerWidth < 760;
+      const pad = narrow ? { top: 60, bottom: 60, left: 40, right: 40 } : { top: 90, bottom: 90, left: 60, right: 200 };
+      try {
+        if (Array.isArray(r.bbox)) {
+          map.fitBounds(new maplibregl.LngLatBounds([r.bbox[0], r.bbox[1]], [r.bbox[2], r.bbox[3]]), { padding: pad, duration: 1100 });
+        } else if (r.anchor) {
+          map.flyTo({ center: [r.anchor.lng, r.anchor.lat], zoom: 5.6, duration: 1100 });
+        }
+      } catch (e) {}
+    }
+    const el = this.mapRef && this.mapRef.current;
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < 0 || rect.bottom > window.innerHeight) {
+        window.scrollBy({ top: rect.top - Math.max(0, (window.innerHeight - rect.height) / 2), behavior: 'smooth' });
+      }
+    }
+    if (c && c.photos && c.photos.length) setTimeout(() => this.showRegion(c), 700);
+  }
+
   renderVals() {
     const refs = {};
     REFS.forEach(k => { refs[k + 'Ref'] = this[k + 'Ref']; });
 
     const rv = this.regionView();
-    const regions = rv.list.map(r => {
+    const cut = rv.list.findIndex(r => r.id === 'central-andes');
+    const listed = (cut >= 0 ? rv.list.slice(0, cut + 1) : rv.list).slice().reverse();
+    const regions = listed.map(r => {
       const c = this.regionCard(r);
       return {
         name: c.name,
@@ -1039,35 +1199,57 @@ class Component extends DCLogic {
         countdown: c.countdown,
         countShow: c.countdown ? 'block' : 'none',
         dim: r.status === 'route' ? 0.45 : 1,
-        enter: () => this.showRegion(c),
-        leave: this.hideRegion
+        nameColor: r.status === 'filmed' ? 'rgba(43,29,8,.4)' : '#2B1D08',
+        photos: c.photos.map(p => ({ name: p.name, title: p.credit, css: `url(${p.img})`, url: p.url, stop: e => e.stopPropagation() })),
+        photosShow: (r.status === 'filmed' || !c.photos.length) ? 'none' : 'flex',
+        pad: r.status === 'filmed' ? '3px 0' : '11px 0',
+        windowShow: r.status === 'filmed' ? 'none' : 'block',
+        smallDotShow: (r.status === 'filmed' || r.status === 'closing') ? 'none' : 'block',
+        smallDotTop: r.status === 'filmed' ? '2px' : '17px',
+        gray: r.status === 'filmed' ? 'grayscale(1) contrast(.95)' : 'saturate(.6) contrast(1.05) sepia(.2)',
+        railBg: r.status === 'closing' ? 'linear-gradient(180deg,#DCCBAE 21px,#A9482B 21px)' : ((r.status === 'filmed') ? '#A9482B' : '#DCCBAE'),
+        dotShow: r.status === 'closing' ? 'block' : 'none',
+        stripRef: this.stripBinder(r.id),
+        enter: r.status === 'filmed' ? null : () => this.showRegion(c),
+        leave: r.status === 'filmed' ? null : this.hideRegion,
+        focus: () => this.focusRegion(r, c)
       };
     });
 
+    const all = rv.list;
+    let ci = all.findIndex(r => r.status === 'closing');
+    if (ci < 0) ci = all.findIndex(r => r.status === 'open');
+    if (ci < 0) { for (let i = 0; i < all.length; i++) if (all[i].status === 'filmed') ci = i; }
+    const trackPct = all.length > 1 ? ((Math.max(ci, 0) / (all.length - 1)) * 100).toFixed(1) + '%' : '0%';
+
     const t = this.t();
-    const lang = (this.state.lang || 'EN').toLowerCase();
-    const cur = this.state.current;
-    const asOf = (cur && cur.as_of) || this.state.updatedAt || null;
     return {
       ...refs, regions, t,
+      trackPct,
+      trackStart: all.length ? this.regionCard(all[0]).name : '',
+      trackNow: ci >= 0 ? this.regionCard(all[ci]).name : '',
+      trackEnd: all.length ? this.regionCard(all[all.length - 1]).name : '',
       count: this.state.count,
       openMenu: this.openMenu,
       closeMenu: this.closeMenu,
       aboutTitle: ABOUT[this.state.lang].title,
+      heroT: this.split3(this.t().heroTitle),
+      workT: this.split3(this.t().workTitle),
+      bookT: this.split3(this.t().bookTitle),
+      aboutT: this.split3(ABOUT[this.state.lang].title),
       aboutBody: ABOUT[this.state.lang].body.map((t, i) => ({ t, i })),
       lang: this.state.lang,
       langOpen: this.state.langOpen ? 'flex' : 'none',
       langChev: this.state.langOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       langs: ['EN', 'PT', 'ES'].map(code => ({
         code,
-        color: code === this.state.lang ? '#FFF6E5' : 'rgba(255,246,229,.55)',
+        color: code === this.state.lang ? '#2B1D08' : 'rgba(43,29,8,.55)',
         pick: () => this.pickLang(code)
       })),
       toggleLang: this.toggleLang,
-      nowPlace: cur ? (cur['place_' + lang] || cur.place_en || '') : '',
-      nowCoords: cur ? (cur.coords_label || '') : '',
-      nowAsOf: asOf ? t.updatedOn(asOf) : '',
-      nowAsOfShow: asOf ? 'inline' : 'none',
+      credits: (this.state.regions || []).flatMap(r => (r.photos || []))
+        .filter(p => p.author && p.source)
+        .map(p => ({ line: `${p.name} · ${p.author} · ${p.license}`, source: p.source })),
       cases: [0, 1, 2].map((i) => ({
         n: ['01', '02', '03'][i],
         href: ['case.html?c=buffalo', 'case.html?c=knafs', 'case.html?c=salta'][i],
@@ -1078,12 +1260,14 @@ class Component extends DCLogic {
       })),
       packages: t.packages.map((p, i) => ({
         name: p.name,
-        price: p.price,
+        pricePre: p.pre,
+        preShow: p.pre ? 'inline' : 'none',
+        priceAmt: p.amt,
+        priceSuf: p.suf,
         badge: p.badge,
         badgeShow: p.badge ? 'block' : 'none',
-        bg: i === 1 ? 'rgba(255,246,229,.22)' : 'rgba(255,246,229,.14)',
+        bg: 'rgba(43,29,8,.07)',
         img: PKG_COVERS[i].img,
-        pendingShow: PKG_COVERS[i].pending ? 'block' : 'none',
         items: p.items,
         note: p.note,
         noteShow: p.note ? 'block' : 'none'
