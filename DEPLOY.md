@@ -32,43 +32,45 @@ essa página, e não derruba conteúdo real nenhum.
 
 ## Passo 1 · GitHub
 
-**Bloqueio atual:** o `origin` está com o placeholder literal `SEU-USUARIO`, que veio do exemplo
-que eu dei na sessão passada e foi colado sem substituir. E não existe credencial nesta máquina:
-sem `gh`, sem chave SSH em `~/.ssh`, sem credential helper, sem token no ambiente.
+### o que já está pronto nesta máquina
+
+- **chave SSH criada**, em `~/.ssh/id_ed25519`, sem senha, com permissões corretas.
+  A privada nunca sai daqui.
+  Fingerprint: `SHA256:USEn2gfxExELp2vxtGN0dDKf9ISURKTXBQziVtBmRI0`
+- **host do GitHub já confiável**, `github.com` gravado em `~/.ssh/known_hosts`
+- **identidade do repositório definida**, `Thainá <contato@soulletsgo.com>`,
+  para o commit do passo 3 não falhar por falta de autor
+- 5 commits prontos, árvore limpa
+
+### o que falta
+
+**1. autorizar a chave.** Copiar a chave pública:
 
 ```bash
-cd /Users/soulletsgo/Documents/SOUL/SITE-SOUL
-
-# 1. apontar para o repositorio de verdade, trocando o dono
-git remote set-url origin git@github.com:DONO-DE-VERDADE/soul-site.git
-git remote -v      # conferir antes de empurrar
-
-# 2. empurrar
-git push -u origin main
-```
-
-Se der `Permission denied (publickey)`, é porque falta chave SSH. Duas saídas:
-
-**a) criar uma chave** (roda no terminal, a chave privada nunca sai da máquina):
-
-```bash
-ssh-keygen -t ed25519 -C "contato@soulletsgo.com" -f ~/.ssh/id_ed25519 -N ""
 cat ~/.ssh/id_ed25519.pub
 ```
 
-Colar o conteúdo em github.com → Settings → SSH and GPG keys → New SSH key. Depois repetir o push.
+Colar em github.com → Settings → SSH and GPG keys → New SSH key. Título livre, tipo
+Authentication key.
 
-**b) usar HTTPS com token**, criando um fine-grained token com acesso de escrita só ao `soul-site`:
+**2. apontar o `origin` para o repositório de verdade.** Hoje está com o placeholder
+literal `SEU-USUARIO`, que veio de um exemplo colado sem substituir:
 
 ```bash
-git remote set-url origin https://github.com/DONO-DE-VERDADE/soul-site.git
-git push -u origin main    # usuario = seu login, senha = o token
+cd /Users/soulletsgo/Documents/SOUL/SITE-SOUL
+git remote set-url origin git@github.com:DONO/soul-site.git
+git remote -v
 ```
 
-O repositório tem 4 commits e o `.gitignore` já mantém fora `FOTOS `, `REFERENCIAS-IMAGENS/`
-e `_arquivo-local/`. Nada pesado sobe.
+**3. conferir e empurrar:**
 
----
+```bash
+ssh -T git@github.com          # esperado: "Hi DONO! You've successfully authenticated"
+git push -u origin main
+```
+
+O `.gitignore` mantém fora `FOTOS `, `REFERENCIAS-IMAGENS/` e `_arquivo-local/`.
+Sobem 3,8 MB, só o que o site precisa.
 
 ## Passo 2 · Cloudflare Pages e domínio
 
