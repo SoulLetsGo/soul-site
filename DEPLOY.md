@@ -30,47 +30,14 @@ essa página, e não derruba conteúdo real nenhum.
 
 ---
 
-## Passo 1 · GitHub
+## Passo 1 · GitHub · CONCLUÍDO em 26 de agosto de 2026
 
-### o que já está pronto nesta máquina
-
-- **chave SSH criada**, em `~/.ssh/id_ed25519`, sem senha, com permissões corretas.
-  A privada nunca sai daqui.
-  Fingerprint: `SHA256:USEn2gfxExELp2vxtGN0dDKf9ISURKTXBQziVtBmRI0`
-- **host do GitHub já confiável**, `github.com` gravado em `~/.ssh/known_hosts`
-- **identidade do repositório definida**, `Thainá <contato@soulletsgo.com>`,
-  para o commit do passo 3 não falhar por falta de autor
-- 5 commits prontos, árvore limpa
-
-### o que falta
-
-**1. autorizar a chave.** Copiar a chave pública:
-
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
-
-Colar em github.com → Settings → SSH and GPG keys → New SSH key. Título livre, tipo
-Authentication key.
-
-**2. apontar o `origin` para o repositório de verdade.** Hoje está com o placeholder
-literal `SEU-USUARIO`, que veio de um exemplo colado sem substituir:
-
-```bash
-cd /Users/soulletsgo/Documents/SOUL/SITE-SOUL
-git remote set-url origin git@github.com:DONO/soul-site.git
-git remote -v
-```
-
-**3. conferir e empurrar:**
-
-```bash
-ssh -T git@github.com          # esperado: "Hi DONO! You've successfully authenticated"
-git push -u origin main
-```
-
-O `.gitignore` mantém fora `FOTOS `, `REFERENCIAS-IMAGENS/` e `_arquivo-local/`.
-Sobem 3,8 MB, só o que o site precisa.
+- chave SSH `ed25519` criada em `~/.ssh`, autorizada na conta **SoulLetsGo**
+  fingerprint `SHA256:USEn2gfxExELp2vxtGN0dDKf9ISURKTXBQziVtBmRI0`
+- `origin` corrigido para `git@github.com:SoulLetsGo/soul-site.git`
+- push inicial feito. o repositório estava vazio, então nada foi sobrescrito
+- `main` rastreando `origin/main`, remoto em `cb3b103`
+- 72 arquivos, 3,8 MB. `FOTOS `, `REFERENCIAS-IMAGENS/` e `_arquivo-local/` ficaram de fora
 
 ## Passo 2 · Cloudflare Pages e domínio
 
