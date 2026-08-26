@@ -106,6 +106,41 @@ da entrada.** A linha some da lista de créditos sozinha.
 Licenças em uso hoje: CC BY-SA 4.0 (21), CC BY-SA 2.0 (11), CC BY-SA 3.0 (4), CC BY 2.0 (4),
 CC0 (2), domínio público (1), CC BY 3.0 (1), CC BY 4.0 (1).
 
+## Imagens
+
+Tudo em **WebP**, gerado com Pillow a partir dos originais em alta, nunca reencodando um WebP
+em cima de outro.
+
+| conjunto | onde | tamanho | quantidade | peso |
+| --- | --- | --- | --- | --- |
+| fotos da Soul | `assets/*.webp` | 2000px no lado maior | 7 | 1,6 MB |
+| referências da rota | `assets/map/*.webp` | 640px no lado maior | 45 | 1,9 MB |
+
+O site inteiro tem **3,8 MB**. O maior arquivo é `fundo-abertura.webp`, com 533 KB, bem abaixo
+do teto de 25 MiB por arquivo do Cloudflare Pages.
+
+### Como regerar
+
+Esta máquina não tem `cwebp`, `ffmpeg`, imagemagick, Node nem Homebrew, e o `sips` do sistema
+lê WebP mas não escreve. O encoder veio do Pillow, num venv isolado, sem sudo e sem tocar no
+sistema:
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install Pillow
+```
+
+Depois, para qualquer foto nova:
+
+```python
+from PIL import Image
+im = Image.open('origem.jpg').convert('RGB')
+im.thumbnail((2000, 2000), Image.LANCZOS)   # 640 para as referencias da rota
+im.save('public/assets/destino.webp', 'WEBP', quality=82, method=6)
+```
+
+`quality=82` e `method=6` são o par usado em tudo que está no ar. `thumbnail` preserva a
+proporção, então nada é cortado na conversão: o corte fica por conta do CSS de cada slot.
+
 ## Checklist do dia do lançamento
 
 O site pode subir com placeholder. **Divulgar o link exige outra régua**, mais dura:
@@ -125,11 +160,8 @@ O site pode subir com placeholder. **Divulgar o link exige outra régua**, mais 
 - **Case e parada ainda no tema escuro.** A home é clara, `case.html` e `stop.html` são escuras.
   Quem clica num case sai de um tema e cai no outro. O `Soul Light.dc.html` cobre só a home;
   portar as outras duas é decisão de design da Thainá, não foi feito aqui.
-- **Peso das sete fotos da Soul.** Estão em WebP, como o briefing pede, mas em resolução cheia,
-  até 4096px, somando 12 MB. A regra do briefing é 2000px no lado maior. Esta máquina não tem
-  nenhum codificador WebP (`cwebp`, `ffmpeg`, imagemagick, Node, Homebrew; o ImageIO do sistema
-  lê WebP mas não escreve), então não deu para reencodar. Com `libwebp` instalado, resolve com:
-  `for f in public/assets/*.webp; do cwebp -q 82 -resize 2000 0 "$f" -o "$f"; done`
+- ~~Peso das imagens.~~ **Resolvido.** Site inteiro em 3,8 MB, tudo WebP dentro da regra de
+  2000px. Ver a seção de imagens abaixo.
 - **React e Babel vindos da unpkg a cada visita.** Deixa a primeira tela lenta. O briefing
   classifica como melhoria desejável, não bloqueio.
 - **Alternador de idioma por JavaScript.** O Google só enxerga o inglês. Decisão de arquitetura

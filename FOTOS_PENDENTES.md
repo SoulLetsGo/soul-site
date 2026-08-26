@@ -99,5 +99,5 @@ Essa página ainda está no tema escuro antigo. Ver `README.md`.
 - Largura máxima em torno de **2000px** no lado maior.
 - Nenhum arquivo acima de **25 MiB**, teto por arquivo do Cloudflare Pages.
 - **Vídeo não sobe para o Pages.** Vai para Vimeo ou YouTube não listado, por iframe.
-- As sete fotos da Soul estão em **WebP**, como o briefing pede, vindas do projeto de design. Estão em resolução cheia, até 4096px, acima da regra de 2000px. Ver a pendência no `README.md`.
-- As 45 referências da rota estão em **JPEG de 640px**, geradas aqui a partir de `REFERENCIAS-IMAGENS/`. São exibidas no máximo a 206x104, então 640px já é folga.
+- **Tudo em WebP**, dentro da regra. As sete fotos da Soul em 2000px somam 1,6 MB, e as 45 referências da rota em 640px somam 1,9 MB. Site inteiro em 3,8 MB.
+- Foto nova entra pelo mesmo caminho: original em alta, Pillow, `quality=82`, `method=6`. Receita completa no `README.md`, seção de imagens.

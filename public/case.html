@@ -48,7 +48,7 @@
     <div ref="{{ heroMediaRef }}" style="position:absolute; inset:0; background:#1C1405; clip-path:inset(0 0 100% 0); will-change:transform">
       <span style="position:absolute; inset:0; background-color:#1C1405; background-image:url({{ heroImg }}); background-size:cover; background-position:50% 55%; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
       <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.4),rgba(22,16,3,.35) 40%,rgba(22,16,3,.96))"></span>
-      <span style="position:absolute; z-index:2; top:76px; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ heroPendingShow }}">photo pending</span>
+      <span style="position:absolute; z-index:2; top:76px; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ heroPendingShow }}">photo pending</span>
     </div>
     <div style="position:relative">
       <div data-scrub="fade" style="font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.5); margin-bottom:18px; opacity:0">case {{ num }} · {{ kicker }}</div>
@@ -93,7 +93,7 @@
         <div data-scrub="clip" style="position:relative; overflow:hidden; background:#1C1405; aspect-ratio:{{ m.ratio }}; grid-column:{{ m.col }}; clip-path:inset(0 50% 0 50%)">
           <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:url({{ m.img }}); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
           <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,0),rgba(22,16,3,.5))"></span>
-          <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 9.5px/1.2 ui-monospace, Menlo, monospace; letter-spacing:.16em; display:{{ m.pendingShow }}">photo pending</span>
+          <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ m.pendingShow }}">photo pending</span>
           <span style="position:absolute; left:16px; bottom:14px; font:400 10px/1.5 ui-monospace, Menlo, monospace; letter-spacing:.14em; color:rgba(255,246,229,.4)">{{ m.label }}</span>
         </div>
       </sc-for>

@@ -19,7 +19,7 @@
       "photos": [
         {
           "name": "Canal Beagle",
-          "img": "assets/map/ushuaia_canalbeagle.jpg",
+          "img": "assets/map/ushuaia_canalbeagle.webp",
           "url": "https://www.google.com/maps/search/Canal%20Beagle%2C%20Ushuaia%2C%20Tierra%20del%20Fuego%2C%20Argentina",
           "author": "Mel 23",
           "license": "CC BY-SA 3.0",
@@ -27,7 +27,7 @@
         },
         {
           "name": "Faro Les Éclaireurs",
-          "img": "assets/map/ushuaia_faroleseclaireurs.jpg",
+          "img": "assets/map/ushuaia_faroleseclaireurs.webp",
           "url": "https://www.google.com/maps/search/Faro%20Les%20%C3%89claireurs%2C%20Ushuaia%2C%20Tierra%20del%20Fuego%2C%20Argentina",
           "author": "mike from New York, NY, US",
           "license": "CC BY-SA 2.0",
@@ -35,7 +35,7 @@
         },
         {
           "name": "Glaciar Martial",
-          "img": "assets/map/ushuaia_glaciarmartial.jpg",
+          "img": "assets/map/ushuaia_glaciarmartial.webp",
           "url": "https://www.google.com/maps/search/Glaciar%20Martial%2C%20Ushuaia%2C%20Tierra%20del%20Fuego%2C%20Argentina",
           "author": "Justraveling.com",
           "license": "CC BY-SA 4.0",
@@ -43,7 +43,7 @@
         },
         {
           "name": "Parque Tierra del Fuego",
-          "img": "assets/map/ushuaia_parquetierradelfuego.jpg",
+          "img": "assets/map/ushuaia_parquetierradelfuego.webp",
           "url": "https://www.google.com/maps/search/Parque%20Tierra%20del%20Fuego%2C%20Ushuaia%2C%20Tierra%20del%20Fuego%2C%20Argentina",
           "author": "Aakerueh",
           "license": "CC BY-SA 4.0",
@@ -51,7 +51,7 @@
         },
         {
           "name": "Laguna Esmeralda",
-          "img": "assets/map/ushuaia_lagunaesmeralda.jpg",
+          "img": "assets/map/ushuaia_lagunaesmeralda.webp",
           "url": "https://www.google.com/maps/search/Laguna%20Esmeralda%2C%20Ushuaia%2C%20Tierra%20del%20Fuego%2C%20Argentina",
           "author": "Justraveling.com",
           "license": "CC BY-SA 4.0",
@@ -85,7 +85,7 @@
       "photos": [
         {
           "name": "Cabo de Hornos",
-          "img": "assets/map/magallanes_cabodehornos.jpg",
+          "img": "assets/map/magallanes_cabodehornos.webp",
           "url": "https://www.google.com/maps/search/Cabo%20de%20Hornos%2C%20Regi%C3%B3n%20de%20Magallanes%2C%20Chile",
           "author": "Wilkes, Charles United States Exploring Expedition C. Sherman",
           "license": "Public domain",
@@ -93,7 +93,7 @@
         },
         {
           "name": "Antártica Chilena",
-          "img": "assets/map/magallanes_antarticachilena.jpg",
+          "img": "assets/map/magallanes_antarticachilena.webp",
           "url": "https://www.google.com/maps/search/Ant%C3%A1rtica%20Chilena%2C%20Regi%C3%B3n%20de%20Magallanes%2C%20Chile",
           "author": "Murray Foubister",
           "license": "CC BY-SA 2.0",
@@ -101,7 +101,7 @@
         },
         {
           "name": "Estrecho de Magallanes",
-          "img": "assets/map/magallanes_estrechodemagallanes.jpg",
+          "img": "assets/map/magallanes_estrechodemagallanes.webp",
           "url": "https://www.google.com/maps/search/Estrecho%20de%20Magallanes%2C%20Regi%C3%B3n%20de%20Magallanes%2C%20Chile",
           "author": "Liam Quinn from Canada",
           "license": "CC BY-SA 2.0",
@@ -109,7 +109,7 @@
         },
         {
           "name": "Isla Magdalena",
-          "img": "assets/map/magallanes_islamagdalena.jpg",
+          "img": "assets/map/magallanes_islamagdalena.webp",
           "url": "https://www.google.com/maps/search/Isla%20Magdalena%2C%20Regi%C3%B3n%20de%20Magallanes%2C%20Chile",
           "author": "Grandmaster Huon",
           "license": "CC0",
@@ -117,7 +117,7 @@
         },
         {
           "name": "Puerto Natales",
-          "img": "assets/map/magallanes_puertonatales.jpg",
+          "img": "assets/map/magallanes_puertonatales.webp",
           "url": "https://www.google.com/maps/search/Puerto%20Natales%2C%20Regi%C3%B3n%20de%20Magallanes%2C%20Chile",
           "author": "Deensel",
           "license": "CC BY 2.0",
@@ -143,7 +143,7 @@
       "photos": [
         {
           "name": "Torres del Paine",
-          "img": "assets/map/patagoniacl_torresdelpaine.jpg",
+          "img": "assets/map/patagoniacl_torresdelpaine.webp",
           "url": "https://www.google.com/maps/search/Torres%20del%20Paine%2C%20Patagonia%2C%20Chile",
           "author": "Murray Foubister",
           "license": "CC BY-SA 2.0",
@@ -151,7 +151,7 @@
         },
         {
           "name": "Cuernos del Paine",
-          "img": "assets/map/patagoniacl_cuernosdelpaine.jpg",
+          "img": "assets/map/patagoniacl_cuernosdelpaine.webp",
           "url": "https://www.google.com/maps/search/Cuernos%20del%20Paine%2C%20Patagonia%2C%20Chile",
           "author": "Jan Balaguer",
           "license": "CC BY-SA 4.0",
@@ -159,7 +159,7 @@
         },
         {
           "name": "Glaciar Grey",
-          "img": "assets/map/patagoniacl_glaciargrey.jpg",
+          "img": "assets/map/patagoniacl_glaciargrey.webp",
           "url": "https://www.google.com/maps/search/Glaciar%20Grey%2C%20Patagonia%2C%20Chile",
           "author": "Liam Quinn from Canada",
           "license": "CC BY-SA 2.0",
@@ -167,7 +167,7 @@
         },
         {
           "name": "Capillas de Mármol",
-          "img": "assets/map/patagoniacl_capillasdemarmol.jpg",
+          "img": "assets/map/patagoniacl_capillasdemarmol.webp",
           "url": "https://www.google.com/maps/search/Capillas%20de%20M%C3%A1rmol%2C%20Patagonia%2C%20Chile",
           "author": "Gabriel Urrutia Galaz",
           "license": "CC BY-SA 2.0",
@@ -175,7 +175,7 @@
         },
         {
           "name": "Ventisquero Queulat",
-          "img": "assets/map/patagoniacl_ventisqueroqueulat.jpg",
+          "img": "assets/map/patagoniacl_ventisqueroqueulat.webp",
           "url": "https://www.google.com/maps/search/Ventisquero%20Queulat%2C%20Patagonia%2C%20Chile",
           "author": "Pablo A. Cumillaf",
           "license": "CC BY-SA 4.0",
@@ -209,7 +209,7 @@
       "photos": [
         {
           "name": "Cerro Fitz Roy",
-          "img": "assets/map/patagoniaar_fitzroy.jpg",
+          "img": "assets/map/patagoniaar_fitzroy.webp",
           "url": "https://www.google.com/maps/search/Cerro%20Fitz%20Roy%2C%20Patagonia%2C%20Argentina",
           "author": "Martin St-Amant ( S23678 )",
           "license": "CC BY-SA 3.0",
@@ -217,7 +217,7 @@
         },
         {
           "name": "Laguna de los Tres",
-          "img": "assets/map/patagoniaar_lagunadelostres.jpg",
+          "img": "assets/map/patagoniaar_lagunadelostres.webp",
           "url": "https://www.google.com/maps/search/Laguna%20de%20los%20Tres%2C%20Patagonia%2C%20Argentina",
           "author": "Almonroth",
           "license": "CC BY-SA 3.0",
@@ -225,7 +225,7 @@
         },
         {
           "name": "Perito Moreno",
-          "img": "assets/map/patagoniaar_peritomoreno.jpg",
+          "img": "assets/map/patagoniaar_peritomoreno.webp",
           "url": "https://www.google.com/maps/search/Perito%20Moreno%2C%20Patagonia%2C%20Argentina",
           "author": "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla",
           "license": "CC BY-SA 4.0",
@@ -233,7 +233,7 @@
         },
         {
           "name": "Cueva de las Manos",
-          "img": "assets/map/patagoniaar_cuevadelasmanos.jpg",
+          "img": "assets/map/patagoniaar_cuevadelasmanos.webp",
           "url": "https://www.google.com/maps/search/Cueva%20de%20las%20Manos%2C%20Patagonia%2C%20Argentina",
           "author": "Pablo A. Gimenez from Buenos Aires, Argentina",
           "license": "CC BY-SA 2.0",
@@ -241,7 +241,7 @@
         },
         {
           "name": "Siete Lagos",
-          "img": "assets/map/patagoniaar_sietelagos.jpg",
+          "img": "assets/map/patagoniaar_sietelagos.webp",
           "url": "https://www.google.com/maps/search/Siete%20Lagos%2C%20Patagonia%2C%20Argentina",
           "author": "Emilio Küffer from Ciudad Autónoma de Buenos Aires, Argentina",
           "license": "CC BY-SA 2.0",
@@ -265,7 +265,7 @@
       "photos": [
         {
           "name": "Constitución",
-          "img": "assets/map/maule_constitucion.jpg",
+          "img": "assets/map/maule_constitucion.webp",
           "url": "https://www.google.com/maps/search/Constituci%C3%B3n%2C%20Regi%C3%B3n%20del%20Maule%2C%20Chile",
           "author": "Ricar2enrique",
           "license": "CC BY-SA 3.0",
@@ -273,7 +273,7 @@
         },
         {
           "name": "Radal Siete Tazas",
-          "img": "assets/map/maule_radalsietetazas.jpg",
+          "img": "assets/map/maule_radalsietetazas.webp",
           "url": "https://www.google.com/maps/search/Radal%20Siete%20Tazas%2C%20Regi%C3%B3n%20del%20Maule%2C%20Chile",
           "author": "order_242 from Chile",
           "license": "CC BY-SA 2.0",
@@ -281,7 +281,7 @@
         },
         {
           "name": "Altos de Lircay",
-          "img": "assets/map/maule_altosdelircay.jpg",
+          "img": "assets/map/maule_altosdelircay.webp",
           "url": "https://www.google.com/maps/search/Altos%20de%20Lircay%2C%20Regi%C3%B3n%20del%20Maule%2C%20Chile",
           "author": "Dasil850",
           "license": "CC BY-SA 4.0",
@@ -289,7 +289,7 @@
         },
         {
           "name": "Laguna del Maule",
-          "img": "assets/map/maule_lagunadelmaule.jpg",
+          "img": "assets/map/maule_lagunadelmaule.webp",
           "url": "https://www.google.com/maps/search/Laguna%20del%20Maule%2C%20Regi%C3%B3n%20del%20Maule%2C%20Chile",
           "author": "Eduardo Schmeda from Talca, Chile",
           "license": "CC BY 2.0",
@@ -297,7 +297,7 @@
         },
         {
           "name": "Descabezado Grande",
-          "img": "assets/map/maule_descabezadogrande.jpg",
+          "img": "assets/map/maule_descabezadogrande.webp",
           "url": "https://www.google.com/maps/search/Descabezado%20Grande%2C%20Regi%C3%B3n%20del%20Maule%2C%20Chile",
           "author": "Milodon3",
           "license": "CC BY-SA 4.0",
@@ -321,7 +321,7 @@
       "photos": [
         {
           "name": "Aconcagua",
-          "img": "assets/map/andescentrales_aconcagua.jpg",
+          "img": "assets/map/andescentrales_aconcagua.webp",
           "url": "https://www.google.com/maps/search/Aconcagua%2C%20Mendoza%2C%20Argentina",
           "author": "Kinosmosis",
           "license": "CC BY-SA 4.0",
@@ -329,7 +329,7 @@
         },
         {
           "name": "Puente del Inca",
-          "img": "assets/map/andescentrales_puentedelinca.jpg",
+          "img": "assets/map/andescentrales_puentedelinca.webp",
           "url": "https://www.google.com/maps/search/Puente%20del%20Inca%2C%20Mendoza%2C%20Argentina",
           "author": "Mauricio V. Genta",
           "license": "CC BY-SA 4.0",
@@ -337,7 +337,7 @@
         },
         {
           "name": "Cajón del Maipo",
-          "img": "assets/map/andescentrales_cajondelmaipo.jpg",
+          "img": "assets/map/andescentrales_cajondelmaipo.webp",
           "url": "https://www.google.com/maps/search/Caj%C3%B3n%20del%20Maipo%2C%20Regi%C3%B3n%20Metropolitana%2C%20Chile",
           "author": "Nicolas Valdes from Santiago, Chile",
           "license": "CC BY-SA 2.0",
@@ -345,7 +345,7 @@
         },
         {
           "name": "Embalse El Yeso",
-          "img": "assets/map/andescentrales_embalseelyeso.jpg",
+          "img": "assets/map/andescentrales_embalseelyeso.webp",
           "url": "https://www.google.com/maps/search/Embalse%20El%20Yeso%2C%20Chile",
           "author": "Pablo Acevedo pabloacevedo",
           "license": "CC0",
@@ -353,7 +353,7 @@
         },
         {
           "name": "Laguna del Inca",
-          "img": "assets/map/andescentrales_lagunadelinca.jpg",
+          "img": "assets/map/andescentrales_lagunadelinca.webp",
           "url": "https://www.google.com/maps/search/Laguna%20del%20Inca%2C%20Portillo%2C%20Chile",
           "author": "Nicolás Valdés",
           "license": "CC BY-SA 2.0",
@@ -374,7 +374,7 @@
       "photos": [
         {
           "name": "Antofagasta de la Sierra",
-          "img": "assets/map/puna_antofagastadelasierra.jpg",
+          "img": "assets/map/puna_antofagastadelasierra.webp",
           "url": "https://www.google.com/maps/search/Antofagasta%20de%20la%20Sierra%2C%20Catamarca%2C%20Argentina",
           "author": "Hebert Coello",
           "license": "CC BY 3.0",
@@ -382,7 +382,7 @@
         },
         {
           "name": "Campo de Piedra Pómez",
-          "img": "assets/map/puna_campodepiedrapomez.jpg",
+          "img": "assets/map/puna_campodepiedrapomez.webp",
           "url": "https://www.google.com/maps/search/Campo%20de%20Piedra%20P%C3%B3mez%2C%20Catamarca%2C%20Argentina",
           "author": "Marioperetti",
           "license": "CC BY-SA 4.0",
@@ -390,7 +390,7 @@
         },
         {
           "name": "Cono de Arita",
-          "img": "assets/map/puna_conodearita.jpg",
+          "img": "assets/map/puna_conodearita.webp",
           "url": "https://www.google.com/maps/search/Cono%20de%20Arita%2C%20Salta%2C%20Argentina",
           "author": "Ben Stubbs",
           "license": "CC BY 2.0",
@@ -411,7 +411,7 @@
       "photos": [
         {
           "name": "Valle de la Luna",
-          "img": "assets/map/atacama_valledelaluna.jpg",
+          "img": "assets/map/atacama_valledelaluna.webp",
           "url": "https://www.google.com/maps/search/Valle%20de%20la%20Luna%2C%20San%20Pedro%20de%20Atacama%2C%20Chile",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -419,7 +419,7 @@
         },
         {
           "name": "El Tatio",
-          "img": "assets/map/atacama_geiseresdeltatio.jpg",
+          "img": "assets/map/atacama_geiseresdeltatio.webp",
           "url": "https://www.google.com/maps/search/G%C3%A9iseres%20del%20Tatio%2C%20Chile",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -427,7 +427,7 @@
         },
         {
           "name": "Salinas Grandes",
-          "img": "assets/map/altiplano_salinasgrandes.jpg",
+          "img": "assets/map/altiplano_salinasgrandes.webp",
           "url": "https://www.google.com/maps/search/Salinas%20Grandes%2C%20Jujuy%2C%20Argentina",
           "author": "Cactus purmamarqueño",
           "license": "CC BY 4.0",
@@ -448,7 +448,7 @@
       "photos": [
         {
           "name": "Laguna Colorada",
-          "img": "assets/map/bolivia_lagunacolorada.jpg",
+          "img": "assets/map/bolivia_lagunacolorada.webp",
           "url": "https://www.google.com/maps/search/Laguna%20Colorada%2C%20Potos%C3%AD%2C%20Bolivia",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -469,7 +469,7 @@
       "photos": [
         {
           "name": "Salar de Uyuni",
-          "img": "assets/map/bolivia_salardeuyuni.jpg",
+          "img": "assets/map/bolivia_salardeuyuni.webp",
           "url": "https://www.google.com/maps/search/Salar%20de%20Uyuni%2C%20Bolivia",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -477,7 +477,7 @@
         },
         {
           "name": "Isla Incahuasi",
-          "img": "assets/map/bolivia_islaincahuasi.jpg",
+          "img": "assets/map/bolivia_islaincahuasi.webp",
           "url": "https://www.google.com/maps/search/Isla%20Incahuasi%2C%20Salar%20de%20Uyuni%2C%20Bolivia",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -498,7 +498,7 @@
       "photos": [
         {
           "name": "Isla del Sol",
-          "img": "assets/map/titicaca_isladelsol.jpg",
+          "img": "assets/map/titicaca_isladelsol.webp",
           "url": "https://www.google.com/maps/search/Isla%20del%20Sol%2C%20Lago%20Titicaca%2C%20Bolivia",
           "author": "Thomas Fuhrmann",
           "license": "CC BY-SA 4.0",
@@ -519,7 +519,7 @@
       "photos": [
         {
           "name": "Sacsayhuamán",
-          "img": "assets/map/cusco_sacsayhuaman.jpg",
+          "img": "assets/map/cusco_sacsayhuaman.webp",
           "url": "https://www.google.com/maps/search/Sacsayhuam%C3%A1n%2C%20Cusco%2C%20Per%C3%BA",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -527,7 +527,7 @@
         },
         {
           "name": "Salineras de Maras",
-          "img": "assets/map/cusco_salinerasdemaras.jpg",
+          "img": "assets/map/cusco_salinerasdemaras.webp",
           "url": "https://www.google.com/maps/search/Salineras%20de%20Maras%2C%20Cusco%2C%20Per%C3%BA",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -550,7 +550,7 @@
       "photos": [
         {
           "name": "Machu Picchu",
-          "img": "assets/map/cusco_machupicchu.jpg",
+          "img": "assets/map/cusco_machupicchu.webp",
           "url": "https://www.google.com/maps/search/Machu%20Picchu%2C%20Cusco%2C%20Per%C3%BA",
           "author": "Diego Delso",
           "license": "CC BY-SA 4.0",
@@ -571,7 +571,7 @@
       "photos": [
         {
           "name": "Laguna 69",
-          "img": "assets/map/andesperu_laguna69.jpg",
+          "img": "assets/map/andesperu_laguna69.webp",
           "url": "https://www.google.com/maps/search/Laguna%2069%2C%20%C3%81ncash%2C%20Per%C3%BA",
           "author": "Christian Cruzado",
           "license": "CC BY 2.0",
@@ -592,7 +592,7 @@
       "photos": [
         {
           "name": "Cotopaxi",
-          "img": "assets/map/equador_cotopaxi.jpg",
+          "img": "assets/map/equador_cotopaxi.webp",
           "url": "https://www.google.com/maps/search/Cotopaxi%2C%20Ecuador",
           "author": "Ymblanter",
           "license": "CC BY-SA 4.0",
