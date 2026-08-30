@@ -177,7 +177,7 @@
         <a href="{{ c.href }}" data-row="1" data-caserow="1" style="display:grid; grid-template-columns:64px 1fr 190px; gap:clamp(14px,2.4vw,34px); align-items:center">
           <span data-casenum="1" style="font:400 13px/1 ui-monospace, Menlo, monospace; color:rgba(43,29,8,.45); font-variant-numeric:tabular-nums">{{ c.n }}</span>
           <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:16/7; clip-path:inset(0 50% 0 50%)">
-            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url({{ c.img }}); background-size:cover; background-position:center; filter:saturate(.66) contrast(1.05) sepia(.18); will-change:transform; display:block"></span>
+            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url({{ c.img }}); background-size:cover; background-position:{{ c.pos }}; filter:saturate(.66) contrast(1.05) sepia(.18); will-change:transform; display:block"></span>
             <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.15),rgba(22,16,3,.5))"></span>
             <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ c.pendingShow }}">{{ t.photoPending }}</span>
             <span data-title="1" style="position:absolute; inset:0; display:grid; place-items:center; font-family:Poppins, -apple-system, sans-serif; font-weight:600; font-size:clamp(26px,4.4vw,64px); letter-spacing:.03em; color:#FFF6E5; text-align:center; padding:0 6%">{{ c.title }}</span>
@@ -362,9 +362,11 @@ const PKG_COVERS = [
 ];
 
 const CASE_COVERS = [
-  { img: 'assets/capa-buffalo.webp', pending: false },
-  { img: 'assets/capa-knafs.webp', pending: false },
-  { img: 'assets/minidocs/capa-minidocs.webp', pending: false }
+  { img: 'assets/capa-buffalo.webp', pos: 'center', pending: false },
+  { img: 'assets/capa-knafs.webp', pos: 'center', pending: false },
+  // o titulo do cartao fica centralizado por cima da imagem. sem subir o corte,
+  // o rosto do fileteador cai bem atras do texto.
+  { img: 'assets/minidocs/capa-minidocs.webp', pos: 'center 100%', pending: false }
 ];
 
 const COPY = {
@@ -1330,6 +1332,7 @@ class Component extends DCLogic {
         n: ['01', '02', '03'][i],
         href: ['case.html?c=buffalo', 'case.html?c=knafs', 'minidocs.html'][i],
         img: CASE_COVERS[i].img,
+        pos: CASE_COVERS[i].pos,
         pendingShow: CASE_COVERS[i].pending ? 'block' : 'none',
         title: t.cases[i].title,
         place: t.cases[i].place
