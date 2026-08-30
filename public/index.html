@@ -41,6 +41,26 @@
     [data-burger] { display:flex !important; }
     [data-navlinks] { display:none !important; }
   }
+  /* ate 900px o mapa sai do modo secao fixa e a pagina rola normalmente */
+  @media (max-width: 900px) {
+    #where { height: auto !important; }
+    #where > div { position: static !important; height: auto !important; overflow: visible !important;
+                   display: flex !important; flex-direction: column; }
+    #where [data-maptitle] { position: relative !important; order: 1; opacity: 1 !important;
+                             transform: none !important; padding: 30px 0 24px; }
+    #where [data-maptitle] h2 { text-shadow: none !important; }
+    #where [data-maptitle] div div { color: rgba(43,29,8,.55) !important; }
+    #where [data-mapwrap] { position: relative !important; order: 2;
+                            height: 58vh; min-height: 320px;
+                            top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
+                            clip-path: none !important; border-width: 1px !important;
+                            border-color: rgba(43,29,8,.2) !important; }
+    #where [data-routeinfo] { position: relative !important; order: 3; opacity: 1 !important;
+                              transform: none !important;
+                              top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
+                              width: auto !important; height: auto !important; max-height: none !important;
+                              border: 0 !important; pointer-events: auto !important; }
+  }
   @media (max-width: 760px) {
     [data-herotext] h1 { font-size: clamp(28px,8.4vw,44px) !important; }
     [data-herotext] p { font-size: 14px !important; margin-top: 16px !important; }
@@ -215,7 +235,7 @@
 
   <section id="where" ref="{{ whereSecRef }}" style="position:relative; z-index:2; height:380vh; background:#F2E8D8; color:#2B1D08">
     <div style="position:sticky; top:0; height:100vh; overflow:hidden">
-      <div ref="{{ mapWrapRef }}" style="position:absolute; inset:0; clip-path:inset(42% 36% 42% 36%); border:0 solid rgba(255,246,229,.15)">
+      <div data-mapwrap="1" ref="{{ mapWrapRef }}" style="position:absolute; inset:0; clip-path:inset(42% 36% 42% 36%); border:0 solid rgba(255,246,229,.15)">
         <div ref="{{ mapRef }}" style="position:absolute; inset:0; background:#E3D5BC"></div>
         <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at center, rgba(74,48,16,.14) 38%, rgba(22,16,3,.66) 100%)"></div>
         <div ref="{{ mapFallbackRef }}" style="position:absolute; inset:0; display:grid; justify-items:center; align-content:center; gap:18px; background:#F2E8D8">
@@ -231,7 +251,7 @@
           <a ref="{{ poiCtaRef }}" href="#book" style="display:none; padding:9px 13px; border-top:1px solid rgba(255,246,229,.2); font-family:Poppins, sans-serif; font-size:11.5px; letter-spacing:.03em; color:#FFF6E5">{{ t.bookThis }}</a>
         </div>
       </div>
-      <div ref="{{ mapTitleRef }}" style="position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; z-index:5">
+      <div data-maptitle="1" ref="{{ mapTitleRef }}" style="position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; z-index:5">
         <div style="text-align:center; padding:0 clamp(20px,4vw,64px)">
           <div style="font-size:12.5px; letter-spacing:.2em; color:rgba(255,246,229,.55); margin-bottom:14px">{{ t.whereLabel }}</div>
           <h2 style="margin:0 auto; max-width:22ch; text-wrap:balance; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(26px,4.4vw,58px); line-height:1.16; letter-spacing:-.01em; text-shadow:0 2px 30px rgba(22,16,3,.8)">{{ t.whereTitle }}</h2>
@@ -272,27 +292,14 @@
   <section id="book" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(26px,3.5vh,46px) clamp(20px,4vw,64px) clamp(80px,10vh,130px); text-align:center">
     <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(34px,5.2vw,72px); line-height:1.14; letter-spacing:-.018em; margin:0 auto; max-width:16ch; text-wrap:balance; opacity:0">{{ bookT.a }}<em style="font-style:italic; font-weight:700">{{ bookT.em }}</em>{{ bookT.b }}</h2>
     <p data-scrub="fade" style="color:rgba(43,29,8,.75); max-width:48ch; margin:26px auto 36px; opacity:0">{{ t.bookSub }}</p>
-    <div data-scrub="fade" style="max-width:920px; margin:0 auto; opacity:0">
-      <div style="position:relative; width:100%; height:clamp(560px,78vh,900px); border:1px solid rgba(43,29,8,.2); background:#E3D5BC; overflow:hidden">
-        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ187ykTo-q7t92TqibKpUH_Zt2Q6hLMiFXpiGoQqgp3CaM2C7ogJ9Xd5wlQlYIUt-K5bMzq5xN7?gv=true" title="soul · booking" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; border:0; display:block"></iframe>
-      </div>
-      <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ187ykTo-q7t92TqibKpUH_Zt2Q6hLMiFXpiGoQqgp3CaM2C7ogJ9Xd5wlQlYIUt-K5bMzq5xN7?gv=true" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; margin-top:22px; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; transition:background .4s, color .4s" style-hover="background:transparent; color:#2B1D08">{{ t.ctaBook }}</a>
-    </div>
-  </section>
-
-  <section id="creditos" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(30px,4vh,54px) clamp(20px,4vw,64px) clamp(20px,3vh,34px)">
-    <div style="border-top:1px solid rgba(43,29,8,.15); padding-top:22px">
-      <div style="font-size:12.5px; letter-spacing:.2em; color:rgba(43,29,8,.45); margin-bottom:12px">{{ t.creditsLabel }}</div>
-      <p style="font-size:13.5px; line-height:1.6; color:rgba(43,29,8,.55); max-width:70ch; margin:0 0 14px">{{ t.creditsNote }}</p>
-      <div style="display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12px; letter-spacing:.12em; line-height:1.6; color:rgba(43,29,8,.5)">
-        <sc-for list="{{ credits }}" as="cr">
-          <a href="{{ cr.source }}" target="_blank" rel="noopener noreferrer" style="color:rgba(43,29,8,.55); border-bottom:1px solid rgba(43,29,8,.18)">{{ cr.line }}</a>
-        </sc-for>
-      </div>
+    <div data-scrub="fade" style="opacity:0">
+      <a href="https://calendar.app.google/VUfRpbG8s4hUhwDP9" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; transition:background .4s, color .4s" style-hover="background:transparent; color:#2B1D08">{{ t.ctaBook }}</a>
+      <div style="margin-top:12px; font-size:12px; letter-spacing:.12em; color:rgba(43,29,8,.5)">{{ t.bookMeta }}</div>
     </div>
   </section>
 
   <footer style="position:relative; z-index:2; background:#F2E8D8; color:rgba(43,29,8,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
+    <div style="padding-top:14px; max-width:78ch; line-height:1.6">{{ t.creditsLine }}<a href="credits.html" style="color:rgba(43,29,8,.6); border-bottom:1px solid rgba(43,29,8,.25)">{{ t.creditsLink }}</a></div>
     <div style="padding-top:14px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
       <div>{{ t.footer }}</div>
       <a href="mailto:contato@soulletsgo.com" style="color:rgba(43,29,8,.7)">contato@soulletsgo.com</a>
@@ -314,8 +321,9 @@ const COPY = {
     ctaWork: 'work with us', ctaWhere: 'see where we are', ctaBook: 'book a call',
     caption: 'still from the route',
     photoPending: 'photo pending',
-    creditsLabel: 'route reference images',
-    creditsNote: 'The photographs in the route panel are location references from Wikimedia Commons, not work by Soul. Author and licence for each one below, linked to the source.',
+    bookMeta: 'opens in google calendar · 30 min',
+    creditsLine: 'The photographs in the route panel are location references from Wikimedia Commons, not work by Soul. ',
+    creditsLink: 'Full credits.',
     photoBy: (a) => `photo by ${a}`,
     marquee: 'now in the american continent  ·  content shot like film  ·  ',
     workTitle: 'selected work, and *what it took to get there*',
@@ -334,7 +342,7 @@ const COPY = {
     slotsOpen: (n) => `${n} slot${n === 1 ? '' : 's'} open`,
     cases: [
       { title: 'buffalo', place: 'torres del paine, cl' },
-      { title: 'knafs', place: 'bariloche, ar' },
+      { title: 'knafs', place: 'torres del paine, cl' },
       { title: 'in the heart of salta', place: 'salta, ar' }
     ],
     packages: [
@@ -356,8 +364,9 @@ const COPY = {
     ctaWork: 'trabalhe conosco', ctaWhere: 'veja onde estamos', ctaBook: 'agendar call',
     caption: 'still da rota',
     photoPending: 'foto pendente',
-    creditsLabel: 'imagens de referência da rota',
-    creditsNote: 'As fotografias do painel da rota são referências de locação vindas do Wikimedia Commons, não são fotos da Soul. Autor e licença de cada uma abaixo, com link para a origem.',
+    bookMeta: 'opens in google calendar · 30 min',
+    creditsLine: 'As fotografias do painel da rota são referências de locação do Wikimedia Commons, não são fotos da Soul. ',
+    creditsLink: 'Créditos completos.',
     photoBy: (a) => `foto de ${a}`,
     marquee: 'agora no continente americano  ·  conteúdo gravado como cinema  ·  ',
     workTitle: 'trabalhos selecionados, e *o que foi preciso para chegar lá*',
@@ -376,7 +385,7 @@ const COPY = {
     slotsOpen: (n) => `${n} vaga${n === 1 ? '' : 's'} aberta${n === 1 ? '' : 's'}`,
     cases: [
       { title: 'buffalo', place: 'torres del paine, cl' },
-      { title: 'knafs', place: 'bariloche, ar' },
+      { title: 'knafs', place: 'torres del paine, cl' },
       { title: 'no coração de salta', place: 'salta, ar' }
     ],
     packages: [
@@ -398,8 +407,9 @@ const COPY = {
     ctaWork: 'trabajá con nosotros', ctaWhere: 'mirá dónde estamos', ctaBook: 'agendar llamada',
     caption: 'still de la ruta',
     photoPending: 'foto pendiente',
-    creditsLabel: 'imágenes de referencia de la ruta',
-    creditsNote: 'Las fotografías del panel de la ruta son referencias de locación de Wikimedia Commons, no son fotos de Soul. Autor y licencia de cada una abajo, con enlace al origen.',
+    bookMeta: 'opens in google calendar · 30 min',
+    creditsLine: 'Las fotografías del panel de la ruta son referencias de locación de Wikimedia Commons, no son fotos de Soul. ',
+    creditsLink: 'Créditos completos.',
     photoBy: (a) => `foto de ${a}`,
     marquee: 'ahora en el continente americano  ·  contenido filmado como cine  ·  ',
     workTitle: 'trabajos seleccionados, y *lo que costó llegar hasta ahí*',
@@ -418,7 +428,7 @@ const COPY = {
     slotsOpen: (n) => `${n} lugar${n === 1 ? '' : 'es'} disponible${n === 1 ? '' : 's'}`,
     cases: [
       { title: 'buffalo', place: 'torres del paine, cl' },
-      { title: 'knafs', place: 'bariloche, ar' },
+      { title: 'knafs', place: 'torres del paine, cl' },
       { title: 'en el corazón de salta', place: 'salta, ar' }
     ],
     packages: [
@@ -777,7 +787,7 @@ class Component extends DCLogic {
       const iv = 42 * (1 - c), ih = 36 * (1 - c);
       const clip = `inset(${iv.toFixed(2)}% ${ih.toFixed(2)}% ${iv.toFixed(2)}% ${ih.toFixed(2)}%)`;
       if (clip !== this._clip) { this._clip = clip; mw.style.clipPath = clip; }
-      this._clipInset = { v: iv / 100, h: ih / 100 };
+      this._clipInset = window.innerWidth <= 900 ? { v: 0, h: 0 } : { v: iv / 100, h: ih / 100 };
       if (this._shownRegion) { const cur = (this.state.regions || []).find(x => x.id === this._shownRegion); if (cur) this.placeRegionCard(cur); }
       const frame = ease(clamp((prog - 0.48) / 0.32, 0, 1));
       const narrow = window.innerWidth < 900;
@@ -885,7 +895,7 @@ class Component extends DCLogic {
         ph.innerHTML =
           '<a href="' + gm(hero) + '" target="_blank" rel="noopener noreferrer" style="position:relative;display:block;height:104px;overflow:hidden;background:#241A08 url(' + hero.img + ') center/cover no-repeat;filter:saturate(.66) contrast(1.05) sepia(.18)">' +
             '<span style="position:absolute;left:0;bottom:0;right:0;padding:14px 10px 6px;background:linear-gradient(180deg,rgba(22,16,3,0),rgba(22,16,3,.85));font-family:Poppins,sans-serif;font-size:10px;letter-spacing:.06em;color:#FFF6E5">' + hero.name +
-              (hero.author ? '<span style="display:block;font-size:8.5px;letter-spacing:.04em;color:rgba(255,246,229,.6)">' + hero.author + (hero.license ? ' · ' + hero.license : '') + '</span>' : '') +
+              (hero.author ? '<span style="display:block;font-size:8.5px;letter-spacing:.04em;color:rgba(255,246,229,.45)">' + hero.author + (hero.license ? ' · ' + hero.license : '') + '</span>' : '') +
             '</span>' +
           '</a>' +
           (rest.length ? '<span style="display:flex;gap:2px;margin-top:2px">' + rest.map(p =>
@@ -1089,12 +1099,9 @@ class Component extends DCLogic {
 
         center: [-84, 3], zoom: 1.6, pitch: 0, bearing: 0,
         renderWorldCopies: false, minZoom: 1.2, maxZoom: 13,
-        // exigencia de licenca da CARTO e do OpenStreetMap. o style.json da carto nao
-        // traz o campo attribution, entao o credito precisa ser declarado aqui. nao remover.
-        attributionControl: {
-          compact: true,
-          customAttribution: '&copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
-        }
+        // a atribuicao da CARTO e do OpenStreetMap vem do proprio TileJSON da fonte e
+        // aparece sozinha no controle. exigencia de licenca dos dois, nao remover.
+        attributionControl: { compact: true }
       });
       this._map = map;
       window.__soulmap = map;
@@ -1247,9 +1254,6 @@ class Component extends DCLogic {
         pick: () => this.pickLang(code)
       })),
       toggleLang: this.toggleLang,
-      credits: (this.state.regions || []).flatMap(r => (r.photos || []))
-        .filter(p => p.author && p.source)
-        .map(p => ({ line: `${p.name} · ${p.author} · ${p.license}`, source: p.source })),
       cases: [0, 1, 2].map((i) => ({
         n: ['01', '02', '03'][i],
         href: ['case.html?c=buffalo', 'case.html?c=knafs', 'case.html?c=salta'][i],

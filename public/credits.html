@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>image credits · soul</title>
+<meta name="description" content="author and licence for every location reference photograph used in the soul route panel.">
+<!-- em obra: sai no dia do lancamento, junto com o bloqueio do robots.txt -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://soulletsgo.com/credits.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="soul">
+<meta property="og:title" content="image credits · soul">
+<meta property="og:description" content="author and licence for every location reference photograph used in the soul route panel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin:0; padding:0; background:#F2E8D8; }
+  * { box-sizing: border-box; }
+  a { color:#2B1D08; text-decoration:none; }
+  a:hover { color:#2B1D08; opacity:.72; }
+  ::selection { background:#2B1D08; color:#F2E8D8; }
+</style>
+</helmet>
+<div style="background:#F2E8D8; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#2B1D08; overflow-x:clip; min-height:100vh; display:flex; flex-direction:column">
+
+  <nav style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:22px clamp(20px,4vw,64px); border-bottom:1px solid rgba(43,29,8,.15)">
+    <a href="index.html" style="display:flex; align-items:center"><img src="assets/logo-soul-terracota.svg" alt="soul" style="display:block; width:96px; height:auto" /></a>
+    <a href="index.html" style="font-size:13.5px; letter-spacing:.04em; color:rgba(43,29,8,.6)">← back to the site</a>
+  </nav>
+
+  <main style="flex:1; padding:clamp(40px,7vh,88px) clamp(20px,4vw,64px) clamp(50px,8vh,100px); max-width:1100px; width:100%; margin:0 auto">
+
+    <div style="font-size:12.5px; letter-spacing:.2em; color:rgba(43,29,8,.45); margin-bottom:14px">image credits</div>
+    <h1 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(30px,4vw,52px); line-height:1.16; letter-spacing:-.018em; margin:0 0 24px; max-width:20ch">location references, and <em style="font-style:italic; font-weight:700">who made them</em></h1>
+
+    <p style="font-size:15.5px; line-height:1.65; color:rgba(43,29,8,.75); max-width:60ch; margin:0 0 14px">The photographs in the route panel are location references from Wikimedia Commons. They are not work by Soul. They are there to show what the route looks like before we have shot it ourselves, and each one is replaced by our own photograph as the route is filmed.</p>
+    <p style="font-size:15.5px; line-height:1.65; color:rgba(43,29,8,.75); max-width:60ch; margin:0 0 40px">Every photograph below is used under a free licence. Author and licence are listed, and each entry links to its source page on Wikimedia Commons. Licences marked CC BY or CC BY-SA require attribution; CC BY-SA additionally requires derivative works to carry the same licence.</p>
+
+    <div style="display:grid; gap:clamp(28px,4vh,44px)">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="6">
+        <section>
+          <h2 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-style:italic; font-size:20px; letter-spacing:.02em; color:rgba(43,29,8,.75); margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid rgba(43,29,8,.15)">{{ g.region }}</h2>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px clamp(20px,3vw,44px)">
+            <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="5">
+              <li style="display:grid; gap:3px; padding-bottom:11px; border-bottom:1px solid rgba(43,29,8,.1)">
+                <span style="font-family:Poppins, -apple-system, sans-serif; font-weight:500; font-size:13px; color:#2B1D08">{{ c.name }}</span>
+                <span style="font-size:12px; letter-spacing:.02em; color:rgba(43,29,8,.6)">{{ c.author }}</span>
+                <a href="{{ c.source }}" target="_blank" rel="noopener noreferrer" style="font-size:12px; letter-spacing:.12em; color:rgba(43,29,8,.5); justify-self:start; border-bottom:1px solid rgba(43,29,8,.2)">{{ c.license }} · source</a>
+              </li>
+            </sc-for>
+          </ul>
+        </section>
+      </sc-for>
+    </div>
+
+    <p style="font-size:13.5px; line-height:1.6; color:rgba(43,29,8,.5); margin:clamp(36px,5vh,60px) 0 0; display:{{ emptyShow }}">No reference photographs are in use right now. Every slot on the route panel carries our own photography.</p>
+
+    <div style="margin-top:clamp(40px,6vh,72px); padding-top:22px; border-top:1px solid rgba(43,29,8,.15); font-size:13px; letter-spacing:.04em; color:rgba(43,29,8,.5)">
+      <div>{{ total }}</div>
+      <div style="margin-top:8px">The route map itself is © <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer" style="color:rgba(43,29,8,.6); border-bottom:1px solid rgba(43,29,8,.2)">CARTO</a>, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" style="color:rgba(43,29,8,.6); border-bottom:1px solid rgba(43,29,8,.2)">OpenStreetMap</a> contributors.</div>
+    </div>
+  </main>
+
+  <footer style="background:#F2E8D8; color:rgba(43,29,8,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
+    <div style="border-top:1px solid rgba(43,29,8,.15); padding-top:22px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
+      <div>Soul, a traveling film studio</div>
+      <a href="mailto:contato@soulletsgo.com" style="color:rgba(43,29,8,.7)">contato@soulletsgo.com</a>
+      <div>© 2026</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { regions: [] };
+
+  componentDidMount() {
+    fetch('soul-data.json')
+      .then(r => r.ok ? r.json() : null)
+      .then(j => { if (j && Array.isArray(j.regions)) this.setState({ regions: j.regions }); })
+      .catch(() => {});
+  }
+
+  renderVals() {
+    // so entra foto que ainda e referencia de terceiro. foto propria nao tem author,
+    // entao some daqui sozinha quando o slot e preenchido.
+    const groups = (this.state.regions || [])
+      .map(r => ({
+        region: r.name_en,
+        items: (r.photos || [])
+          .filter(p => p.author && p.source)
+          .map(p => ({ name: p.name, author: p.author, license: p.license || '', source: p.source }))
+      }))
+      .filter(g => g.items.length);
+    const n = groups.reduce((a, g) => a + g.items.length, 0);
+    return {
+      groups,
+      emptyShow: n ? 'none' : 'block',
+      total: n ? `${n} reference photograph${n === 1 ? '' : 's'} in use, across ${groups.length} region${groups.length === 1 ? '' : 's'}.` : ''
+    };
+  }
+}
+</script>
+</body>
+</html>

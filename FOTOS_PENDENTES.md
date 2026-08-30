@@ -1,6 +1,6 @@
 # fotos pendentes
 
-Lista de captação. Atualizado em 26 de agosto de 2026, depois de importar o `Soul Light.dc.html` do projeto de design.
+Lista de captação. Atualizado em 30 de agosto de 2026, rodada 02.
 
 Todo slot ainda em placeholder mostra a etiqueta `photo pending` na própria página. **Nenhum desses slots pode continuar assim no dia em que o link for divulgado.**
 
@@ -11,7 +11,7 @@ Todo slot ainda em placeholder mostra a etiqueta `photo pending` na própria pá
 | página | slots | com foto da soul | pendentes |
 | --- | --- | --- | --- |
 | principal, cartões e capas | 9 | 7 | 2 |
-| principal, painel da rota | 45 | 0 | 45 (hoje com referência do Commons) |
+| principal, painel da rota | 45 | 0 | 45 (referência do Commons, creditada em `credits.html`) |
 | cases | 15 | 0 | 15 |
 | paradas da rota, `stop.html` | 71 | 0 | 71 (hoje puxando da Wikipedia) |
 
@@ -101,3 +101,22 @@ Essa página ainda está no tema escuro antigo. Ver `README.md`.
 - **Vídeo não sobe para o Pages.** Vai para Vimeo ou YouTube não listado, por iframe.
 - **Tudo em WebP**, dentro da regra. As sete fotos da Soul em 2000px somam 1,6 MB, e as 45 referências da rota em 640px somam 1,9 MB. Site inteiro em 3,8 MB.
 - Foto nova entra pelo mesmo caminho: original em alta, Pillow, `quality=82`, `method=6`. Receita completa no `README.md`, seção de imagens.
+- `cwebp` **continua sem instalar** nesta máquina, e não há Homebrew. Pendência da seção 3.5 do briefing 02. Nada em `public/` está em JPEG hoje, então isso não bloqueia nada agora.
+
+---
+
+## Material novo em `FOTOS `, aguardando decisão de slot
+
+Apareceram arquivos novos que **não foram aplicados**, porque escolher slot é decisão de conteúdo e o briefing proíbe improvisar com foto de outro slot:
+
+| arquivo | formato | possível destino | por que não apliquei |
+| --- | --- | --- | --- |
+| `fundodaabertura2.jpg` | JPG, 16 MB | substituir o fundo da abertura | não sei se é substituição ou alternativa |
+| `thumbnail minidocs/THUMBNAIL-PATAGONIA.png` | PNG, 22 MB | ? | nome indica thumbnail de minidoc, não slot do site |
+| `thumbnail minidocs/THUMBNAIL_SALTA-2.png` | PNG, 10 MB | talvez a capa pendente do salta | mesmo motivo |
+| `thumbnail minidocs/THUMBNAIL_FILETEADO.png` | PNG, 3,8 MB | ? | mesmo motivo |
+| `thumbnail minidocs/thumbnail minidocs.jpg` | JPG, 0,9 MB | ? | mesmo motivo |
+
+Se algum deles for para um slot, é só dizer qual, que eu converto para WebP e aponto.
+
+**Nenhuma foto própria nova em WebP apareceu para o painel da rota**, então a regra da seção 3.3 do briefing 02 não mudou nada lá: as 45 referências do Commons continuam, com crédito.

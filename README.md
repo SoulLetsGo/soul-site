@@ -32,6 +32,7 @@ public/                       diretorio de saida do Cloudflare Pages
   index.html                  home, tema claro, vinda do Soul Light
   case.html                   molde de case, ?c=buffalo|knafs|salta        (tema escuro)
   stop.html                   molde de parada da rota, ?s=<id>              (tema escuro)
+  credits.html                autores e licencas das fotos de referencia da rota
   soul-data.json              18 regioes, janelas, 45 fotos de referencia com credito
   route-data.js               20 paradas e 70 pontos filmaveis
   support.js                  runtime do prototipo, carrega React e Babel
@@ -96,9 +97,13 @@ As 45 fotos do painel da rota **não são da Soul.** São referências de locaç
 Wikimedia Commons, quase todas sob **CC BY-SA**, que exige crédito ao autor, menção à licença
 e, para obra derivada, a mesma licença.
 
-Por isso cada foto carrega `author`, `license` e `source` no `soul-data.json`, o crédito aparece
-no `title` da miniatura e sob a foto grande do cartão do mapa, e existe uma seção de créditos
-no rodapé da home listando as 45 com link para a origem no Commons.
+Por isso cada foto carrega `author`, `license` e `source` no `soul-data.json`. O crédito aparece
+em três lugares: no `title` da miniatura da tira, sob a foto ampliada no cartão do mapa, e na
+página `credits.html`, que lista as 45 agrupadas por região com link para a origem no Commons.
+
+A home traz só uma linha no rodapé apontando para lá. A página é gerada a partir do
+`soul-data.json`, então quando uma referência é trocada por foto própria e os campos `author`,
+`license` e `source` saem da entrada, a linha some de `credits.html` sozinha.
 
 **Se essas imagens forem trocadas por foto própria, apagar também `author`, `license` e `source`
 da entrada.** A linha some da lista de créditos sozinha.
@@ -154,6 +159,7 @@ O site pode subir com placeholder. **Divulgar o link exige outra régua**, mais 
 - [ ] remover `<meta name="robots" content="noindex, nofollow">` de `index.html`, `case.html` e `stop.html`
 - [ ] remover `X-Robots-Tag: noindex, nofollow` de `public/_headers`
 - [ ] conferir HTTPS em `https://soulletsgo.com`
+- [ ] `credits.html` continua linkada no rodapé e atualizada
 
 ## Pendências técnicas conhecidas
 
@@ -166,6 +172,8 @@ O site pode subir com placeholder. **Divulgar o link exige outra régua**, mais 
   classifica como melhoria desejável, não bloqueio.
 - **Alternador de idioma por JavaScript.** O Google só enxerga o inglês. Decisão de arquitetura
   pendente, registrada no briefing.
+- **`cwebp` não instalado.** A conversão continua saindo pelo Pillow num venv, receita acima.
+  Não bloqueia: não há nenhum JPEG em `public/`.
 - **Favicon só em SVG.** Falta um PNG para `apple-touch-icon`, que não dá para gerar aqui sem
   rasterizador.
 - **Créditos do mapa.** A tarja `© CARTO, © OpenStreetMap contributors` é exigência de licença

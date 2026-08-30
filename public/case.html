@@ -173,11 +173,11 @@ const CASES = {
     mapNote: 'The deal was closed as we crossed Carretera Austral, we received the products in Puerto Natales, and shot in the park in 2 different days.'
   },
   knafs: {
-    num: '02', title: 'knafs', kicker: 'product · bariloche, argentina',
+    num: '02', title: 'knafs', kicker: 'product · torres del paine, chile',
     lede: 'A folding knife photographed on the route, in the argentine andes.',
     h2: 'the briefing',
     body: [
-      'Knafs sent the knife. We photographed it where the route already had us, in the mountains around Bariloche, on wet rock and held open against the peaks.',
+      'Knafs sent the knife. We photographed it where the route already had us, inside Torres del Paine national park, on wet rock and held open against the peaks.',
       'The location is the set. The light is whatever the day gives.'
     ],
     delivered: ['product stills on location', 'shot on the route, in the andes'],
@@ -188,10 +188,10 @@ const CASES = {
       { label: 'product still · 4:5', ratio: '4/5', span: 1 },
       { label: 'landscape still · 3:2', ratio: '3/2', span: 1 }
     ],
-    place: 'bariloche, argentina', coords: [-71.31, -41.133],
-    coordsLabel: '41°08′S 71°19′W',
-    mapTitle: 'shot on the route, in the mountains around bariloche',
-    mapNote: 'Between the patagonian legs of the route and the north. The product came to us, and the shoot happened where we already were.'
+    place: 'torres del paine, chile', coords: [-72.982, -50.942],
+    coordsLabel: '50°57′S 72°59′W',
+    mapTitle: 'shot on the route, inside torres del paine national park',
+    mapNote: 'In the south of Chile, inside the park. The product came to us, and the shoot happened where we already were.'
   },
   salta: {
     num: '03', title: 'in the heart of salta', kicker: 'mini doc · interview · argentina', format: 'hero film',
@@ -329,12 +329,9 @@ class Component extends DCLogic {
         container: this.mapRef.current,
         style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
         center: c.coords, zoom: 4.2, pitch: 0, bearing: 0,
-        // exigencia de licenca da CARTO e do OpenStreetMap. o style.json da carto nao
-        // traz o campo attribution, entao o credito precisa ser declarado aqui. nao remover.
-        attributionControl: {
-          compact: true,
-          customAttribution: '&copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
-        }
+        // a atribuicao da CARTO e do OpenStreetMap vem do proprio TileJSON da fonte e
+        // aparece sozinha no controle. exigencia de licenca dos dois, nao remover.
+        attributionControl: { compact: true }
       });
       this._map = map;
       map.scrollZoom.disable();

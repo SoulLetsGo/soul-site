@@ -1,6 +1,6 @@
 # copy pendente
 
-Decisões de texto que dependem da Thainá. Nada aqui foi escrito ou alterado sem ela. Atualizado em 26 de agosto de 2026, depois de importar o `Soul Light.dc.html`.
+Decisões de texto que dependem da Thainá. Nada aqui foi escrito ou alterado sem ela. Atualizado em 30 de agosto de 2026, rodada 02.
 
 ---
 
@@ -109,3 +109,22 @@ Foi mantido o valor novo, nas três línguas, por ser o do arquivo mais recente.
 
 Junto veio uma nota nova no mesmo pacote, que antes era vazia:
 `A solução para a sobrecarga do seu time de conteúdo`.
+
+
+---
+
+## 7. Case knafs · buffalo e knafs agora no mesmo ponto do mapa
+
+A seção 3.4 do briefing 02 mandou corrigir a localização do knafs para **Parque Nacional Torres
+del Paine**. O protótipo trazia Bariloche, que estava errado. Corrigido em `place`, `coords`,
+`coordsLabel`, `kicker`, `mapTitle` e `mapNote`, mais a etiqueta do cartão nas três línguas da home.
+
+Dentro do corpo do texto, a única alteração foi trocar o nome do lugar errado pelo certo. **A
+narrativa não foi reescrita**, conforme as seções 5 e 7 do briefing.
+
+Consequência, que é observação para a Thainá e não coisa para resolver aqui: **buffalo e knafs
+passam a marcar o mesmo ponto no mapa**, os dois em Torres del Paine. Se foram produções
+separadas, o texto de cada case precisa deixar isso claro. Hoje não deixa.
+
+O corpo do case knafs também **continua curto de propósito**, por falta de fonte, como na rodada
+anterior. Segue aguardando.
