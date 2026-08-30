@@ -35,9 +35,9 @@
   <nav style="position:fixed; top:0; left:0; right:0; z-index:800; display:flex; justify-content:space-between; align-items:center; gap:18px; padding:16px clamp(20px,4vw,64px); background:rgba(242,232,216,.82); backdrop-filter:blur(10px); border-bottom:1px solid rgba(43,29,8,.12)">
     <a href="index.html" style="display:flex; align-items:center"><img src="assets/logo-soul-terracota.svg" alt="soul" style="display:block; width:88px; height:auto" /></a>
     <div style="display:flex; gap:22px; font-size:13.5px; letter-spacing:.04em">
-      <a href="index.html#where">the route</a>
-      <a href="index.html#packages">packages</a>
-      <a href="index.html#book">book a call</a>
+      <a href="index.html#where">The route</a>
+      <a href="index.html#packages">Packages</a>
+      <a href="index.html#book">Book a call</a>
     </div>
   </nav>
 
@@ -59,7 +59,7 @@
   </header>
 
   <section style="padding:clamp(54px,8vh,96px) clamp(20px,4vw,64px) clamp(20px,3vh,36px); border-top:1px solid rgba(43,29,8,.12)">
-    <div data-scrub="fade" style="font-size:12.5px; letter-spacing:.16em; color:rgba(43,29,8,.45); display:flex; align-items:center; gap:12px; margin-bottom:34px; opacity:0"><span>amazing places your product can be</span><span style="flex:1; height:1px; background:rgba(43,29,8,.15)"></span></div>
+    <div data-scrub="fade" style="font-size:12.5px; letter-spacing:.16em; color:rgba(43,29,8,.45); display:flex; align-items:center; gap:12px; margin-bottom:34px; opacity:0"><span>Amazing places your product can be</span><span style="flex:1; height:1px; background:rgba(43,29,8,.15)"></span></div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(16px,2.4vw,30px)">
       <sc-for list="{{ pois }}" as="p" hint-placeholder-count="4">
         <div>
@@ -78,11 +78,11 @@
     <div data-scrub="fade" style="border:1px solid rgba(43,29,8,.22); background:rgba(43,29,8,.14); backdrop-filter:blur(6px); padding:clamp(28px,4vw,56px); text-align:center; opacity:0">
       <h2 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(24px,3.6vw,48px); line-height:1.18; letter-spacing:-.018em; margin:0 auto; max-width:18ch; text-wrap:balance">{{ ctaTitle }}</h2>
       <p style="color:rgba(43,29,8,.75); max-width:46ch; margin:20px auto 30px">Tell us what you have in mind and we'll make it even better.</p>
-      <a href="index.html#book" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; transition:background .4s, color .4s" style-hover="background:transparent; color:#2B1D08">i want content there</a>
+      <a href="index.html#book" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; transition:background .4s, color .4s" style-hover="background:transparent; color:#2B1D08">I want content there</a>
     </div>
     <div data-scrub="fade" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px 32px; margin-top:34px; font-size:13px; color:rgba(43,29,8,.5); opacity:0">
       <a href="{{ prevHref }}" style="color:rgba(43,29,8,.7)">← {{ prevName }}</a>
-      <a href="index.html#where" style="color:rgba(43,29,8,.7)">all stops on the route</a>
+      <a href="index.html#where" style="color:rgba(43,29,8,.7)">All stops on the route</a>
       <a href="{{ nextHref }}" style="color:rgba(43,29,8,.7)">{{ nextName }} →</a>
     </div>
   </section>
@@ -216,13 +216,13 @@ class Component extends DCLogic {
     const all = this.state.all;
     const i = this.state.index;
     const prev = all[i - 1], next = all[i + 1];
-    const statusText = { done: 'already filmed', live: 'currently in', open: 'open for booking', full: 'fully booked' };
+    const statusText = { done: 'Already filmed', live: 'Currently in', open: 'Open for booking', full: 'Fully booked' };
     return {
       rootRef: this.rootRef, heroRef: this.heroRef, heroImgRef: this.heroImgRef,
       name: s ? s.name.split(',')[0] : '',
       region: s ? (s.name.split(',')[1] || '').trim() : '',
-      status: s ? (statusText[s.status] || 'on the route') : '',
-      window: s ? (s.window ? `filming window ${FULL[new Date(s.window[0] + 'T00:00:00').getMonth()]} ${new Date(s.window[0] + 'T00:00:00').getFullYear()}` : 'This stop is already behind us.') : '',
+      status: s ? (statusText[s.status] || 'On the route') : '',
+      window: s ? (s.window ? `Filming window ${FULL[new Date(s.window[0] + 'T00:00:00').getMonth()]} ${new Date(s.window[0] + 'T00:00:00').getFullYear()}` : 'This stop is already behind us.') : '',
       ctaTitle: s ? `Shoot your product in ${s.name.split(',')[0]}` : '',
       pois: s ? (s.pois || []).map(p => ({
         name: p.name,
@@ -231,9 +231,9 @@ class Component extends DCLogic {
         pendingShow: p.photo ? 'none' : 'block'
       })) : [],
       prevHref: prev ? 'stop.html?s=' + prev.id : 'index.html#where',
-      prevName: prev ? prev.name.split(',')[0].toLocaleLowerCase() : 'the route',
+      prevName: prev ? prev.name.split(',')[0] : 'The route',
       nextHref: next ? 'stop.html?s=' + next.id : 'index.html#where',
-      nextName: next ? next.name.split(',')[0].toLocaleLowerCase() : 'the route'
+      nextName: next ? next.name.split(',')[0] : 'The route'
     };
   }
 }

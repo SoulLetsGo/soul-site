@@ -292,10 +292,7 @@
   <section id="book" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(26px,3.5vh,46px) clamp(20px,4vw,64px) clamp(28px,3.5vh,48px); text-align:center">
     <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(34px,5.2vw,72px); line-height:1.14; letter-spacing:-.018em; margin:0 auto; max-width:16ch; text-wrap:balance; opacity:0">{{ bookT.a }}<em style="font-style:italic; font-weight:700">{{ bookT.em }}</em>{{ bookT.b }}</h2>
     <p data-scrub="fade" style="color:rgba(43,29,8,.75); max-width:48ch; margin:26px auto 36px; opacity:0">{{ t.bookSub }}</p>
-    <div data-scrub="fade" style="opacity:0">
-      <a href="https://calendar.app.google/VUfRpbG8s4hUhwDP9" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; opacity:0; transition:background .4s, color .4s; opacity:1" style-hover="background:transparent; color:#2B1D08">{{ t.ctaBook }}</a>
-      <div style="margin-top:12px; font-size:12px; letter-spacing:.12em; color:rgba(43,29,8,.5)">{{ t.bookMeta }}</div>
-    </div>
+    <a data-scrub="fade" href="https://calendar.app.google/VUfRpbG8s4hUhwDP9" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; opacity:0; transition:background .4s, color .4s; opacity:0" style-hover="background:transparent; color:#2B1D08">{{ t.ctaBook }}</a>
   </section>
 
   <footer style="position:relative; z-index:2; background:#F2E8D8; color:rgba(255,246,229,.6); font-size:13.5px">
@@ -360,8 +357,7 @@ const COPY = {
     navWork: 'work', navPackages: 'packages', navBook: 'book a call', navWhere: 'where we are',
     heroTitle: "we're *already* there.",
     heroSub: 'Brand campaigns and social content shot in places other studios have to fly a full crew to reach.',
-    ctaWork: 'work with us', ctaWhere: 'see where we are', ctaBook: 'book a call',
-    bookMeta: 'opens in google calendar · 30 min',
+    ctaWork: 'Work with us', ctaWhere: 'See where we are', ctaBook: 'Book a call',
     photoPending: 'photo pending',
     creditsLine: 'The photographs in the route panel are location references from Wikimedia Commons, not work by Soul. ',
     creditsLink: 'Full credits.',
@@ -370,8 +366,8 @@ const COPY = {
     marquee: 'now in the american continent  ·  content shot like film  ·  ',
     workTitle: 'selected work, and *what it took to get there*',
     openCase: 'open case →', learnMore: 'learn more →',
-    slgMeta: 'the instagram documentary project',
-    mapLoading: 'loading the route', whereLabel: 'where we are', whereTitle: 'from patagonia to alaska',
+    slgMeta: 'The Instagram documentary project',
+    mapLoading: 'Loading the route', whereLabel: 'Where we are', whereTitle: 'from patagonia to alaska',
     panelTitle: 'follow our tracks', bookThis: 'book this window →',
     seeCase: 'see the case →',
     pkgTitle: 'monthly content packages for brands',
@@ -385,19 +381,19 @@ const COPY = {
     closesIn: (n) => `closes in ${n} day${n === 1 ? '' : 's'}`,
     slotsOpen: (n) => `${n} slot${n === 1 ? '' : 's'} open`,
     cases: [
-      { title: 'buffalo', place: 'torres del paine, cl' },
-      { title: 'knafs', place: 'torres del paine, cl' },
+      { title: 'buffalo', place: 'Torres del Paine, CL' },
+      { title: 'knafs', place: 'Torres del Paine, CL' },
       { title: 'social minidocs', place: '' }
     ],
     packages: [
-      { name: 'content bank', pre: '', amt: '$1,500', suf: '/ month', badge: '',
-        items: ['30 edited photographs every month', '2 new locations on the route every month', 'up to three products, one unified look'],
+      { name: 'Content bank', pre: '', amt: '$1,500', suf: '/ month', badge: '',
+        items: ['30 edited photographs every month', '2 new locations on the route every month', 'Up to three products, one unified look'],
         note: 'Something no fixed studio can hand you.' },
-      { name: 'cinematic', pre: 'from', amt: '$3,000', suf: '/ month', badge: 'best option',
-        items: ['everything in content bank', '+ 5 raw clips for your own team to cut,', 'or 2 finished 15s vertical videos'],
+      { name: 'Cinematic', pre: 'from', amt: '$3,000', suf: '/ month', badge: 'Best option',
+        items: ['Everything in content bank', '+ 5 raw clips for your own team to cut,', 'Or 2 finished 15s vertical videos'],
         note: 'The solution for your content team overload' },
-      { name: 'hero film', pre: 'from', amt: '$4,000', suf: '/ project', badge: '',
-        items: ['a mini documentary or a campaign built on deep storytelling', 'one long film + 3 short cuts', 'dedicated art direction', 'negotiable locations'],
+      { name: 'Hero film', pre: 'from', amt: '$4,000', suf: '/ project', badge: '',
+        items: ['A mini documentary or a campaign built on deep storytelling', 'One long film + 3 short cuts', 'Dedicated art direction', 'Negotiable locations'],
         note: 'The piece that carries a launch.' }
     ]
   },
@@ -405,8 +401,7 @@ const COPY = {
     navWork: 'trabalhos', navPackages: 'pacotes', navBook: 'agendar call', navWhere: 'onde estamos',
     heroTitle: '*já* estamos lá.',
     heroSub: 'Campanhas de marca e conteúdo social gravados em lugares onde outros estúdios precisariam levar uma equipe inteira de avião.',
-    ctaWork: 'trabalhe conosco', ctaWhere: 'veja onde estamos', ctaBook: 'agendar call',
-    bookMeta: 'opens in google calendar · 30 min',
+    ctaWork: 'Trabalhe conosco', ctaWhere: 'Veja onde estamos', ctaBook: 'Agendar call',
     photoPending: 'foto pendente',
     creditsLine: 'As fotografias do painel da rota são referências de locação do Wikimedia Commons, não são fotos da Soul. ',
     creditsLink: 'Créditos completos.',
@@ -415,8 +410,8 @@ const COPY = {
     marquee: 'agora no continente americano  ·  conteúdo gravado como cinema  ·  ',
     workTitle: 'trabalhos selecionados, e *o que foi preciso para chegar lá*',
     openCase: 'abrir case →', learnMore: 'saiba mais →',
-    slgMeta: 'o projeto documental do instagram',
-    mapLoading: 'carregando a rota', whereLabel: 'onde estamos', whereTitle: 'da patagônia ao alasca',
+    slgMeta: 'O projeto documental do Instagram',
+    mapLoading: 'Carregando a rota', whereLabel: 'Onde estamos', whereTitle: 'da patagônia ao alasca',
     panelTitle: 'siga nossos rastros', bookThis: 'reservar esta janela →',
     seeCase: 'ver o case →',
     pkgTitle: 'pacotes mensais de conteúdo para marcas',
@@ -430,19 +425,19 @@ const COPY = {
     closesIn: (n) => `fecha em ${n} dia${n === 1 ? '' : 's'}`,
     slotsOpen: (n) => `${n} vaga${n === 1 ? '' : 's'} aberta${n === 1 ? '' : 's'}`,
     cases: [
-      { title: 'buffalo', place: 'torres del paine, cl' },
-      { title: 'knafs', place: 'torres del paine, cl' },
+      { title: 'buffalo', place: 'Torres del Paine, CL' },
+      { title: 'knafs', place: 'Torres del Paine, CL' },
       { title: 'social minidocs', place: '' }
     ],
     packages: [
-      { name: 'banco de conteúdo', pre: '', amt: 'US$ 1.500', suf: '/ mês', badge: '',
-        items: ['30 fotografias editadas por mês', '2 novos lugares da rota por mês', 'até três produtos, um visual único'],
+      { name: 'Banco de conteúdo', pre: '', amt: 'US$ 1.500', suf: '/ mês', badge: '',
+        items: ['30 fotografias editadas por mês', '2 novos lugares da rota por mês', 'Até três produtos, um visual único'],
         note: 'Algo que nenhum estúdio fixo entrega.' },
-      { name: 'cinematográfico', pre: 'a partir de', amt: 'US$ 3.000', suf: '/ mês', badge: 'melhor opção',
-        items: ['tudo do banco de conteúdo', '+ 5 clipes brutos para seu time editar,', 'ou 2 vídeos verticais de 15s finalizados'],
+      { name: 'Cinematográfico', pre: 'a partir de', amt: 'US$ 3.000', suf: '/ mês', badge: 'Melhor opção',
+        items: ['Tudo do banco de conteúdo', '+ 5 clipes brutos para seu time editar,', 'Ou 2 vídeos verticais de 15s finalizados'],
         note: 'A solução para a sobrecarga do seu time de conteúdo' },
-      { name: 'filme hero', pre: 'a partir de', amt: 'US$ 4.000', suf: '/ projeto', badge: '',
-        items: ['um minidocumentário ou uma campanha construída sobre narrativa profunda', 'um filme longo + 3 cortes curtos', 'direção de arte dedicada', 'locações negociáveis'],
+      { name: 'Filme hero', pre: 'a partir de', amt: 'US$ 4.000', suf: '/ projeto', badge: '',
+        items: ['Um minidocumentário ou uma campanha construída sobre narrativa profunda', 'Um filme longo + 3 cortes curtos', 'Direção de arte dedicada', 'Locações negociáveis'],
         note: 'A peça que sustenta um lançamento.' }
     ]
   },
@@ -450,8 +445,7 @@ const COPY = {
     navWork: 'trabajos', navPackages: 'paquetes', navBook: 'agendar llamada', navWhere: 'dónde estamos',
     heroTitle: '*ya* estamos ahí.',
     heroSub: 'Campañas de marca y contenido social filmados en lugares a los que otros estudios tendrían que volar con un equipo entero.',
-    ctaWork: 'trabajá con nosotros', ctaWhere: 'mirá dónde estamos', ctaBook: 'agendar llamada',
-    bookMeta: 'opens in google calendar · 30 min',
+    ctaWork: 'Trabajá con nosotros', ctaWhere: 'Mirá dónde estamos', ctaBook: 'Agendar llamada',
     photoPending: 'foto pendiente',
     creditsLine: 'Las fotografías del panel de la ruta son referencias de locación de Wikimedia Commons, no son fotos de Soul. ',
     creditsLink: 'Créditos completos.',
@@ -460,8 +454,8 @@ const COPY = {
     marquee: 'ahora en el continente americano  ·  contenido filmado como cine  ·  ',
     workTitle: 'trabajos seleccionados, y *lo que costó llegar hasta ahí*',
     openCase: 'abrir caso →', learnMore: 'ver más →',
-    slgMeta: 'el proyecto documental de instagram',
-    mapLoading: 'cargando la ruta', whereLabel: 'dónde estamos', whereTitle: 'de la patagonia a alaska',
+    slgMeta: 'El proyecto documental de Instagram',
+    mapLoading: 'Cargando la ruta', whereLabel: 'Dónde estamos', whereTitle: 'de la patagonia a alaska',
     panelTitle: 'seguí nuestras huellas', bookThis: 'reservar esta ventana →',
     seeCase: 'ver el caso →',
     pkgTitle: 'paquetes mensuales de contenido para marcas',
@@ -475,19 +469,19 @@ const COPY = {
     closesIn: (n) => `cierra en ${n} día${n === 1 ? '' : 's'}`,
     slotsOpen: (n) => `${n} lugar${n === 1 ? '' : 'es'} disponible${n === 1 ? '' : 's'}`,
     cases: [
-      { title: 'buffalo', place: 'torres del paine, cl' },
-      { title: 'knafs', place: 'torres del paine, cl' },
+      { title: 'buffalo', place: 'Torres del Paine, CL' },
+      { title: 'knafs', place: 'Torres del Paine, CL' },
       { title: 'social minidocs', place: '' }
     ],
     packages: [
-      { name: 'banco de contenido', pre: '', amt: 'US$ 1.500', suf: '/ mes', badge: '',
-        items: ['30 fotografías editadas por mes', '2 lugares nuevos de la ruta por mes', 'hasta tres productos, una sola estética'],
+      { name: 'Banco de contenido', pre: '', amt: 'US$ 1.500', suf: '/ mes', badge: '',
+        items: ['30 fotografías editadas por mes', '2 lugares nuevos de la ruta por mes', 'Hasta tres productos, una sola estética'],
         note: 'Algo que ningún estudio fijo puede darte.' },
-      { name: 'cinematográfico', pre: 'desde', amt: 'US$ 3.000', suf: '/ mes', badge: 'mejor opción',
-        items: ['todo lo del banco de contenido', '+ 5 clips en bruto para que los edite tu equipo,', 'o 2 videos verticales de 15s terminados'],
+      { name: 'Cinematográfico', pre: 'desde', amt: 'US$ 3.000', suf: '/ mes', badge: 'Mejor opción',
+        items: ['Todo lo del banco de contenido', '+ 5 clips en bruto para que los edite tu equipo,', 'O 2 videos verticales de 15s terminados'],
         note: 'La solución para la sobrecarga de tu equipo de contenido' },
-      { name: 'film hero', pre: 'desde', amt: 'US$ 4.000', suf: '/ proyecto', badge: '',
-        items: ['un minidocumental o una campaña construida sobre narrativa profunda', 'un film largo + 3 cortes cortos', 'dirección de arte dedicada', 'locaciones negociables'],
+      { name: 'Film hero', pre: 'desde', amt: 'US$ 4.000', suf: '/ proyecto', badge: '',
+        items: ['Un minidocumental o una campaña construida sobre narrativa profunda', 'Un film largo + 3 cortes cortos', 'Dirección de arte dedicada', 'Locaciones negociables'],
         note: 'La pieza que sostiene un lanzamiento.' }
     ]
   }
@@ -1005,19 +999,18 @@ class Component extends DCLogic {
       return (v === undefined || v === null) ? (r[key + '_en'] || '') : v;
     };
     const d = r.days;
-    const low = v => String(v == null ? '' : v).toLocaleLowerCase();
     return {
       id: r.id,
       status: r.status,
       anchor: r.anchor,
-      name: low(pick('name')),
+      name: pick('name'),
       window: pick('window_label'),
       season: pick('season_note'),
       slots: (typeof r.slots === 'number' && r.slots > 0) ? this.t().slotsOpen(r.slots) : '',
       countdown: (r.status === 'closing' && typeof d === 'number' && d >= 0) ? this.t().closesIn(d) : '',
       caseUrl: r.case_url || '',
       photos: (Array.isArray(r.photos) ? r.photos : []).map(p => ({
-        name: low(p.name),
+        name: p.name,
         img: p.img,
         author: p.author || '',
         license: p.license || '',

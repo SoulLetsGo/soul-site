@@ -54,13 +54,14 @@
               <span style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:4/5">
                 <span style="position:absolute; inset:0; background-color:#E3D5BC; background-image:url({{ d.thumb }}); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
                 <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.05),rgba(22,16,3,.72))"></span>
-                <span style="position:absolute; left:clamp(16px,2vw,24px); right:clamp(16px,2vw,24px); bottom:clamp(16px,2vw,24px); display:grid; gap:14px; justify-items:start">
-                  <span style="padding:10px 20px; border-radius:999px; border:1px solid rgba(255,246,229,.5); font-size:12px; letter-spacing:.06em; color:#FFF6E5; display:block">{{ ui.view }}</span>
-                </span>
+                <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ d.thumbPendingShow }}">photo pending</span>
               </span>
               <span style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,246,229,.5); display:block">{{ d.kicker }}</span>
             </a>
           </sc-for>
+        </div>
+        <div style="margin-top:clamp(34px,4.5vh,54px); text-align:center">
+          <a href="https://calendar.app.google/VUfRpbG8s4hUhwDP9" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#F2E8D8; color:#161003; border:1px solid #F2E8D8; transition:background .4s, color .4s" style-hover="background:transparent; color:#F2E8D8">{{ ui.navBook }}</a>
         </div>
       </section>
     </div>
@@ -134,7 +135,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;filmId&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;folklore&quot;,&quot;fileteado&quot;,&quot;patagonia&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;minidoc&quot;}}">
 const UI = {
   EN: {
-    navWork: 'all work', navBook: 'book a call',
+    navWork: 'all work', navBook: 'Book a call',
     kicker: 'CASE 03 · SOCIAL MINIDOCS', indexTitle: 'social minidocs',
     indexSub: 'Short documentaries made on the route, cut for social.',
     view: 'view', back: '← SOCIAL MINIDOCS', synopsis: 'SYNOPSIS', credits: 'credits',
@@ -143,7 +144,7 @@ const UI = {
     roles: ['roteiro', 'camera, edit and sound']
   },
   PT: {
-    navWork: 'todos os trabalhos', navBook: 'agendar call',
+    navWork: 'todos os trabalhos', navBook: 'Agendar call',
     kicker: 'CASE 03 · SOCIAL MINIDOCS', indexTitle: 'social minidocs',
     indexSub: 'Documentários curtos gravados na rota, montados para social.',
     view: 'ver', back: '← SOCIAL MINIDOCS', synopsis: 'SINOPSE', credits: 'créditos',
@@ -152,7 +153,7 @@ const UI = {
     roles: ['roteiro', 'câmera, edição e som']
   },
   ES: {
-    navWork: 'todos los trabajos', navBook: 'agendar llamada',
+    navWork: 'todos los trabajos', navBook: 'Agendar llamada',
     kicker: 'CASE 03 · SOCIAL MINIDOCS', indexTitle: 'social minidocs',
     indexSub: 'Documentales cortos filmados en la ruta, montados para social.',
     view: 'ver', back: '← SOCIAL MINIDOCS', synopsis: 'SINOPSIS', credits: 'créditos',
@@ -163,6 +164,14 @@ const UI = {
 };
 
 const NAMES = ['Thainá Tanizawa', 'Marcelo Ordoñez'];
+
+// capa propria por minidoc. sem entrada aqui, o slot cai no placeholder e mostra a etiqueta.
+const MD_THUMBS = {
+  folklore: 'assets/minidocs/folklore.webp',
+  fileteado: 'assets/minidocs/fileteado.webp',
+  patagonia: 'assets/minidocs/patagonia.webp'
+};
+const MD_STILLS = {};
 
 const DOCS = [
   {
@@ -255,8 +264,10 @@ class Component extends DCLogic {
       runtime: d.runtime + ui.min,
       playerNote: ui.player + d.runtime + ui.min,
       href: 'minidocs.html?d=' + d.id,
-      thumb: 'https://picsum.photos/seed/soul-md-' + d.id + '/900/1125',
-      still: 'https://picsum.photos/seed/soul-md-' + d.id + '-still/1600/900',
+      thumb: MD_THUMBS[d.id] || ('https://picsum.photos/seed/soul-md-' + d.id + '/900/1125'),
+      thumbPendingShow: MD_THUMBS[d.id] ? 'none' : 'block',
+      still: MD_STILLS[d.id] || ('https://picsum.photos/seed/soul-md-' + d.id + '-still/1600/900'),
+      stillPendingShow: MD_STILLS[d.id] ? 'none' : 'block',
       body: (d.body[L] || d.body.EN).map(t => ({ t })),
       credits: ui.roles.map((role, i) => ({ role, name: NAMES[i] }))
     });
