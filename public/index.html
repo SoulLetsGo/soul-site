@@ -48,11 +48,18 @@
   [data-attrpanel] { opacity:0; pointer-events:none; transition:opacity .18s linear; }
   [data-attr]:hover [data-attrpanel], [data-attr]:focus-within [data-attrpanel] { opacity:1; pointer-events:auto; }
   @media (max-width: 900px) {
-    #where { height:auto !important; }
-    [data-mapsticky] { position:static !important; height:auto !important; overflow:visible !important; }
-    [data-mapwrap] { position:relative !important; inset:auto !important; height:68vh !important; clip-path:none !important; border-width:0 !important; }
-    [data-maptitle] { display:none !important; }
-    [data-routeinfo] { position:relative !important; inset:auto !important; width:auto !important; height:auto !important; max-height:none !important; opacity:1 !important; pointer-events:auto !important; transform:none !important; border:0 !important; }
+    /* a nav e fixa: sem esta margem o link #where esconde o titulo atras dela */
+    #where { height:auto !important; scroll-margin-top:72px; }
+    [data-mapsticky] { position:static !important; height:auto !important; overflow:visible !important;
+                       display:flex !important; flex-direction:column; }
+    [data-mapwrap] { position:relative !important; inset:auto !important; order:2; height:68vh !important; clip-path:none !important; border-width:0 !important; }
+    /* o titulo sai de cima do mapa e vai para o fluxo, acima dele */
+    [data-maptitle] { position:relative !important; inset:auto !important; order:1; opacity:1 !important;
+                      transform:none !important; place-items:start !important; padding:0 0 18px; }
+    [data-maptitle] > div { text-align:left !important; }
+    [data-maptitle] div div { color:rgba(43,29,8,.55) !important; }
+    [data-maptitle] h2 { text-shadow:none !important; margin-left:0 !important; }
+    [data-routeinfo] { position:relative !important; inset:auto !important; order:3; width:auto !important; height:auto !important; max-height:none !important; opacity:1 !important; pointer-events:auto !important; transform:none !important; border:0 !important; }
     [data-routeinfo] ul { overflow:visible !important; }
     .maplibregl-canvas-container, .maplibregl-canvas { touch-action:pan-y !important; }
   }
@@ -214,7 +221,7 @@
       <sc-for list="{{ packages }}" as="k" hint-placeholder-count="3">
         <div data-pkg="1" data-scrub="fade" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,1.8vw,26px) clamp(20px,2vw,30px) clamp(26px,2.4vw,36px); background:{{ k.bg }}; backdrop-filter:blur(6px); border:1px solid rgba(43,29,8,.22); transition:background .55s; opacity:0" style-hover="background:rgba(43,29,8,.13)">
           <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:16/6; margin:0 0 22px; clip-path:inset(0 50% 0 50%)">
-            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url({{ k.img }}); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
+            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url({{ k.img }}); background-size:cover; background-position:{{ k.pos }}; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
             <span style="position:absolute; top:0; left:0; padding:6px 12px; background:#A9482B; color:#FFF6E5; font-size:10.5px; letter-spacing:.18em; display:{{ k.badgeShow }}">{{ k.badge }}</span>
           </span>
           <h3 data-pkgname="1" style="font-family:'Libre Baskerville', Georgia, serif; font-style:italic; font-weight:400; font-size:20px; letter-spacing:.02em; color:rgba(43,29,8,.75); margin:0 0 22px">{{ k.name }}</h3>
@@ -346,10 +353,18 @@ const range = (v, a, b) => clamp((v - a) / (b - a), 0, 1);
 const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
 // capas: pending true = ainda no placeholder, listado em FOTOS_PENDENTES.md
+// pos: ponto do corte 16:6. a capa do cinematic e vertical e precisa subir
+// para a camera entrar no recorte.
+const PKG_COVERS = [
+  { img: 'assets/capa-pacote-1.webp', pos: 'center' },
+  { img: 'assets/capa-pacote-2.webp', pos: 'center 20%' },
+  { img: 'assets/capa-pacote-3.webp', pos: 'center' }
+];
+
 const CASE_COVERS = [
   { img: 'assets/capa-buffalo.webp', pending: false },
   { img: 'assets/capa-knafs.webp', pending: false },
-  { img: 'https://picsum.photos/seed/soul-md-folklore/1600/700', pending: true }
+  { img: 'assets/minidocs/capa-minidocs.webp', pending: false }
 ];
 
 const COPY = {
@@ -883,7 +898,7 @@ class Component extends DCLogic {
         if (!down) return;
         const dx = e.clientX - sx;
         moved = Math.max(moved, Math.abs(dx));
-        if (moved < 6) return;
+        if (moved < 12) return;
         if (!cap) { cap = true; try { el.setPointerCapture(pid); } catch (err) {} }
         el.scrollLeft = sl - dx;
         e.preventDefault();
@@ -891,7 +906,7 @@ class Component extends DCLogic {
       const up = () => { down = false; if (cap) { try { el.releasePointerCapture(pid); } catch (err) {} } };
       el.addEventListener('pointerup', up);
       el.addEventListener('pointercancel', up);
-      el.addEventListener('click', e => { if (moved >= 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+      el.addEventListener('click', e => { if (moved >= 12) { e.preventDefault(); e.stopPropagation(); } moved = 0; }, true);
     };
     return this._strips[id];
   }
@@ -1139,12 +1154,15 @@ class Component extends DCLogic {
       map.doubleClickZoom.disable();
       map.boxZoom.disable();
       map.keyboard.disable();
+      // arrastar continua ligado no celular. o touch-action pan-y da canvas deixa o
+      // scroll vertical da pagina passar, entao nao prende o dedo do visitante.
       this._syncDragPan = () => {
-        try { window.innerWidth < 900 ? map.dragPan.disable() : map.dragPan.enable(); } catch (e) {}
+        try { map.dragPan.enable(); } catch (e) {}
       };
       this._syncDragPan();
       window.addEventListener('resize', this._syncDragPan, { passive: true });
-      map.touchZoomRotate.disable();
+      map.touchZoomRotate.enable();
+      map.touchZoomRotate.disableRotation();
       const el = this.mapRef.current;
       const sync = () => {
         clearTimeout(this._resizeT);
@@ -1227,6 +1245,7 @@ class Component extends DCLogic {
     REFS.forEach(k => { refs[k + 'Ref'] = this[k + 'Ref']; });
 
     const rv = this.regionView();
+    const narrow = (typeof window !== 'undefined') && window.innerWidth <= 900;
     const cut = rv.list.findIndex(r => r.id === 'central-andes');
     const listed = (cut >= 0 ? rv.list.slice(0, cut + 1) : rv.list).slice().reverse();
     const regions = listed.map(r => {
@@ -1250,8 +1269,10 @@ class Component extends DCLogic {
         railBg: r.status === 'closing' ? 'linear-gradient(180deg,#DCCBAE 21px,#A9482B 21px)' : ((r.status === 'filmed') ? '#A9482B' : '#DCCBAE'),
         dotShow: r.status === 'closing' ? 'block' : 'none',
         stripRef: this.stripBinder(r.id),
-        enter: r.status === 'filmed' ? null : () => this.showRegion(c),
-        leave: r.status === 'filmed' ? null : this.hideRegion,
+        // em tela estreita o hover e emulado e comia o primeiro toque, exigindo dois
+        // cliques para abrir a referencia. sem hover, o primeiro toque ja vale.
+        enter: (r.status === 'filmed' || narrow) ? null : () => this.showRegion(c),
+        leave: (r.status === 'filmed' || narrow) ? null : this.hideRegion,
         focus: () => this.focusRegion(r, c)
       };
     });
@@ -1322,7 +1343,8 @@ class Component extends DCLogic {
         badge: p.badge,
         badgeShow: p.badge ? 'block' : 'none',
         bg: 'rgba(43,29,8,.07)',
-        img: ['assets/capa-pacote-1.webp', 'assets/capa-pacote-2.webp', 'assets/capa-pacote-3.webp'][i],
+        img: PKG_COVERS[i].img,
+        pos: PKG_COVERS[i].pos,
         items: p.items,
         note: p.note,
         noteShow: p.note ? 'block' : 'none'
