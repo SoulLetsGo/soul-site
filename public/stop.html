@@ -12,6 +12,7 @@
 <meta name="description" content="a stop on the soul route: filming window, the places around it, and how to book content there.">
 <!-- em obra: sai no dia do lancamento, junto com o bloqueio do robots.txt -->
 <meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://soulletsgo.com/stop.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="soul">
@@ -21,18 +22,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
 <style>
-  html, body { margin:0; padding:0; background:#161003; }
+  html, body { margin:0; padding:0; background:#F2E8D8; }
   * { box-sizing: border-box; }
-  a { color:#FFF6E5; text-decoration:none; }
-  a:hover { color:#FFF6E5; opacity:.72; }
-  ::selection { background:#FFF6E5; color:#161003; }
+  a { color:#2B1D08; text-decoration:none; }
+  a:hover { color:#2B1D08; opacity:.72; }
+  ::selection { background:#2B1D08; color:#F2E8D8; }
   @keyframes pulse { 0%{transform:scale(1);opacity:.9} 70%{transform:scale(2.4);opacity:0} 100%{opacity:0} }
 </style>
 </helmet>
-<div ref="{{ rootRef }}" style="background:#161003; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#FFF6E5; overflow-x:clip">
+<div ref="{{ rootRef }}" style="background:#F2E8D8; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#2B1D08; overflow-x:clip">
 
-  <nav style="position:fixed; top:0; left:0; right:0; z-index:800; display:flex; justify-content:space-between; align-items:center; gap:18px; padding:16px clamp(20px,4vw,64px); background:rgba(22,16,3,.72); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,246,229,.12)">
-    <a href="index.html" style="display:flex; align-items:center"><img src="assets/logo-soul.svg" alt="soul" style="display:block; width:88px; height:auto" /></a>
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:800; display:flex; justify-content:space-between; align-items:center; gap:18px; padding:16px clamp(20px,4vw,64px); background:rgba(242,232,216,.82); backdrop-filter:blur(10px); border-bottom:1px solid rgba(43,29,8,.12)">
+    <a href="index.html" style="display:flex; align-items:center"><img src="assets/logo-soul-terracota.svg" alt="soul" style="display:block; width:88px; height:auto" /></a>
     <div style="display:flex; gap:22px; font-size:13.5px; letter-spacing:.04em">
       <a href="index.html#where">the route</a>
       <a href="index.html#packages">packages</a>
@@ -41,56 +42,58 @@
   </nav>
 
   <header style="position:relative; min-height:78vh; display:flex; flex-direction:column; justify-content:flex-end; padding:120px clamp(20px,4vw,64px) clamp(36px,5vh,60px); overflow:hidden">
-    <div ref="{{ heroRef }}" style="position:absolute; inset:0; background:#1C1405; clip-path:inset(0 0 100% 0); will-change:transform">
-      <span ref="{{ heroImgRef }}" style="position:absolute; inset:0; background-color:#1C1405; background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
+    <div ref="{{ heroRef }}" style="position:absolute; inset:0; background:#E3D5BC; clip-path:inset(0 0 100% 0); will-change:transform">
+      <span ref="{{ heroImgRef }}" style="position:absolute; inset:0; background-color:#E3D5BC; background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
       <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.35),rgba(22,16,3,.3) 40%,rgba(22,16,3,.96))"></span>
-      <span style="position:absolute; z-index:2; top:70px; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em">photo pending</span>
     </div>
     <div style="position:relative">
-      <div data-scrub="fade" style="display:flex; align-items:center; gap:10px; font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.55); margin-bottom:16px; opacity:0">
-        <span style="width:7px; height:7px; border-radius:50%; background:#FFF6E5; position:relative; flex:none; display:inline-block; box-shadow:0 0 10px rgba(255,246,229,.9)"></span>
+      <div data-scrub="fade" style="display:flex; align-items:center; gap:10px; font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.7); margin-bottom:16px; opacity:0">
+        <span style="width:7px; height:7px; border-radius:50%; background:#A9482B; position:relative; flex:none; display:inline-block; box-shadow:0 0 10px rgba(169,72,43,.9)"></span>
         <span>{{ status }}</span>
-        <span style="width:16px; height:1px; background:rgba(255,246,229,.3); display:block"></span>
+        <span style="width:16px; height:1px; background:rgba(255,246,229,.35); display:block"></span>
         <span>{{ region }}</span>
       </div>
-      <h1 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(34px,7vw,92px); line-height:1.08; letter-spacing:-.025em; margin:0; max-width:14ch; opacity:0">{{ name }}</h1>
-      <p data-scrub="fade" style="max-width:48ch; margin:22px 0 0; color:rgba(255,246,229,.75); font-size:clamp(14px,.4vw + 13px,17px); opacity:0">{{ window }}</p>
+      <h1 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(38px,7vw,92px); line-height:1.08; letter-spacing:-.025em; margin:0; max-width:14ch; color:#FFF6E5; opacity:0">{{ name }}</h1>
+      <p data-scrub="fade" style="max-width:48ch; margin:22px 0 0; color:rgba(255,246,229,.8); font-size:clamp(14px,.4vw + 13px,17px); opacity:0">{{ window }}</p>
     </div>
   </header>
 
-  <section style="padding:clamp(54px,8vh,96px) clamp(20px,4vw,64px) clamp(20px,3vh,36px); border-top:1px solid rgba(255,246,229,.12)">
-    <div data-scrub="fade" style="font-size:12.5px; letter-spacing:.16em; color:rgba(255,246,229,.45); display:flex; align-items:center; gap:12px; margin-bottom:34px; opacity:0"><span>amazing places your product can be</span><span style="flex:1; height:1px; background:rgba(255,246,229,.15)"></span></div>
+  <section style="padding:clamp(54px,8vh,96px) clamp(20px,4vw,64px) clamp(20px,3vh,36px); border-top:1px solid rgba(43,29,8,.12)">
+    <div data-scrub="fade" style="font-size:12.5px; letter-spacing:.16em; color:rgba(43,29,8,.45); display:flex; align-items:center; gap:12px; margin-bottom:34px; opacity:0"><span>amazing places your product can be</span><span style="flex:1; height:1px; background:rgba(43,29,8,.15)"></span></div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(16px,2.4vw,30px)">
       <sc-for list="{{ pois }}" as="p" hint-placeholder-count="4">
         <div>
-          <div data-scrub="clip" style="position:relative; overflow:hidden; background:#1C1405; aspect-ratio:4/3; clip-path:inset(0 50% 0 50%)">
-            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#1C1405; background-image:{{ p.bg }}; background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
-            <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#161003; color:rgba(255,246,229,.7); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ p.pendingShow }}">photo pending</span>
+          <div data-scrub="clip" style="position:relative; overflow:hidden; background:#E3D5BC; aspect-ratio:4/3; clip-path:inset(0 50% 0 50%)">
+            <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:{{ p.bg }}; background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
+            <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ p.pendingShow }}">photo pending</span>
           </div>
           <div style="margin-top:14px; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:15px; line-height:1.4">{{ p.name }}</div>
-          <div style="margin-top:6px; font:400 11px/1.5 ui-monospace, Menlo, monospace; letter-spacing:.1em; color:rgba(255,246,229,.4)">{{ p.coords }}</div>
+          <div style="margin-top:6px; font:400 11px/1.5 ui-monospace, Menlo, monospace; letter-spacing:.1em; color:rgba(43,29,8,.4)">{{ p.coords }}</div>
         </div>
       </sc-for>
     </div>
   </section>
 
   <section style="padding:clamp(54px,8vh,110px) clamp(20px,4vw,64px) clamp(70px,10vh,130px)">
-    <div data-scrub="fade" style="border:1px solid rgba(255,246,229,.22); background:rgba(255,246,229,.14); backdrop-filter:blur(6px); padding:clamp(28px,4vw,56px); text-align:center; opacity:0">
-      <h2 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,3.6vw,48px); line-height:1.18; letter-spacing:-.018em; margin:0 auto; max-width:18ch; text-wrap:balance">{{ ctaTitle }}</h2>
-      <p style="color:rgba(255,246,229,.75); max-width:46ch; margin:20px auto 30px">Tell us what you have in mind and we'll make it even better.</p>
-      <a href="index.html#book" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#FFF6E5; color:#161003; border:1px solid #FFF6E5; transition:background .4s, color .4s" style-hover="background:transparent; color:#FFF6E5">i want content there</a>
+    <div data-scrub="fade" style="border:1px solid rgba(43,29,8,.22); background:rgba(43,29,8,.14); backdrop-filter:blur(6px); padding:clamp(28px,4vw,56px); text-align:center; opacity:0">
+      <h2 style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(24px,3.6vw,48px); line-height:1.18; letter-spacing:-.018em; margin:0 auto; max-width:18ch; text-wrap:balance">{{ ctaTitle }}</h2>
+      <p style="color:rgba(43,29,8,.75); max-width:46ch; margin:20px auto 30px">Tell us what you have in mind and we'll make it even better.</p>
+      <a href="index.html#book" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; transition:background .4s, color .4s" style-hover="background:transparent; color:#2B1D08">i want content there</a>
     </div>
-    <div data-scrub="fade" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px 32px; margin-top:34px; font-size:13px; color:rgba(255,246,229,.5); opacity:0">
-      <a href="{{ prevHref }}" style="color:rgba(255,246,229,.7)">← {{ prevName }}</a>
-      <a href="index.html#where" style="color:rgba(255,246,229,.7)">all stops on the route</a>
-      <a href="{{ nextHref }}" style="color:rgba(255,246,229,.7)">{{ nextName }} →</a>
+    <div data-scrub="fade" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px 32px; margin-top:34px; font-size:13px; color:rgba(43,29,8,.5); opacity:0">
+      <a href="{{ prevHref }}" style="color:rgba(43,29,8,.7)">← {{ prevName }}</a>
+      <a href="index.html#where" style="color:rgba(43,29,8,.7)">all stops on the route</a>
+      <a href="{{ nextHref }}" style="color:rgba(43,29,8,.7)">{{ nextName }} →</a>
     </div>
   </section>
 
-  <footer style="background:#161003; color:rgba(255,246,229,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
-    <div style="border-top:1px solid rgba(255,246,229,.15); padding-top:25px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
+  <footer style="background:#F2E8D8; color:rgba(43,29,8,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
+    <div style="border-top:1px solid rgba(43,29,8,.15); padding-top:25px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
       <div>Soul, a traveling film studio</div>
-      <a href="mailto:contato@soulletsgo.com" style="color:rgba(255,246,229,.7)">contato@soulletsgo.com</a>
+      <span style="display:flex; align-items:center; gap:16px; color:rgba(43,29,8,.7)">
+        <a href="https://instagram.com/soulletsgo" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display:flex; color:inherit"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://youtube.com/@soulletsgo" target="_blank" rel="noopener noreferrer" aria-label="YouTube" style="display:flex; color:inherit"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="5" width="19.6" height="14" rx="4.4"></rect><path d="M10.4 9.3 15.4 12l-5 2.7z" fill="currentColor" stroke="none"></path></svg></a>
+      </span>
       <div>© 2026</div>
     </div>
   </footer>
@@ -119,7 +122,7 @@ class Component extends DCLogic {
       const index = Math.max(0, all.findIndex(s => s.id === id));
       const stop = all[index];
       this.setState({ stop, index, all }, () => {
-        this._title = `${stop.name.split(',')[0].toLocaleLowerCase()} · soul`;
+        this._title = `${stop.name.split(',')[0]} · soul`;
         this.loadImgs(stop.pois);
         this.boot();
       });
@@ -214,26 +217,23 @@ class Component extends DCLogic {
     const i = this.state.index;
     const prev = all[i - 1], next = all[i + 1];
     const statusText = { done: 'already filmed', live: 'currently in', open: 'open for booking', full: 'fully booked' };
-    const low = v => (v || '').toLocaleLowerCase();
-    const year = s && s.window ? new Date(s.window[0] + 'T00:00:00').getFullYear() : '';
     return {
       rootRef: this.rootRef, heroRef: this.heroRef, heroImgRef: this.heroImgRef,
-      name: s ? low(s.name.split(',')[0]) : '',
-      region: s ? low((s.name.split(',')[1] || '').trim()) : '',
+      name: s ? s.name.split(',')[0] : '',
+      region: s ? (s.name.split(',')[1] || '').trim() : '',
       status: s ? (statusText[s.status] || 'on the route') : '',
-      window: s ? (s.window ? `filming window ${FULL[new Date(s.window[0] + 'T00:00:00').getMonth()]} ${year}` : 'This stop is already behind us.') : '',
-      ctaTitle: s ? `shoot your product in ${low(s.name.split(',')[0])}` : '',
-      // nenhuma foto da soul nestes slots ainda: a imagem vem da wikipedia e a etiqueta fica visivel
+      window: s ? (s.window ? `filming window ${FULL[new Date(s.window[0] + 'T00:00:00').getMonth()]} ${new Date(s.window[0] + 'T00:00:00').getFullYear()}` : 'This stop is already behind us.') : '',
+      ctaTitle: s ? `Shoot your product in ${s.name.split(',')[0]}` : '',
       pois: s ? (s.pois || []).map(p => ({
-        name: low(p.name),
+        name: p.name,
         coords: dms(p.coords),
         bg: p.photo ? `url(${p.photo})` : (this.state.imgs[p.id] ? `url(${this.state.imgs[p.id]})` : 'none'),
         pendingShow: p.photo ? 'none' : 'block'
       })) : [],
       prevHref: prev ? 'stop.html?s=' + prev.id : 'index.html#where',
-      prevName: prev ? low(prev.name.split(',')[0]) : 'the route',
+      prevName: prev ? prev.name.split(',')[0].toLocaleLowerCase() : 'the route',
       nextHref: next ? 'stop.html?s=' + next.id : 'index.html#where',
-      nextName: next ? low(next.name.split(',')[0]) : 'the route'
+      nextName: next ? next.name.split(',')[0].toLocaleLowerCase() : 'the route'
     };
   }
 }

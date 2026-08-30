@@ -37,31 +37,37 @@
   @keyframes radar { 0%{transform:scale(.35);opacity:.55} 70%{opacity:0} 100%{transform:scale(1);opacity:0} }
   @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
   @media (pointer: coarse) { #cursor-tag { display:none !important; } }
+  [data-scrub="clip"], [data-pkg], [data-followcard], [data-region-card] { border-radius:14px; }
+  [data-scrub="clip"], [data-region-card] { overflow:hidden; }
+  [data-mapwrap] .maplibregl-canvas { filter:sepia(.42) saturate(.85) hue-rotate(-12deg) contrast(1.04) brightness(.94); }
+  [data-pkg] > span[data-scrub="clip"] { border-radius:10px; }
   @media (pointer: coarse), (max-width: 760px) {
     [data-burger] { display:flex !important; }
     [data-navlinks] { display:none !important; }
   }
-  /* ate 900px o mapa sai do modo secao fixa e a pagina rola normalmente */
+  [data-attrpanel] { opacity:0; pointer-events:none; transition:opacity .18s linear; }
+  [data-attr]:hover [data-attrpanel], [data-attr]:focus-within [data-attrpanel] { opacity:1; pointer-events:auto; }
   @media (max-width: 900px) {
-    #where { height: auto !important; }
-    #where > div { position: static !important; height: auto !important; overflow: visible !important;
-                   display: flex !important; flex-direction: column; }
-    #where [data-maptitle] { position: relative !important; order: 1; opacity: 1 !important;
-                             transform: none !important; padding: 30px 0 24px; }
-    #where [data-maptitle] h2 { text-shadow: none !important; }
-    #where [data-maptitle] div div { color: rgba(43,29,8,.55) !important; }
-    #where [data-mapwrap] { position: relative !important; order: 2;
-                            height: 58vh; min-height: 320px;
-                            top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
-                            clip-path: none !important; border-width: 1px !important;
-                            border-color: rgba(43,29,8,.2) !important; }
-    #where [data-routeinfo] { position: relative !important; order: 3; opacity: 1 !important;
-                              transform: none !important;
-                              top: auto !important; right: auto !important; left: auto !important; bottom: auto !important;
-                              width: auto !important; height: auto !important; max-height: none !important;
-                              border: 0 !important; pointer-events: auto !important; }
+    #where { height:auto !important; }
+    [data-mapsticky] { position:static !important; height:auto !important; overflow:visible !important; }
+    [data-mapwrap] { position:relative !important; inset:auto !important; height:68vh !important; clip-path:none !important; border-width:0 !important; }
+    [data-maptitle] { display:none !important; }
+    [data-routeinfo] { position:relative !important; inset:auto !important; width:auto !important; height:auto !important; max-height:none !important; opacity:1 !important; pointer-events:auto !important; transform:none !important; border:0 !important; }
+    [data-routeinfo] ul { overflow:visible !important; }
+    .maplibregl-canvas-container, .maplibregl-canvas { touch-action:pan-y !important; }
   }
   @media (max-width: 760px) {
+    [data-footgrid] { grid-template-columns:1fr !important; gap:0 !important; }
+    [data-footcard] { order:-1 !important; margin-bottom:26px !important; }
+    [data-followcard] { flex-direction:column !important; text-align:center !important; padding:24px 22px 22px !important; gap:13px !important; }
+    [data-followcard] > span:first-child { width:96px !important; height:96px !important; }
+    [data-followcard] span span { justify-content:center !important; }
+    [data-footbrand] { order:9 !important; justify-items:center !important; text-align:center !important; margin-top:28px !important; }
+    [data-footcol] { border-top:1px solid rgba(255,246,229,.14) !important; padding:16px 0 !important; }
+    [data-footcol] button { font-size:13px !important; letter-spacing:.1em !important; color:#F2E8D8 !important; }
+    [data-footbody] { display:none !important; }
+    [data-footbody][data-open="1"] { display:grid !important; }
+    [data-footchev] { display:inline-block !important; }
     [data-herotext] h1 { font-size: clamp(28px,8.4vw,44px) !important; }
     [data-herotext] p { font-size: 14px !important; margin-top: 16px !important; }
     [data-herotext] { padding: 72px 18px 24px !important; }
@@ -81,7 +87,7 @@
   }
 </style>
 </helmet>
-<div ref="{{ rootRef }}" style="background:#F2E8D8; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#2B1D08; cursor:none; overflow-x:clip">
+<div ref="{{ rootRef }}" style="background:#F2E8D8; font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color:#2B1D08; overflow-x:clip">
 
   <div ref="{{ loaderRef }}" style="position:fixed; inset:0; z-index:820; background:#F2E8D8; overflow:hidden">
     <div ref="{{ loaderBandRef }}" style="position:absolute; top:50%; bottom:50%; left:50%; right:50%; background:#E3D5BC; overflow:hidden">
@@ -99,8 +105,6 @@
       <a href="#top" ref="{{ wordmarkRef }}" style="display:block; pointer-events:auto; transform:translateY(110%); transition:transform 1.5s cubic-bezier(.16,1,.3,1); will-change:transform"><img src="assets/logo-soul-terracota.svg" alt="soul" style="display:block; width:min(46vw,520px); height:auto" /></a>
     </div>
   </div>
-
-  <div id="cursor-tag" ref="{{ cursorRef }}" style="position:fixed; z-index:950; left:0; top:0; font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; color:#F2E8D8; background:#2B1D08; padding:4px 7px; pointer-events:none; white-space:nowrap">scroll</div>
 
   <nav ref="{{ navRef }}" style="position:fixed; top:0; left:0; right:0; z-index:870; display:flex; justify-content:space-between; align-items:center; gap:18px; padding:0 clamp(20px,4vw,64px); height:64px; background:transparent; opacity:0">
     <span style="flex:1"></span>
@@ -154,13 +158,11 @@
 
   <div ref="{{ introSpacerRef }}" style="height:230vh; position:relative; z-index:0"></div>
 
-  <div style="position:relative; z-index:2; background:rgba(43,29,8,.5); overflow:hidden; padding:8px 0">
-    <div style="display:flex; width:max-content; animation:marquee 34s linear infinite; white-space:nowrap; font-family:Poppins, -apple-system, sans-serif; font-weight:400; font-size:clamp(13px,1.35vw,18px); color:rgba(242,232,216,.85)">
-      <span style="display:flex; min-width:100vw; white-space:nowrap"><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span></span>
-      <span style="display:flex; min-width:100vw; white-space:nowrap"><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span><span style="padding-right:60px">{{ t.marquee }}</span></span>
-    </div>
+  <div style="position:relative; z-index:2; margin-bottom:-1px; line-height:0; pointer-events:none">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="display:block; width:100%; height:clamp(44px,5.6vw,88px)">
+      <path d="M0,98 C 500,102 720,26 1440,20 L1440,120 L0,120 Z" fill="#F2E8D8"></path>
+    </svg>
   </div>
-
   <section id="work" data-sec="1" ref="{{ workSecRef }}" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(28px,3.5vh,52px) clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
     <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(32px,3.8vw,52px); line-height:1.2; letter-spacing:-.015em; margin:0 auto clamp(34px,4.5vh,58px); max-width:20ch; text-align:center; text-wrap:balance; opacity:0">{{ workT.a }}<em style="font-style:italic; font-weight:700">{{ workT.em }}</em>{{ workT.b }}</h2>
     <div style="display:grid; gap:clamp(30px,4.5vh,58px)">
@@ -179,33 +181,31 @@
     </div>
   </section>
 
-  <section id="soulletsgo" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:0 clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
-    <a href="https://instagram.com/soulletsgo" target="_blank" rel="noopener noreferrer" data-row="1" data-caserow="1" style="display:grid; grid-template-columns:64px 1fr 190px; gap:clamp(14px,2.4vw,34px); align-items:center">
-      <span data-casenum="1" style="font:400 13px/1 ui-monospace, Menlo, monospace; color:rgba(43,29,8,.45); font-variant-numeric:tabular-nums">04</span>
-      <span data-scrub="clip" style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:16/7; clip-path:inset(0 50% 0 50%)">
-        <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url(https://picsum.photos/seed/soul-letsgo-hero/1600/700); background-size:cover; background-position:center; filter:saturate(.66) contrast(1.05) sepia(.18); will-change:transform; display:block"></span>
-        <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.15),rgba(22,16,3,.5))"></span>
-        <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em">{{ t.photoPending }}</span>
-        <span data-title="1" style="position:absolute; inset:0; display:grid; place-items:center; font-family:Poppins, -apple-system, sans-serif; font-weight:600; font-size:clamp(26px,4.4vw,64px); letter-spacing:.03em; color:#FFF6E5; text-align:center; padding:0 6%">soul let's go</span>
-      </span>
-      <span data-casemeta="1" style="justify-self:end; text-align:right; font-size:12px; letter-spacing:.12em; color:rgba(43,29,8,.5); line-height:1.7">{{ t.slgMeta }}<br />{{ t.learnMore }}</span>
-    </a>
-  </section>
 
-  <section id="about" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:0 clamp(20px,4vw,64px) clamp(22px,3vh,40px)">
+  <div style="position:relative; z-index:2; background:#F2E8D8; margin-bottom:-1px; line-height:0">
+    <svg viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true" style="display:block; width:100%; height:clamp(40px,5vw,78px)">
+      <path d="M0,92 C 480,96 700,24 1440,20 L1440,110 L0,110 Z" fill="#161003"></path>
+    </svg>
+  </div>
+  <section id="about" data-sec="1" style="position:relative; z-index:2; background:#161003; padding:clamp(10px,1.5vh,24px) clamp(20px,4vw,64px) clamp(14px,2vh,28px)">
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(24px,4vw,64px); align-items:center">
       <div data-scrub="clip" style="position:relative; overflow:hidden; background:#E3D5BC; aspect-ratio:4/5; clip-path:inset(0 50% 0 50%)">
         <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url(assets/sobre.webp); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
-        <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(242,232,216,0),rgba(242,232,216,.45))"></span>
+        <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,0),rgba(22,16,3,.45))"></span>
       </div>
       <div>
-        <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(30px,3.4vw,46px); line-height:1.2; letter-spacing:-.018em; margin:0 0 22px; max-width:16ch; opacity:0">{{ aboutT.a }}<em style="font-style:italic">{{ aboutT.em }}</em>{{ aboutT.b }}</h2>
+        <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#C9633C; font-size:clamp(30px,3.4vw,46px); line-height:1.2; letter-spacing:-.018em; margin:0 0 22px; max-width:16ch; opacity:0">{{ aboutT.a }}<em style="font-style:italic">{{ aboutT.em }}</em>{{ aboutT.b }}</h2>
         <sc-for list="{{ aboutBody }}" as="para" hint-placeholder-count="4">
-          <p data-scrub="fade" style="color:rgba(43,29,8,.75); font-size:15.5px; line-height:1.65; margin:0 0 16px; max-width:52ch; text-wrap:pretty; opacity:0">{{ para.t }}</p>
+          <p data-scrub="fade" style="color:rgba(255,246,229,.75); font-size:15.5px; line-height:1.65; margin:0 0 16px; max-width:52ch; text-wrap:pretty; opacity:0">{{ para.t }}</p>
         </sc-for>
       </div>
     </div>
   </section>
+  <div style="position:relative; z-index:2; background:#F2E8D8; margin-top:-1px; line-height:0">
+    <svg viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true" style="display:block; width:100%; height:clamp(40px,5vw,78px)">
+      <path d="M0,0 L1440,0 L1440,90 C 960,94 740,22 0,18 Z" fill="#161003"></path>
+    </svg>
+  </div>
 
   <section id="packages" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(20px,2.5vh,36px) clamp(20px,4vw,64px) clamp(56px,7.5vh,104px)">
     <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(32px,4vw,54px); line-height:1.2; letter-spacing:-.015em; margin:0 auto; max-width:19ch; text-align:center; text-wrap:balance; opacity:0">{{ t.pkgTitle }}</h2>
@@ -217,24 +217,20 @@
             <span data-zoom="1" style="position:absolute; inset:-8%; background-color:#E3D5BC; background-image:url({{ k.img }}); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2); will-change:transform; display:block"></span>
             <span style="position:absolute; top:0; left:0; padding:6px 12px; background:#A9482B; color:#FFF6E5; font-size:10.5px; letter-spacing:.18em; display:{{ k.badgeShow }}">{{ k.badge }}</span>
           </span>
-          <h3 data-pkgname="1" style="font-family:'Libre Baskerville', Georgia, serif; font-style:italic; font-weight:400; font-size:20px; letter-spacing:.02em; color:rgba(43,29,8,.75); margin:0 0 10px">{{ k.name }}</h3>
-          <div style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(24px,2.1vw,32px); line-height:1.15; letter-spacing:-.015em; color:#2B1D08; min-height:2.3em; margin:0 0 26px; font-variant-numeric:tabular-nums; display:flex; flex-wrap:wrap; align-items:baseline; gap:6px">
-            <span style="font-family:Poppins, sans-serif; font-weight:400; font-size:12.5px; letter-spacing:.04em; color:rgba(43,29,8,.6); display:{{ k.preShow }}">{{ k.pricePre }}</span>
-            <span>{{ k.priceAmt }}</span>
-            <span style="font-family:Poppins, sans-serif; font-weight:400; font-size:12.5px; letter-spacing:.04em; color:rgba(43,29,8,.6)">{{ k.priceSuf }}</span>
-          </div>
+          <h3 data-pkgname="1" style="font-family:'Libre Baskerville', Georgia, serif; font-style:italic; font-weight:400; font-size:20px; letter-spacing:.02em; color:rgba(43,29,8,.75); margin:0 0 22px">{{ k.name }}</h3>
           <ul style="list-style:none; display:grid; gap:12px; font-size:15px; color:rgba(43,29,8,.85); margin:0; padding:0; flex:1; align-content:start">
             <sc-for list="{{ k.items }}" as="it" hint-placeholder-count="4">
               <li style="border-top:1px solid rgba(43,29,8,.2); padding-top:12px">{{ it }}</li>
             </sc-for>
           </ul>
           <div style="margin-top:24px; padding-top:16px; border-top:1px solid rgba(43,29,8,.2); font-size:13.5px; color:rgba(43,29,8,.65); display:{{ k.noteShow }}">{{ k.note }}</div>
+          <a href="#book" style="align-self:start; margin-top:22px; display:inline-flex; align-items:center; padding:12px 24px; border-radius:999px; font-size:13px; letter-spacing:.03em; border:1px solid #2B1D08; color:#2B1D08; background:transparent; transition:background .35s, color .35s" style-hover="background:#2B1D08; color:#F2E8D8">{{ t.knowMore }}</a>
         </div>      </sc-for>
     </div>
   </section>
 
   <section id="where" ref="{{ whereSecRef }}" style="position:relative; z-index:2; height:380vh; background:#F2E8D8; color:#2B1D08">
-    <div style="position:sticky; top:0; height:100vh; overflow:hidden">
+    <div data-mapsticky="1" style="position:sticky; top:0; height:100vh; overflow:hidden">
       <div data-mapwrap="1" ref="{{ mapWrapRef }}" style="position:absolute; inset:0; clip-path:inset(42% 36% 42% 36%); border:0 solid rgba(255,246,229,.15)">
         <div ref="{{ mapRef }}" style="position:absolute; inset:0; background:#E3D5BC"></div>
         <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at center, rgba(74,48,16,.14) 38%, rgba(22,16,3,.66) 100%)"></div>
@@ -249,6 +245,10 @@
           <div ref="{{ poiNameRef }}" style="padding:11px 13px 9px; font-family:Poppins, sans-serif; font-weight:500; font-size:13px; line-height:1.3; color:#FFF6E5"></div>
           <div ref="{{ poiMetaRef }}" style="padding:0 13px 12px; display:grid; gap:5px; font-family:Poppins, sans-serif; font-weight:400; font-size:11.5px; line-height:1.45; color:rgba(255,246,229,.7)"></div>
           <a ref="{{ poiCtaRef }}" href="#book" style="display:none; padding:9px 13px; border-top:1px solid rgba(255,246,229,.2); font-family:Poppins, sans-serif; font-size:11.5px; letter-spacing:.03em; color:#FFF6E5">{{ t.bookThis }}</a>
+        </div>
+        <div data-attr="1" style="position:absolute; z-index:10; right:9px; bottom:9px; display:flex; align-items:flex-end; gap:6px; flex-direction:row-reverse">
+          <button type="button" aria-label="Map data attribution" style="width:22px; height:22px; flex:none; border-radius:50%; border:0; padding:0; background:rgba(22,16,3,.6); color:#FFF6E5; font-family:'Libre Baskerville', Georgia, serif; font-size:12px; line-height:22px; cursor:help">i</button>
+          <div data-attrpanel="1" style="max-width:230px; padding:7px 10px; background:rgba(22,16,3,.9); border:1px solid rgba(255,246,229,.2); font-family:Poppins, -apple-system, sans-serif; font-size:10px; line-height:1.5; color:rgba(255,246,229,.8)">© <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer" style="color:#FFF6E5">CARTO</a>, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" style="color:#FFF6E5">OpenStreetMap</a> contributors</div>
         </div>
       </div>
       <div data-maptitle="1" ref="{{ mapTitleRef }}" style="position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; z-index:5">
@@ -289,21 +289,56 @@
     </div>
   </section>
 
-  <section id="book" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(26px,3.5vh,46px) clamp(20px,4vw,64px) clamp(80px,10vh,130px); text-align:center">
+  <section id="book" data-sec="1" style="position:relative; z-index:2; background:#F2E8D8; padding:clamp(26px,3.5vh,46px) clamp(20px,4vw,64px) clamp(28px,3.5vh,48px); text-align:center">
     <h2 data-scrub="fade" style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; color:#A9482B; font-size:clamp(34px,5.2vw,72px); line-height:1.14; letter-spacing:-.018em; margin:0 auto; max-width:16ch; text-wrap:balance; opacity:0">{{ bookT.a }}<em style="font-style:italic; font-weight:700">{{ bookT.em }}</em>{{ bookT.b }}</h2>
     <p data-scrub="fade" style="color:rgba(43,29,8,.75); max-width:48ch; margin:26px auto 36px; opacity:0">{{ t.bookSub }}</p>
     <div data-scrub="fade" style="opacity:0">
-      <a href="https://calendar.app.google/VUfRpbG8s4hUhwDP9" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; transition:background .4s, color .4s" style-hover="background:transparent; color:#2B1D08">{{ t.ctaBook }}</a>
+      <a href="https://calendar.app.google/VUfRpbG8s4hUhwDP9" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; opacity:0; transition:background .4s, color .4s; opacity:1" style-hover="background:transparent; color:#2B1D08">{{ t.ctaBook }}</a>
       <div style="margin-top:12px; font-size:12px; letter-spacing:.12em; color:rgba(43,29,8,.5)">{{ t.bookMeta }}</div>
     </div>
   </section>
 
-  <footer style="position:relative; z-index:2; background:#F2E8D8; color:rgba(43,29,8,.45); padding:0 clamp(20px,4vw,64px) 44px; font-size:13.5px">
-    <div style="padding-top:14px; max-width:78ch; line-height:1.6">{{ t.creditsLine }}<a href="credits.html" style="color:rgba(43,29,8,.6); border-bottom:1px solid rgba(43,29,8,.25)">{{ t.creditsLink }}</a></div>
-    <div style="padding-top:14px; display:flex; flex-wrap:wrap; gap:18px 40px; justify-content:space-between; align-items:center">
-      <div>{{ t.footer }}</div>
-      <a href="mailto:contato@soulletsgo.com" style="color:rgba(43,29,8,.7)">contato@soulletsgo.com</a>
-      <div>© 2026</div>
+  <footer style="position:relative; z-index:2; background:#F2E8D8; color:rgba(255,246,229,.6); font-size:13.5px">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="display:block; width:100%; height:clamp(44px,5.6vw,88px)">
+      <path d="M0,24 C 720,20 960,96 1440,100 L1440,120 L0,120 Z" fill="#161003"></path>
+    </svg>
+    <div style="background:#161003; padding:clamp(18px,2.5vh,30px) clamp(20px,4vw,64px) clamp(34px,4.5vh,54px)">
+      <div data-footgrid="1" style="display:grid; grid-template-columns:1.2fr .85fr .85fr minmax(230px,290px); gap:clamp(26px,3.5vw,56px); align-items:start">
+        <div data-footbrand="1" style="display:grid; gap:8px; justify-items:start">
+          <img src="assets/logo-soul-terracota.svg" alt="soul" style="display:block; width:132px; height:auto" />
+          <div style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(17px,1.5vw,21px); line-height:1.35; color:#F2E8D8; max-width:20ch">{{ t.footer }}</div>
+          <a href="#book" style="margin-top:12px; display:inline-flex; align-items:center; padding:12px 24px; border-radius:999px; font-size:13px; letter-spacing:.03em; border:1px solid rgba(255,246,229,.45); color:#FFF6E5; transition:background .4s, color .4s" style-hover="background:#FFF6E5; color:#161003">{{ t.ctaBook }}</a>
+        </div>
+        <sc-for list="{{ footCols }}" as="col" hint-placeholder-count="2">
+          <div data-footcol="1" style="display:grid; gap:13px; align-content:start">
+            <button onClick="{{ col.toggle }}" style="display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; padding:0; background:none; border:0; cursor:pointer; font-family:inherit; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,246,229,.45); text-align:left">{{ col.label }}<span data-footchev="1" style="font-size:9px; display:none; transform:{{ col.chevRot }}; transition:transform .3s ease">▼</span></button>
+            <div data-footbody="1" data-open="{{ col.open }}" style="display:grid; gap:13px; padding-bottom:2px">
+              <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+                <a href="{{ l.href }}" style="color:rgba(255,246,229,.78)" style-hover="color:#FFF6E5">{{ l.label }}</a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+        <div data-footcard="1" style="display:grid; gap:18px; justify-items:center">
+          <a data-followcard="1" href="https://instagram.com/soulletsgo" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:14px; width:100%; padding:14px 16px; border-radius:14px; background:#F2E8D8; color:#2B1D08; transition:background .4s" style-hover="background:#FFF6E5">
+            <span style="flex:none; display:block; width:52px; height:52px; border-radius:50%; overflow:hidden; background:#E3D5BC; background-image:url(assets/sobre.webp); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2)"></span>
+            <span style="display:grid; gap:3px">
+              <span style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:16px; line-height:1.2; color:#2B1D08; display:block">{{ t.followTitle }}</span>
+              <span style="display:flex; align-items:center; gap:8px; font-size:12px; color:rgba(43,29,8,.7)">{{ t.followSub }}<span style="font-size:14px">→</span></span>
+            </span>
+          </a>
+          <span style="display:flex; align-items:center; gap:14px; color:#FFF6E5">
+            <a href="https://instagram.com/soulletsgo" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display:flex; color:inherit"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle></svg></a>
+            <a href="https://youtube.com/@soulletsgo" target="_blank" rel="noopener noreferrer" aria-label="YouTube" style="display:flex; color:inherit"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="5" width="19.6" height="14" rx="4.4"></rect><path d="M10.4 9.3 15.4 12l-5 2.7z" fill="currentColor" stroke="none"></path></svg></a>
+          </span>
+          <a href="mailto:contato@soulletsgo.com" style="color:rgba(255,246,229,.78)" style-hover="color:#FFF6E5">contato@soulletsgo.com</a>
+        </div>
+      </div>
+      <div style="margin-top:clamp(26px,3.5vh,42px); padding-top:16px; border-top:1px solid rgba(255,246,229,.14); max-width:78ch; line-height:1.6">{{ t.creditsLine }}<a href="credits.html" style="color:rgba(255,246,229,.75); border-bottom:1px solid rgba(255,246,229,.3)">{{ t.creditsLink }}</a></div>
+      <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:10px 32px; justify-content:space-between; color:rgba(255,246,229,.45); font-size:12.5px">
+        <div>© 2026 soul</div>
+        <div>{{ t.footPlace }}</div>
+      </div>
     </div>
   </footer>
 </div>
@@ -313,18 +348,25 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const range = (v, a, b) => clamp((v - a) / (b - a), 0, 1);
 const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
+// capas: pending true = ainda no placeholder, listado em FOTOS_PENDENTES.md
+const CASE_COVERS = [
+  { img: 'assets/capa-buffalo.webp', pending: false },
+  { img: 'assets/capa-knafs.webp', pending: false },
+  { img: 'https://picsum.photos/seed/soul-md-folklore/1600/700', pending: true }
+];
+
 const COPY = {
   EN: {
     navWork: 'work', navPackages: 'packages', navBook: 'book a call', navWhere: 'where we are',
     heroTitle: "we're *already* there.",
     heroSub: 'Brand campaigns and social content shot in places other studios have to fly a full crew to reach.',
     ctaWork: 'work with us', ctaWhere: 'see where we are', ctaBook: 'book a call',
-    caption: 'still from the route',
-    photoPending: 'photo pending',
     bookMeta: 'opens in google calendar · 30 min',
+    photoPending: 'photo pending',
     creditsLine: 'The photographs in the route panel are location references from Wikimedia Commons, not work by Soul. ',
     creditsLink: 'Full credits.',
     photoBy: (a) => `photo by ${a}`,
+    caption: 'showreel placeholder · the soul bronco on a coastal track, cl',
     marquee: 'now in the american continent  ·  content shot like film  ·  ',
     workTitle: 'selected work, and *what it took to get there*',
     openCase: 'open case →', learnMore: 'learn more →',
@@ -333,17 +375,19 @@ const COPY = {
     panelTitle: 'follow our tracks', bookThis: 'book this window →',
     seeCase: 'see the case →',
     pkgTitle: 'monthly content packages for brands',
-    pkgSub: 'Prices are public. So you know before we talk.',
+    pkgSub: 'Built around the route. Tell us where your brand needs to be.',
+    knowMore: 'know more',
     bookTitle: "we are moving north, *let's talk!*",
     bookSub: 'We will tell you which window on the route we can hold for you, and what it costs.',
-    footer: 'Soul, a traveling film studio',
+    footer: 'a traveling film studio',
+    footNav: 'what we offer', footWork: 'our work', footFollow: 'follow', followTitle: 'follow along', followSub: 'on instagram, @soulletsgo', footAbout: 'who we are', footPlace: 'on the road',
     scroll: 'scroll', view: 'view',
     closesIn: (n) => `closes in ${n} day${n === 1 ? '' : 's'}`,
     slotsOpen: (n) => `${n} slot${n === 1 ? '' : 's'} open`,
     cases: [
       { title: 'buffalo', place: 'torres del paine, cl' },
       { title: 'knafs', place: 'torres del paine, cl' },
-      { title: 'in the heart of salta', place: 'salta, ar' }
+      { title: 'social minidocs', place: '' }
     ],
     packages: [
       { name: 'content bank', pre: '', amt: '$1,500', suf: '/ month', badge: '',
@@ -362,12 +406,12 @@ const COPY = {
     heroTitle: '*já* estamos lá.',
     heroSub: 'Campanhas de marca e conteúdo social gravados em lugares onde outros estúdios precisariam levar uma equipe inteira de avião.',
     ctaWork: 'trabalhe conosco', ctaWhere: 'veja onde estamos', ctaBook: 'agendar call',
-    caption: 'still da rota',
-    photoPending: 'foto pendente',
     bookMeta: 'opens in google calendar · 30 min',
+    photoPending: 'foto pendente',
     creditsLine: 'As fotografias do painel da rota são referências de locação do Wikimedia Commons, não são fotos da Soul. ',
     creditsLink: 'Créditos completos.',
     photoBy: (a) => `foto de ${a}`,
+    caption: 'showreel placeholder · o bronco da soul em uma estrada costeira, cl',
     marquee: 'agora no continente americano  ·  conteúdo gravado como cinema  ·  ',
     workTitle: 'trabalhos selecionados, e *o que foi preciso para chegar lá*',
     openCase: 'abrir case →', learnMore: 'saiba mais →',
@@ -376,17 +420,19 @@ const COPY = {
     panelTitle: 'siga nossos rastros', bookThis: 'reservar esta janela →',
     seeCase: 'ver o case →',
     pkgTitle: 'pacotes mensais de conteúdo para marcas',
-    pkgSub: 'Os preços são públicos. Para você saber antes da conversa.',
+    pkgSub: 'Montados a partir da rota. Conte onde sua marca precisa estar.',
+    knowMore: 'saiba mais',
     bookTitle: 'estamos indo para o norte, *vamos conversar!*',
     bookSub: 'Vamos dizer qual janela da rota podemos reservar para você, e quanto custa.',
-    footer: 'Soul, um estúdio de cinema itinerante',
+    footer: 'a traveling film studio',
+    footNav: 'o que oferecemos', footWork: 'nossos trabalhos', footFollow: 'siga', followTitle: 'venha com a gente', followSub: 'no instagram, @soulletsgo', footAbout: 'quem somos', footPlace: 'na estrada',
     scroll: 'role', view: 'ver',
     closesIn: (n) => `fecha em ${n} dia${n === 1 ? '' : 's'}`,
     slotsOpen: (n) => `${n} vaga${n === 1 ? '' : 's'} aberta${n === 1 ? '' : 's'}`,
     cases: [
       { title: 'buffalo', place: 'torres del paine, cl' },
       { title: 'knafs', place: 'torres del paine, cl' },
-      { title: 'no coração de salta', place: 'salta, ar' }
+      { title: 'social minidocs', place: '' }
     ],
     packages: [
       { name: 'banco de conteúdo', pre: '', amt: 'US$ 1.500', suf: '/ mês', badge: '',
@@ -405,12 +451,12 @@ const COPY = {
     heroTitle: '*ya* estamos ahí.',
     heroSub: 'Campañas de marca y contenido social filmados en lugares a los que otros estudios tendrían que volar con un equipo entero.',
     ctaWork: 'trabajá con nosotros', ctaWhere: 'mirá dónde estamos', ctaBook: 'agendar llamada',
-    caption: 'still de la ruta',
-    photoPending: 'foto pendiente',
     bookMeta: 'opens in google calendar · 30 min',
+    photoPending: 'foto pendiente',
     creditsLine: 'Las fotografías del panel de la ruta son referencias de locación de Wikimedia Commons, no son fotos de Soul. ',
     creditsLink: 'Créditos completos.',
     photoBy: (a) => `foto de ${a}`,
+    caption: 'showreel placeholder · la bronco de soul en un camino costero, cl',
     marquee: 'ahora en el continente americano  ·  contenido filmado como cine  ·  ',
     workTitle: 'trabajos seleccionados, y *lo que costó llegar hasta ahí*',
     openCase: 'abrir caso →', learnMore: 'ver más →',
@@ -419,17 +465,19 @@ const COPY = {
     panelTitle: 'seguí nuestras huellas', bookThis: 'reservar esta ventana →',
     seeCase: 'ver el caso →',
     pkgTitle: 'paquetes mensuales de contenido para marcas',
-    pkgSub: 'Los precios son públicos. Para que sepas antes de hablar.',
+    pkgSub: 'Armados a partir de la ruta. Contanos dónde tiene que estar tu marca.',
+    knowMore: 'saber más',
     bookTitle: 'vamos hacia el norte, *¡hablemos!*',
     bookSub: 'Te decimos qué ventana de la ruta podemos reservarte, y cuánto cuesta.',
-    footer: 'Soul, un estudio de cine itinerante',
+    footer: 'a traveling film studio',
+    footNav: 'qué ofrecemos', footWork: 'nuestros trabajos', footFollow: 'seguí', followTitle: 'vení con nosotros', followSub: 'en instagram, @soulletsgo', footAbout: 'quiénes somos', footPlace: 'en la ruta',
     scroll: 'scroll', view: 'ver',
     closesIn: (n) => `cierra en ${n} día${n === 1 ? '' : 's'}`,
     slotsOpen: (n) => `${n} lugar${n === 1 ? '' : 'es'} disponible${n === 1 ? '' : 's'}`,
     cases: [
       { title: 'buffalo', place: 'torres del paine, cl' },
       { title: 'knafs', place: 'torres del paine, cl' },
-      { title: 'en el corazón de salta', place: 'salta, ar' }
+      { title: 'social minidocs', place: '' }
     ],
     packages: [
       { name: 'banco de contenido', pre: '', amt: 'US$ 1.500', suf: '/ mes', badge: '',
@@ -447,45 +495,33 @@ const COPY = {
 
 const ABOUT = {
   EN: {
-    title: 'who *we* are',
+    title: 'thai *and* celo',
     body: [
-      'We are Thainá and Marcelo. Before any of this we had regular remote jobs: Thainá fifteen years inside design and international marketing teams, managing creative people and projects; Marcelo running a production company in Australia, then years in sales and client relationships. We were good at it, and we still spent a long time quietly wanting a life with more world in it.',
-      'At some point wanting stopped being enough. We put our sausage dog Canela into a Ford Bronco and started driving south, all the way to the end of the continent, with no clear idea of what would happen in between.',
-      'What happened is that we started filming. Not for anyone. Just because these places kept asking to be looked at properly, and we had spent our whole lives learning how to look.',
-      'A year later we are still driving, and the filming became the reason we can keep going. Same road, same two people, same instinct: places many people cross, but few actually see.'
+      'Before any of this we had regular jobs: Thainá worked fifteen years inside design and international marketing teams, Marcelo ran a production company in Australia, and worked years with client relationships. We were good at what we did, but we still spent a long time quietly wanting a life with more world in it.',
+      'At some point wanting stopped being enough, so we got us a 4x4 with a roof tent, took our dachshund and decided to cross the Panamericana - from Ushuaia to Alaska. We had no idea where this would lead us.',
+      'What happened is that we started hearing stories and filming them, not for anyone, but because these places kept asking to be looked at properly and we had spent our whole lives learning how to look.',
+      'A year later we are still driving, and filming became a reason to keep going. Same instinct as day one: to live places many people cross, but few actually see.'
     ]
   },
   PT: {
-    title: 'quem *somos*',
+    title: 'thai *e* celo',
     body: [
-      'Somos a Thainá e o Marcelo. Antes de tudo isso tínhamos empregos remotos comuns: a Thainá quinze anos dentro de times de design e marketing internacional, gerindo pessoas e projetos criativos; o Marcelo com produtora própria na Austrália e depois anos em vendas e relacionamento. Éramos bons nisso, e ainda assim passamos muito tempo querendo caladamente uma vida com mais mundo dentro.',
-      'Em algum momento querer parou de bastar. Colocamos a Canela, nossa salsicha, dentro de um Ford Bronco e começamos a dirigir para o sul, até o fim do continente, sem nenhuma ideia clara do que viria no meio.',
-      'O que veio foi que começamos a filmar. Não para ninguém. Só porque esses lugares pediam para ser olhados direito, e a gente passou a vida inteira aprendendo a olhar.',
-      'Um ano depois seguimos dirigindo, e filmar se tornou o motivo de conseguir continuar. Mesma estrada, mesmas duas pessoas, mesmo instinto: lugares que muita gente cruza, mas poucos realmente enxergam.'
+      'Antes de tudo isso tínhamos empregos comuns: a Thainá passou quinze anos dentro de times de design e marketing internacional, o Marcelo teve uma produtora na Austrália e trabalhou anos com relacionamento com clientes. Éramos bons no que fazíamos, mas ainda assim passamos muito tempo querendo caladamente uma vida com mais mundo dentro.',
+      'Em algum momento querer parou de bastar, então compramos um 4x4 com barraca de teto, pegamos nossa dachshund e decidimos cruzar a Panamericana — de Ushuaia ao Alasca. Não tínhamos ideia de onde isso ia nos levar.',
+      'O que aconteceu é que começamos a ouvir histórias e a filmá-las, não para ninguém, mas porque esses lugares pediam para ser olhados direito e a gente passou a vida inteira aprendendo a olhar.',
+      'Um ano depois seguimos dirigindo, e filmar virou um motivo para continuar. Mesmo instinto do primeiro dia: viver lugares que muita gente cruza, mas poucos realmente enxergam.'
     ]
   },
   ES: {
-    title: 'quiénes *somos*',
+    title: 'thai *y* celo',
     body: [
-      'Somos Thainá y Marcelo. Antes de todo esto teníamos trabajos remotos comunes: Thainá quince años dentro de equipos de diseño y marketing internacional, gestionando personas y proyectos creativos; Marcelo con productora propia en Australia y después años en ventas y relacionamiento. Éramos buenos en eso, y aun así pasamos mucho tiempo deseando en silencio una vida con más mundo adentro.',
-      'En algún momento desear dejó de alcanzar. Metimos a Canela, nuestra salchicha, dentro de una Ford Bronco y empezamos a manejar hacia el sur, hasta el fin del continente, sin ninguna idea clara de lo que pasaría en el medio.',
-      'Lo que pasó es que empezamos a filmar. Para nadie. Solo porque esos lugares pedían ser mirados de verdad, y nos pasamos la vida entera aprendiendo a mirar.',
-      'Un año después seguimos manejando, y filmar se convirtió en la razón de poder continuar. Misma ruta, las mismas dos personas, el mismo instinto: lugares que mucha gente cruza, pero pocos realmente ven.'
+      'Antes de todo esto teníamos trabajos comunes: Thainá pasó quince años dentro de equipos de diseño y marketing internacional, Marcelo tuvo una productora en Australia y trabajó años con relacionamiento con clientes. Éramos buenos en lo que hacíamos, pero aun así pasamos mucho tiempo deseando en silencio una vida con más mundo adentro.',
+      'En algún momento desear dejó de alcanzar, así que conseguimos un 4x4 con carpa de techo, subimos a nuestra dachshund y decidimos cruzar la Panamericana — de Ushuaia a Alaska. No teníamos idea de a dónde nos llevaría.',
+      'Lo que pasó es que empezamos a escuchar historias y a filmarlas, para nadie en particular, sino porque esos lugares pedían ser mirados de verdad y nos pasamos la vida entera aprendiendo a mirar.',
+      'Un año después seguimos manejando, y filmar se volvió una razón para continuar. El mismo instinto del primer día: vivir lugares que mucha gente cruza, pero pocos realmente ven.'
     ]
   }
 };
-// capas: pending true = ainda no placeholder do prototipo, listado em FOTOS_PENDENTES.md
-const CASE_COVERS = [
-  { img: 'assets/capa-buffalo.webp', pending: false },
-  { img: 'assets/capa-knafs.webp', pending: false },
-  { img: 'https://picsum.photos/seed/soul-salta/1600/700', pending: true }
-];
-const PKG_COVERS = [
-  { img: 'assets/capa-pacote-1.webp', pending: false },
-  { img: 'assets/capa-pacote-2.webp', pending: false },
-  { img: 'assets/capa-pacote-3.webp', pending: false }
-];
-
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const fmt = iso => { const d = new Date(iso + 'T00:00:00'); return `${MONTHS[d.getMonth()]} ${d.getDate()}`; };
 
@@ -498,7 +534,7 @@ class Component extends DCLogic {
     try { const s = localStorage.getItem('soul-lang'); if (s && COPY[s]) return s; } catch (e) {}
     try { const n = (navigator.language || 'en').slice(0, 2).toLowerCase(); if (n === 'pt') return 'PT'; if (n === 'es') return 'ES'; } catch (e) {}
     return 'EN';
-  })(), langOpen: false, regions: [] };
+  })(), langOpen: false, regions: [], footOpen: null };
 
   constructor(p) {
     super(p);
@@ -517,7 +553,6 @@ class Component extends DCLogic {
     if (skip) this.finishCount(); else { this.countUp(); this.safety = setTimeout(() => this.finishCount(), 4000); }
     try { sessionStorage.setItem('soul-intro', '1'); } catch (e) {}
     try { document.documentElement.lang = this.state.lang.toLowerCase(); } catch (e) {}
-    this.bindCursor();
     this.startLoop();
     this.loadMap();
     this.loadRegions();
@@ -539,6 +574,7 @@ class Component extends DCLogic {
       document.removeEventListener('touchstart', this._onOutside, true);
     }
     if (this._onNarrow) window.removeEventListener('resize', this._onNarrow);
+    if (this._syncDragPan) window.removeEventListener('resize', this._syncDragPan);
     window.removeEventListener('mousemove', this.onMove, true);
     document.removeEventListener('mousemove', this.onMove, true);
     if (this._map) { try { this._map.remove(); } catch (e) {} }
@@ -780,14 +816,18 @@ class Component extends DCLogic {
     }
 
     const sec = this.whereSecRef.current, mw = this.mapWrapRef.current;
-    if (sec && mw) {
+    if (sec && mw && window.innerWidth < 900) {
+      this._clipInset = { v: 0, h: 0 };
+      if (this._clip !== 'none') { this._clip = 'none'; mw.style.clipPath = ''; }
+      if (this._shownRegion) { const cur = (this.state.regions || []).find(x => x.id === this._shownRegion); if (cur) this.placeRegionCard(cur); }
+    } else if (sec && mw) {
       const r = sec.getBoundingClientRect();
       const prog = clamp((-r.top + vh * 0.7) / Math.max(1, r.height - vh * 0.3), 0, 1);
       const c = ease(clamp(prog / 0.45, 0, 1));
       const iv = 42 * (1 - c), ih = 36 * (1 - c);
       const clip = `inset(${iv.toFixed(2)}% ${ih.toFixed(2)}% ${iv.toFixed(2)}% ${ih.toFixed(2)}%)`;
       if (clip !== this._clip) { this._clip = clip; mw.style.clipPath = clip; }
-      this._clipInset = window.innerWidth <= 900 ? { v: 0, h: 0 } : { v: iv / 100, h: ih / 100 };
+      this._clipInset = { v: iv / 100, h: ih / 100 };
       if (this._shownRegion) { const cur = (this.state.regions || []).find(x => x.id === this._shownRegion); if (cur) this.placeRegionCard(cur); }
       const frame = ease(clamp((prog - 0.48) / 0.32, 0, 1));
       const narrow = window.innerWidth < 900;
@@ -966,7 +1006,6 @@ class Component extends DCLogic {
     };
     const d = r.days;
     const low = v => String(v == null ? '' : v).toLocaleLowerCase();
-    const by = this.t().photoBy;
     return {
       id: r.id,
       status: r.status,
@@ -982,8 +1021,7 @@ class Component extends DCLogic {
         img: p.img,
         author: p.author || '',
         license: p.license || '',
-        source: p.source || '',
-        credit: p.author ? `${p.name} · ${by(p.author)}${p.license ? ' (' + p.license + ')' : ''}` : p.name,
+        credit: p.author ? `${p.name} · ${this.t().photoBy(p.author)}${p.license ? ' (' + p.license + ')' : ''}` : p.name,
         url: p.url || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name))
       }))
     };
@@ -1099,9 +1137,7 @@ class Component extends DCLogic {
 
         center: [-84, 3], zoom: 1.6, pitch: 0, bearing: 0,
         renderWorldCopies: false, minZoom: 1.2, maxZoom: 13,
-        // a atribuicao da CARTO e do OpenStreetMap vem do proprio TileJSON da fonte e
-        // aparece sozinha no controle. exigencia de licenca dos dois, nao remover.
-        attributionControl: { compact: true }
+        attributionControl: false
       });
       this._map = map;
       window.__soulmap = map;
@@ -1110,7 +1146,11 @@ class Component extends DCLogic {
       map.doubleClickZoom.disable();
       map.boxZoom.disable();
       map.keyboard.disable();
-      map.dragPan.enable();
+      this._syncDragPan = () => {
+        try { window.innerWidth < 900 ? map.dragPan.disable() : map.dragPan.enable(); } catch (e) {}
+      };
+      this._syncDragPan();
+      window.addEventListener('resize', this._syncDragPan, { passive: true });
       map.touchZoomRotate.disable();
       const el = this.mapRef.current;
       const sync = () => {
@@ -1254,9 +1294,27 @@ class Component extends DCLogic {
         pick: () => this.pickLang(code)
       })),
       toggleLang: this.toggleLang,
+      footCols: [
+        { key: 'site', label: t.footNav, links: [
+          { href: '#packages', label: t.navPackages },
+          { href: '#where', label: t.navWhere },
+          { href: '#about', label: t.footAbout }
+        ] },
+        { key: 'work', label: t.footWork, links: [
+          { href: 'case.html?c=buffalo', label: 'buffalo' },
+          { href: 'case.html?c=knafs', label: 'knafs' },
+          { href: 'minidocs.html', label: 'social minidocs' }
+        ] }
+      ].map(c => ({
+        label: c.label,
+        links: c.links,
+        open: this.state.footOpen === c.key ? '1' : '0',
+        chevRot: this.state.footOpen === c.key ? 'rotate(180deg)' : 'rotate(0deg)',
+        toggle: () => this.setState(st => ({ footOpen: st.footOpen === c.key ? null : c.key }))
+      })),
       cases: [0, 1, 2].map((i) => ({
         n: ['01', '02', '03'][i],
-        href: ['case.html?c=buffalo', 'case.html?c=knafs', 'case.html?c=salta'][i],
+        href: ['case.html?c=buffalo', 'case.html?c=knafs', 'minidocs.html'][i],
         img: CASE_COVERS[i].img,
         pendingShow: CASE_COVERS[i].pending ? 'block' : 'none',
         title: t.cases[i].title,
@@ -1271,7 +1329,7 @@ class Component extends DCLogic {
         badge: p.badge,
         badgeShow: p.badge ? 'block' : 'none',
         bg: 'rgba(43,29,8,.07)',
-        img: PKG_COVERS[i].img,
+        img: ['assets/capa-pacote-1.webp', 'assets/capa-pacote-2.webp', 'assets/capa-pacote-3.webp'][i],
         items: p.items,
         note: p.note,
         noteShow: p.note ? 'block' : 'none'

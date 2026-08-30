@@ -4,9 +4,9 @@ Site da Soul. Três páginas estáticas, publicadas no Cloudflare Pages a partir
 
 **O site está em obra e não pode ser indexado.** Ver o checklist de lançamento no fim.
 
-A home segue o `Soul Light.dc.html`, importado do projeto de design em claude.ai/design
-(`20ec4b5a-828c-4d0e-b558-160f6bb77197`). As páginas de case e de parada ainda estão no
-tema escuro anterior. Ver a seção de pendências.
+Todas as páginas seguem o export do Claude Design de 30 de agosto de 2026
+(`Recriação de site com placeholders.zip`). **O site inteiro está no tema claro**: a rodada
+anterior tinha só a home, agora case e parada também vieram claras no design.
 
 ---
 
@@ -30,8 +30,9 @@ Títulos em Libre Baskerville, com o trecho entre asteriscos virando itálico
 ```
 public/                       diretorio de saida do Cloudflare Pages
   index.html                  home, tema claro, vinda do Soul Light
-  case.html                   molde de case, ?c=buffalo|knafs|salta        (tema escuro)
-  stop.html                   molde de parada da rota, ?s=<id>              (tema escuro)
+  case.html                   molde de case, ?c=buffalo|knafs|salta
+  stop.html                   molde de parada da rota, ?s=<id>
+  minidocs.html               social minidocs, ?d=<id>
   credits.html                autores e licencas das fotos de referencia da rota
   soul-data.json              18 regioes, janelas, 45 fotos de referencia com credito
   route-data.js               20 paradas e 70 pontos filmaveis
@@ -163,9 +164,11 @@ O site pode subir com placeholder. **Divulgar o link exige outra régua**, mais 
 
 ## Pendências técnicas conhecidas
 
-- **Case e parada ainda no tema escuro.** A home é clara, `case.html` e `stop.html` são escuras.
-  Quem clica num case sai de um tema e cai no outro. O `Soul Light.dc.html` cobre só a home;
-  portar as outras duas é decisão de design da Thainá, não foi feito aqui.
+- ~~Case e parada no tema escuro.~~ **Resolvido pelo design novo.** As cinco páginas estão claras.
+- **Rótulos em caixa alta por CSS.** O design novo usa `text-transform:uppercase` em rótulos de
+  seção: 1 ocorrência na home, 3 no case, 7 nos minidocs. Isso contraria a regra de caixa do
+  briefing, que pede caixa baixa em rótulos. Como é escolha de design nova, e não regressão de
+  uma correção minha, deixei como veio. Decisão da Thainá: manter ou remover o `text-transform`.
 - ~~Peso das imagens.~~ **Resolvido.** Site inteiro em 3,8 MB, tudo WebP dentro da regra de
   2000px. Ver a seção de imagens abaixo.
 - **React e Babel vindos da unpkg a cada visita.** Deixa a primeira tela lenta. O briefing

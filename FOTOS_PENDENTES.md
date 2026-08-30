@@ -1,6 +1,6 @@
 # fotos pendentes
 
-Lista de captação. Atualizado em 30 de agosto de 2026, rodada 02.
+Lista de captação. Atualizado em 30 de agosto de 2026, depois de aplicar o export novo do Claude Design.
 
 Todo slot ainda em placeholder mostra a etiqueta `photo pending` na própria página. **Nenhum desses slots pode continuar assim no dia em que o link for divulgado.**
 
@@ -10,9 +10,10 @@ Todo slot ainda em placeholder mostra a etiqueta `photo pending` na própria pá
 
 | página | slots | com foto da soul | pendentes |
 | --- | --- | --- | --- |
-| principal, cartões e capas | 9 | 7 | 2 |
+| principal, cartões e capas | 8 | 7 | 1 |
 | principal, painel da rota | 45 | 0 | 45 (referência do Commons, creditada em `credits.html`) |
-| cases | 15 | 0 | 15 |
+| cases | galeria nova do design | 0 | todas |
+| minidocs, página nova | 2 capas | 0 | 2 |
 | paradas da rota, `stop.html` | 71 | 0 | 71 (hoje puxando da Wikipedia) |
 
 Mínimo para o site parecer pronto, conforme o briefing: 9 da principal mais 15 dos cases, ou seja 24. **Faltam 17 desses 24.**
@@ -26,8 +27,8 @@ Mínimo para o site parecer pronto, conforme o briefing: 9 da principal mais 15 
 | fundo da abertura | abertura, tela cheia | 16:9 | `assets/fundo-abertura.webp` | pronto |
 | capa trabalho 01 buffalo | trabalhos | 16:7 | `assets/capa-buffalo.webp` | pronto |
 | capa trabalho 02 knafs | trabalhos | 16:7 | `assets/capa-knafs.webp` | pronto |
-| capa trabalho 03 salta | trabalhos | 16:7 | — | **pendente** |
-| capa cartão soul let's go | cartão 04, link para o Instagram | 16:7 | — | **pendente** |
+
+| capa cartão social minidocs | cartão 03, link para `minidocs.html` | 16:7 | — | **pendente** |
 | imagem do bloco sobre | quem somos | 4:5 | `assets/sobre.webp` | pronto |
 | capa pacote 1 banco de conteúdo | pacotes | 16:6 | `assets/capa-pacote-1.webp` | pronto |
 | capa pacote 2 cinematográfico | pacotes | 16:6 | `assets/capa-pacote-2.webp` | pronto |
