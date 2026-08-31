@@ -57,7 +57,6 @@
     [data-maptitle] { position:relative !important; inset:auto !important; order:1; opacity:1 !important;
                       transform:none !important; place-items:start !important; padding:0 0 18px; }
     [data-maptitle] > div { text-align:left !important; }
-    [data-maptitle] div div { color:rgba(43,29,8,.55) !important; }
     [data-maptitle] h2 { text-shadow:none !important; margin-left:0 !important; }
     [data-routeinfo] { position:relative !important; inset:auto !important; order:3; width:auto !important; height:auto !important; max-height:none !important; opacity:1 !important; pointer-events:auto !important; transform:none !important; border:0 !important; }
     [data-routeinfo] ul { overflow:visible !important; }
@@ -260,8 +259,7 @@
       </div>
       <div data-maptitle="1" ref="{{ mapTitleRef }}" style="position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; z-index:5">
         <div style="text-align:center; padding:0 clamp(20px,4vw,64px)">
-          <div style="font-size:12.5px; letter-spacing:.2em; color:rgba(255,246,229,.55); margin-bottom:14px">{{ t.whereLabel }}</div>
-          <h2 style="margin:0 auto; max-width:22ch; text-wrap:balance; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(26px,4.4vw,58px); line-height:1.16; letter-spacing:-.01em; text-shadow:0 2px 30px rgba(22,16,3,.8)">{{ t.whereTitle }}</h2>
+          <h2 style="margin:0 auto; max-width:22ch; text-wrap:balance; white-space:pre-wrap; font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:clamp(26px,4.4vw,58px); line-height:1.16; letter-spacing:-.01em; text-shadow:0 2px 30px rgba(22,16,3,.8)"><sc-for list="{{ whereT }}" as="w" hint-placeholder-count="5"><span style="font-style:{{ w.fs }}">{{ w.t }}</span></sc-for></h2>
         </div>
       </div>
       <div data-routeinfo="1" ref="{{ mapPanelRef }}" style="position:absolute; z-index:6; display:flex; flex-direction:column; padding:22px clamp(20px,4vw,64px) 28px; background:#F2E8D8; color:#2B1D08; opacity:0; pointer-events:none">
@@ -325,7 +323,7 @@
         </sc-for>
         <div data-footcard="1" style="display:grid; gap:18px; justify-items:center">
           <a data-followcard="1" href="https://instagram.com/soulletsgo" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:14px; width:100%; padding:14px 16px; border-radius:14px; background:#F2E8D8; color:#2B1D08; transition:background .4s" style-hover="background:#FFF6E5">
-            <span style="flex:none; display:block; width:52px; height:52px; border-radius:50%; overflow:hidden; background:#E3D5BC; background-image:url(assets/sobre.webp); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2)"></span>
+            <span style="flex:none; display:block; width:52px; height:52px; border-radius:50%; overflow:hidden; background:#E3D5BC; background-image:url(assets/perfil-instagram.webp); background-size:cover; background-position:center; filter:saturate(.6) contrast(1.05) sepia(.2)"></span>
             <span style="display:grid; gap:3px">
               <span style="font-family:'Libre Baskerville', Georgia, serif; font-weight:700; font-size:16px; line-height:1.2; color:#2B1D08; display:block">{{ t.followTitle }}</span>
               <span style="display:flex; align-items:center; gap:8px; font-size:12px; color:rgba(43,29,8,.7)">{{ t.followSub }}<span style="font-size:14px">→</span></span>
@@ -384,7 +382,7 @@ const COPY = {
     workTitle: 'selected work, and *what it took to get there*',
     openCase: 'open case →', learnMore: 'learn more →',
     slgMeta: 'The Instagram documentary project',
-    mapLoading: 'Loading the route', whereLabel: 'Where we are', whereTitle: 'from patagonia to alaska',
+    mapLoading: 'Loading the route', whereTitle: '*where* we are from *patagonia* to alaska',
     panelTitle: 'follow our tracks', bookThis: 'book this window →',
     seeCase: 'see the case →',
     pkgTitle: 'monthly content packages for brands',
@@ -428,7 +426,7 @@ const COPY = {
     workTitle: 'trabalhos selecionados, e *o que foi preciso para chegar lá*',
     openCase: 'abrir case →', learnMore: 'saiba mais →',
     slgMeta: 'O projeto documental do Instagram',
-    mapLoading: 'Carregando a rota', whereLabel: 'Onde estamos', whereTitle: 'da patagônia ao alasca',
+    mapLoading: 'Carregando a rota', whereTitle: '*onde* estamos da *patagônia* ao alasca',
     panelTitle: 'siga nossos rastros', bookThis: 'reservar esta janela →',
     seeCase: 'ver o case →',
     pkgTitle: 'pacotes mensais de conteúdo para marcas',
@@ -472,7 +470,7 @@ const COPY = {
     workTitle: 'trabajos seleccionados, y *lo que costó llegar hasta ahí*',
     openCase: 'abrir caso →', learnMore: 'ver más →',
     slgMeta: 'El proyecto documental de Instagram',
-    mapLoading: 'Cargando la ruta', whereLabel: 'Dónde estamos', whereTitle: 'de la patagonia a alaska',
+    mapLoading: 'Cargando la ruta', whereTitle: '*dónde* estamos de la *patagonia* a alaska',
     panelTitle: 'seguí nuestras huellas', bookThis: 'reservar esta ventana →',
     seeCase: 'ver el caso →',
     pkgTitle: 'paquetes mensuales de contenido para marcas',
@@ -1215,6 +1213,13 @@ class Component extends DCLogic {
     });
   };
 
+  // split3 so quebra um trecho. aqui podem existir varios, entao os pedacos de
+  // indice impar entre asteriscos saem em italico.
+  splitEm(str) {
+    return String(str == null ? '' : str).split('*')
+      .map((t, i) => ({ t, fs: i % 2 ? 'italic' : 'normal' }))
+      .filter(x => x.t !== '');
+  }
   split3(str) {
     const p = String(str == null ? '' : str).split('*');
     return p.length >= 3 ? { a: p[0], em: p[1], b: p.slice(2).join('') } : { a: str, em: '', b: '' };
@@ -1298,6 +1303,7 @@ class Component extends DCLogic {
       aboutTitle: ABOUT[this.state.lang].title,
       heroT: this.split3(this.t().heroTitle),
       workT: this.split3(this.t().workTitle),
+      whereT: this.splitEm(this.t().whereTitle),
       bookT: this.split3(this.t().bookTitle),
       aboutT: this.split3(ABOUT[this.state.lang].title),
       aboutBody: ABOUT[this.state.lang].body.map((t, i) => ({ t, i })),

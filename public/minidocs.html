@@ -51,7 +51,7 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(16px,2.4vw,28px)">
           <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
             <a href="{{ d.href }}" style="display:grid; gap:16px; align-content:start">
-              <span style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:4/5">
+              <span style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:9/16">
                 <span style="position:absolute; inset:0; background-color:#E3D5BC; background-image:url({{ d.thumb }}); background-size:cover; background-position:{{ d.thumbPos }}; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
                 <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.05),rgba(22,16,3,.72))"></span>
                 <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ d.thumbPendingShow }}">photo pending</span>
@@ -166,12 +166,12 @@ const UI = {
 const NAMES = ['Thainá Tanizawa', 'Marcelo Ordoñez'];
 
 // capa propria por minidoc. sem entrada aqui, o slot cai no placeholder e mostra a etiqueta.
-// pos: ponto do corte 4:5. o titulo vem impresso na propria arte, entao o
-// recorte precisa respeitar onde ele esta em cada foto.
+// as artes sao 9:16, com titulo e creditos impressos. o cartao usa a mesma
+// proporcao, entao aparecem inteiras e nenhuma precisa de corte proprio.
 const MD_THUMBS = {
   folklore:  { img: 'assets/minidocs/folklore.webp',  pos: 'center' },
-  fileteado: { img: 'assets/minidocs/fileteado.webp', pos: 'center 0%' },
-  patagonia: { img: 'assets/minidocs/patagonia.webp', pos: 'center 0%' }
+  fileteado: { img: 'assets/minidocs/fileteado.webp', pos: 'center' },
+  patagonia: { img: 'assets/minidocs/patagonia.webp', pos: 'center' }
 };
 const MD_STILLS = {};
 
