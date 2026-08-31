@@ -230,9 +230,11 @@
             </sc-for>
           </ul>
           <div style="margin-top:24px; padding-top:16px; border-top:1px solid rgba(43,29,8,.2); font-size:13.5px; color:rgba(43,29,8,.65); display:{{ k.noteShow }}">{{ k.note }}</div>
-          <a href="#book" style="align-self:start; margin-top:22px; display:inline-flex; align-items:center; padding:12px 24px; border-radius:999px; font-size:13px; letter-spacing:.03em; border:1px solid #2B1D08; color:#2B1D08; background:transparent; transition:background .35s, color .35s" style-hover="background:#2B1D08; color:#F2E8D8">{{ t.knowMore }}</a>
         </div>      </sc-for>
     </div>
+      <div data-scrub="fade" style="margin-top:clamp(34px,4.5vh,54px); text-align:center; opacity:0">
+        <a href="#book" style="display:inline-flex; align-items:center; padding:15px 30px; border-radius:999px; font-size:13.5px; letter-spacing:.03em; background:#2B1D08; color:#F2E8D8; border:1px solid #2B1D08; transition:background .4s, color .4s" style-hover="background:transparent; color:#2B1D08">{{ t.ctaBook }}</a>
+      </div>
   </section>
 
   <section id="where" ref="{{ whereSecRef }}" style="position:relative; z-index:2; height:380vh; background:#F2E8D8; color:#2B1D08">
@@ -387,7 +389,6 @@ const COPY = {
     seeCase: 'see the case →',
     pkgTitle: 'monthly content packages for brands',
     pkgSub: 'Built around the route. Tell us where your brand needs to be.',
-    knowMore: 'know more',
     bookTitle: "we are moving north, *let's talk!*",
     bookSub: 'We will tell you which window on the route we can hold for you, and what it costs.',
     footer: 'a traveling film studio',
@@ -431,7 +432,6 @@ const COPY = {
     seeCase: 'ver o case →',
     pkgTitle: 'pacotes mensais de conteúdo para marcas',
     pkgSub: 'Montados a partir da rota. Conte onde sua marca precisa estar.',
-    knowMore: 'saiba mais',
     bookTitle: 'estamos indo para o norte, *vamos conversar!*',
     bookSub: 'Vamos dizer qual janela da rota podemos reservar para você, e quanto custa.',
     footer: 'a traveling film studio',
@@ -475,7 +475,6 @@ const COPY = {
     seeCase: 'ver el caso →',
     pkgTitle: 'paquetes mensuales de contenido para marcas',
     pkgSub: 'Armados a partir de la ruta. Contanos dónde tiene que estar tu marca.',
-    knowMore: 'saber más',
     bookTitle: 'vamos hacia el norte, *¡hablemos!*',
     bookSub: 'Te decimos qué ventana de la ruta podemos reservarte, y cuánto cuesta.',
     footer: 'a traveling film studio',
