@@ -52,7 +52,7 @@
           <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
             <a href="{{ d.href }}" style="display:grid; gap:16px; align-content:start">
               <span style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:9/16">
-                <span style="position:absolute; inset:0; background-color:#E3D5BC; background-image:url({{ d.thumb }}); background-size:cover; background-position:{{ d.thumbPos }}; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
+                <span style="position:absolute; inset:-1px; background-color:#E3D5BC; background-image:url({{ d.thumb }}); background-size:cover; background-position:{{ d.thumbPos }}; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
                 <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.05),rgba(22,16,3,.72))"></span>
                 <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ d.thumbPendingShow }}">photo pending</span>
                 <span style="position:absolute; z-index:2; top:clamp(14px,1.8vw,20px); right:clamp(14px,1.8vw,20px); padding:9px 18px; border-radius:999px; border:1px solid rgba(255,246,229,.5); background:rgba(22,16,3,.28); backdrop-filter:blur(4px); font-size:12px; letter-spacing:.06em; color:#FFF6E5; display:block">{{ ui.watch }}</span>
