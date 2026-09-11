@@ -51,7 +51,7 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(16px,2.4vw,28px)">
           <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
             <a href="{{ d.href }}" style="display:grid; gap:16px; align-content:start">
-              <span style="position:relative; display:block; overflow:hidden; background:#E3D5BC; aspect-ratio:9/16">
+              <span style="position:relative; display:block; overflow:hidden; background:#161003; aspect-ratio:9/16">
                 <span style="position:absolute; inset:-1px; background-color:#E3D5BC; background-image:url({{ d.thumb }}); background-size:cover; background-position:{{ d.thumbPos }}; filter:saturate(.6) contrast(1.05) sepia(.2); display:block"></span>
                 <span style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(22,16,3,.05),rgba(22,16,3,.72))"></span>
                 <span style="position:absolute; z-index:2; top:0; left:0; padding:5px 10px; background:#2B1D08; color:rgba(242,232,216,.8); font:400 10px/1 ui-monospace, Menlo, monospace; letter-spacing:.1em; display:{{ d.thumbPendingShow }}">photo pending</span>
